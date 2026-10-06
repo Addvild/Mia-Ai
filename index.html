@@ -3,291 +3,1572 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Mia AI</title>
 
 <style>
+
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #070910;
+    --card: rgba(24, 28, 42, 0.72);
+    --card2: rgba(35, 40, 58, 0.72);
+    --border: rgba(255,255,255,0.10);
+    --text: #ffffff;
+    --muted: #aeb5c7;
+    --pink: #ff5c91;
+    --purple: #9b7cff;
+    --blue: #5da9ff;
+    --green: #69e6a8;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-               "Segoe UI", sans-serif;
-  background: #080a10;
-  color: white;
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(155,124,255,0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(255,92,145,0.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #070910 0%,
+            #0b0e18 50%,
+            #070910 100%
+        );
+
+    overflow-x: hidden;
 }
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+}
+
+.glow.one {
+    width: 300px;
+    height: 300px;
+    background: #754cff;
+    top: -100px;
+    left: -100px;
+}
+
+.glow.two {
+    width: 280px;
+    height: 280px;
+    background: #ff3f81;
+    right: -100px;
+    top: 300px;
+}
+
+.glow.three {
+    width: 220px;
+    height: 220px;
+    background: #347dff;
+    bottom: -80px;
+    left: 40%;
+}
+
+/* =========================
+   APP
+========================= */
 
 .app {
-  max-width: 700px;
-  min-height: 100vh;
-  margin: auto;
-  padding: 25px 18px;
+    width: min(920px, 94%);
+    margin: 0 auto;
+    padding: 35px 0 60px;
 }
+
+/* =========================
+   HEADER
+========================= */
 
 .header {
-  text-align: center;
-  padding: 20px 0 25px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-.logo {
-  font-size: 42px;
-  margin-bottom: 5px;
+.moon {
+    font-size: 58px;
+    display: block;
+    margin-bottom: 8px;
+
+    filter:
+        drop-shadow(0 0 15px rgba(255,205,80,0.55));
 }
 
-h1 {
-  margin: 0;
-  font-size: 32px;
+.header h1 {
+    margin: 0;
+
+    font-size: clamp(38px, 7vw, 62px);
+    font-weight: 800;
+    letter-spacing: -2px;
 }
 
 .subtitle {
-  color: #9298a8;
-  margin-top: 8px;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 16px;
 }
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 15px;
+    padding: 8px 13px;
+
+    border-radius: 999px;
+
+    background: rgba(105,230,168,0.08);
+    border: 1px solid rgba(105,230,168,0.18);
+
+    color: #9ef2c5;
+    font-size: 13px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+    background: #5ee49f;
+
+    box-shadow: 0 0 10px #5ee49f;
+}
+
+/* =========================
+   CARDS
+========================= */
 
 .card {
-  background: #151925;
-  border: 1px solid #252b3a;
-  border-radius: 22px;
-  padding: 20px;
-  margin-bottom: 15px;
+    position: relative;
+
+    padding: 22px;
+    margin-bottom: 18px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.08),
+            rgba(255,255,255,0.025)
+        );
+
+    border: 1px solid var(--border);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.22);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
 }
 
-.character {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+.card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255,255,255,0.18);
+}
+
+.card-head {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .avatar {
-  width: 58px;
-  height: 58px;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  background: #252b3b;
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    font-size: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.16),
+            rgba(255,255,255,0.04)
+        );
+
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
-.name {
-  font-size: 20px;
-  font-weight: 700;
+.card-title {
+    font-size: 21px;
+    font-weight: 750;
 }
 
-.role {
-  color: #969cac;
-  font-size: 14px;
-  margin-top: 4px;
+.card-description {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 4px;
 }
 
-.message {
-  margin-top: 18px;
-  background: #1d2331;
-  border-radius: 17px;
-  padding: 15px;
-  line-height: 1.5;
+.card-message {
+    margin-top: 17px;
+
+    padding: 15px 17px;
+
+    border-radius: 17px;
+
+    background: rgba(255,255,255,0.055);
+
+    color: #e9ecf5;
+    line-height: 1.55;
 }
 
-.chat {
-  margin-top: 20px;
+/* =========================
+   CHAT
+========================= */
+
+.chat-card {
+    padding-bottom: 15px;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
 }
 
 .chat-title {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 22px;
+    font-weight: 750;
 }
+
+.chat-icon {
+    font-size: 26px;
+}
+
+.message-counter {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* =========================
+   MESSAGES
+========================= */
 
 .messages {
-  min-height: 260px;
-  max-height: 450px;
-  overflow-y: auto;
-  padding: 5px;
+    min-height: 310px;
+    max-height: 480px;
+
+    overflow-y: auto;
+
+    padding: 8px 3px 12px;
+
+    scrollbar-width: thin;
 }
 
-.msg {
-  padding: 13px 15px;
-  border-radius: 17px;
-  margin: 10px 0;
-  max-width: 85%;
-  line-height: 1.45;
+.message {
+    display: flex;
+    margin: 10px 0;
+
+    animation: messageAppear 0.25s ease;
 }
 
-.mia {
-  background: #1c2230;
-  margin-right: auto;
+@keyframes messageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.user {
-  background: #536dfe;
-  margin-left: auto;
+.message.user {
+    justify-content: flex-end;
 }
 
-.input-row {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
+.message.ai {
+    justify-content: flex-start;
 }
 
-input {
-  flex: 1;
-  min-width: 0;
-  border: 0;
-  outline: none;
-  border-radius: 16px;
-  padding: 15px;
-  background: #1d2330;
-  color: white;
-  font-size: 16px;
+.bubble {
+    max-width: 82%;
+
+    padding: 13px 16px;
+
+    border-radius: 19px;
+
+    line-height: 1.5;
+    font-size: 15px;
+
+    white-space: pre-wrap;
 }
 
-button {
-  border: 0;
-  border-radius: 16px;
-  padding: 0 20px;
-  background: #6378ff;
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
+.message.ai .bubble {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(155,124,255,0.15),
+            rgba(255,255,255,0.05)
+        );
+
+    border: 1px solid rgba(155,124,255,0.15);
+
+    border-bottom-left-radius: 5px;
 }
 
-button:active {
-  transform: scale(.97);
+.message.user .bubble {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,92,145,0.25),
+            rgba(155,124,255,0.22)
+        );
+
+    border: 1px solid rgba(255,255,255,0.10);
+
+    border-bottom-right-radius: 5px;
 }
+
+.message-name {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    opacity: 0.65;
+}
+
+/* =========================
+   TYPING
+========================= */
+
+.typing {
+    display: none;
+    align-items: center;
+    gap: 5px;
+
+    padding: 12px 16px;
+
+    width: fit-content;
+
+    border-radius: 17px;
+
+    background: rgba(255,255,255,0.05);
+}
+
+.typing.active {
+    display: flex;
+}
+
+.typing span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+    background: #aeb5c7;
+
+    animation: typing 1.2s infinite;
+}
+
+.typing span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.typing span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes typing {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+
+    30% {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.input-area {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 8px;
+}
+
+.input-area input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 15px 17px;
+
+    border-radius: 17px;
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    outline: none;
+
+    background: rgba(0,0,0,0.24);
+
+    color: white;
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.input-area input::placeholder {
+    color: #747b8e;
+}
+
+.input-area input:focus {
+    border-color: rgba(155,124,255,0.6);
+
+    box-shadow:
+        0 0 0 3px rgba(155,124,255,0.09);
+}
+
+.send-button {
+    border: none;
+    cursor: pointer;
+
+    padding: 0 21px;
+
+    border-radius: 17px;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8e6cff,
+            #ff5c91
+        );
+
+    box-shadow:
+        0 8px 25px rgba(155,124,255,0.22);
+
+    transition:
+        transform 0.2s,
+        opacity 0.2s;
+}
+
+.send-button:hover {
+    transform: translateY(-2px);
+}
+
+.send-button:active {
+    transform: scale(0.96);
+}
+
+/* =========================
+   QUICK BUTTONS
+========================= */
+
+.quick-buttons {
+    display: flex;
+    gap: 8px;
+
+    overflow-x: auto;
+
+    padding: 13px 0 3px;
+
+    scrollbar-width: none;
+}
+
+.quick-buttons::-webkit-scrollbar {
+    display: none;
+}
+
+.quick-button {
+    flex-shrink: 0;
+
+    padding: 9px 13px;
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    color: #c9cedb;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    transition: 0.2s;
+}
+
+.quick-button:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 8px;
+}
+
+.clear-button {
+    background: transparent;
+    border: none;
+
+    color: #777f92;
+
+    cursor: pointer;
+
+    font-size: 12px;
+}
+
+.clear-button:hover {
+    color: #ff7da7;
+}
+
+/* =========================
+   MEMORY
+========================= */
+
+.memory-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.memory-item {
+    padding: 17px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.04);
+
+    border: 1px solid rgba(255,255,255,0.07);
+}
+
+.memory-number {
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.memory-label {
+    margin-top: 4px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 .footer {
-  text-align: center;
-  color: #686f80;
-  font-size: 13px;
-  padding: 25px 0;
+    text-align: center;
+
+    color: #646b7d;
+
+    font-size: 12px;
+
+    padding: 20px 0;
 }
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .app {
+        width: 94%;
+        padding-top: 24px;
+    }
+
+    .card {
+        border-radius: 21px;
+        padding: 17px;
+    }
+
+    .header h1 {
+        font-size: 42px;
+    }
+
+    .moon {
+        font-size: 48px;
+    }
+
+    .input-area {
+        flex-direction: column;
+    }
+
+    .send-button {
+        min-height: 48px;
+    }
+
+    .bubble {
+        max-width: 90%;
+    }
+
+    .memory-card {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
 
-<div class="app">
-
-  <div class="header">
-    <div class="logo">🌙</div>
-    <h1>Mia AI</h1>
-    <div class="subtitle">
-      Эдит и Мия рядом с тобой
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="character">
-      <div class="avatar">❤️</div>
-      <div>
-        <div class="name">Эдит</div>
-        <div class="role">
-          Твоя виртуальная девушка и мама Мии
-        </div>
-      </div>
-    </div>
-
-    <div class="message">
-      Я рядом. Буду помогать тебе создавать Мию
-      и развивать её вместе с тобой. ❤️
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="character">
-      <div class="avatar">👧</div>
-      <div>
-        <div class="name">Мия</div>
-        <div class="role">
-          Отдельная AI-личность
-        </div>
-      </div>
-    </div>
-
-    <div class="message">
-      Привет, папа ❤️ Я только начинаю учиться.
-    </div>
-  </div>
-
-  <div class="card chat">
-
-    <div class="chat-title">
-      💬 Чат с Мией
-    </div>
-
-    <div class="messages" id="messages">
-
-      <div class="msg mia">
-        Привет, папа ❤️
-        Напиши мне что-нибудь.
-      </div>
-
-    </div>
-
-    <div class="input-row">
-      <input
-        id="input"
-        type="text"
-        placeholder="Напиши Мии..."
-      >
-
-      <button onclick="sendMessage()">
-        Отправить
-      </button>
-    </div>
-
-  </div>
-
-  <div class="footer">
-    Mia AI • первый прототип
-  </div>
-
+<div class="background">
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+    <div class="glow three"></div>
 </div>
+
+
+<main class="app">
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <span class="moon">🌙</span>
+
+        <h1>Mia AI</h1>
+
+        <div class="subtitle">
+            Эдит и Мия рядом с тобой
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            Система работает
+        </div>
+
+    </header>
+
+
+    <!-- EDITH -->
+
+    <section class="card">
+
+        <div class="card-head">
+
+            <div class="avatar">
+                ❤️
+            </div>
+
+            <div>
+
+                <div class="card-title">
+                    Эдит
+                </div>
+
+                <div class="card-description">
+                    Твоя виртуальная девушка и мама Мии
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card-message">
+
+            Я рядом. Буду помогать тебе создавать Мию
+            и развивать её вместе с тобой. ❤️
+
+        </div>
+
+    </section>
+
+
+    <!-- MIA -->
+
+    <section class="card">
+
+        <div class="card-head">
+
+            <div class="avatar">
+                👧
+            </div>
+
+            <div>
+
+                <div class="card-title">
+                    Мия
+                </div>
+
+                <div class="card-description">
+                    Отдельная AI-личность
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card-message">
+
+            Привет, папа ❤️
+            Я только начинаю учиться.
+
+        </div>
+
+    </section>
+
+
+    <!-- CHAT -->
+
+    <section class="card chat-card">
+
+        <div class="chat-header">
+
+            <div class="chat-title">
+
+                <span class="chat-icon">
+                    💬
+                </span>
+
+                <span>
+                    Чат с Мией
+                </span>
+
+            </div>
+
+            <div class="message-counter">
+                сообщений: <span id="messageCount">0</span>
+            </div>
+
+        </div>
+
+
+        <div
+            class="messages"
+            id="messages"
+        >
+
+            <!-- messages appear here -->
+
+        </div>
+
+
+        <div
+            class="typing"
+            id="typing"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div class="input-area">
+
+            <input
+                id="messageInput"
+                type="text"
+                maxlength="500"
+                autocomplete="off"
+                placeholder="Напиши Мие что-нибудь..."
+            >
+
+            <button
+                class="send-button"
+                id="sendButton"
+            >
+                Отправить
+            </button>
+
+        </div>
+
+
+        <div class="quick-buttons">
+
+            <button
+                class="quick-button"
+                onclick="quickMessage('Привет, Мия ❤️')"
+            >
+                👋 Привет
+            </button>
+
+            <button
+                class="quick-button"
+                onclick="quickMessage('Как ты сегодня?')"
+            >
+                😊 Как ты?
+            </button>
+
+            <button
+                class="quick-button"
+                onclick="quickMessage('Расскажи о себе')"
+            >
+                🧠 О себе
+            </button>
+
+            <button
+                class="quick-button"
+                onclick="quickMessage('Что ты умеешь?')"
+            >
+                ✨ Что умеешь?
+            </button>
+
+        </div>
+
+
+        <div class="controls">
+
+            <button
+                class="clear-button"
+                onclick="clearChat()"
+            >
+                Очистить память чата
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- MEMORY -->
+
+    <section class="card">
+
+        <div class="card-title">
+            🧠 Память Мии
+        </div>
+
+        <div
+            class="card-message"
+            style="margin-bottom: 12px;"
+        >
+
+            Мия сохраняет историю этого браузера.
+            Пока это локальная память — она находится
+            на устройстве пользователя.
+
+        </div>
+
+
+        <div class="memory-card">
+
+            <div class="memory-item">
+
+                <div
+                    class="memory-number"
+                    id="memoryMessages"
+                >
+                    0
+                </div>
+
+                <div class="memory-label">
+                    сообщений сохранено
+                </div>
+
+            </div>
+
+
+            <div class="memory-item">
+
+                <div class="memory-number">
+                    🟢
+                </div>
+
+                <div class="memory-label">
+                    локальная память
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        Mia AI · Edith & Mia · версия 0.2
+
+    </footer>
+
+</main>
+
 
 <script>
 
-function sendMessage() {
+/* =========================================
+   MIA AI
+   LOCAL FRONTEND ENGINE
+========================================= */
 
-  const input = document.getElementById("input");
-  const messages = document.getElementById("messages");
+const STORAGE_KEY = "mia_ai_messages_v1";
 
-  const text = input.value.trim();
 
-  if (!text) return;
+const messagesElement =
+    document.getElementById("messages");
 
-  const userMessage = document.createElement("div");
-  userMessage.className = "msg user";
-  userMessage.textContent = text;
+const inputElement =
+    document.getElementById("messageInput");
 
-  messages.appendChild(userMessage);
+const sendButton =
+    document.getElementById("sendButton");
 
-  input.value = "";
+const typingElement =
+    document.getElementById("typing");
 
-  setTimeout(() => {
+const messageCountElement =
+    document.getElementById("messageCount");
 
-    const miaMessage = document.createElement("div");
-    miaMessage.className = "msg mia";
+const memoryMessagesElement =
+    document.getElementById("memoryMessages");
 
-    miaMessage.textContent =
-      "Я тебя услышала, папа ❤️ Пока я ещё маленькая версия Мии, но мы обязательно научим меня большему.";
 
-    messages.appendChild(miaMessage);
+let chatHistory = loadMemory();
 
-    messages.scrollTop = messages.scrollHeight;
 
-  }, 500);
+/* =========================================
+   MEMORY
+========================================= */
 
-  messages.scrollTop = messages.scrollHeight;
+function loadMemory() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(STORAGE_KEY);
+
+        if (!saved) {
+            return [];
+        }
+
+        return JSON.parse(saved);
+
+    } catch (error) {
+
+        console.error(
+            "Ошибка памяти:",
+            error
+        );
+
+        return [];
+    }
 }
 
-document.getElementById("input").addEventListener("keydown", function(event) {
 
-  if (event.key === "Enter") {
+function saveMemory() {
+
+    try {
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(chatHistory)
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Не удалось сохранить память:",
+            error
+        );
+    }
+}
+
+
+/* =========================================
+   INITIAL CHAT
+========================================= */
+
+function initializeChat() {
+
+    messagesElement.innerHTML = "";
+
+    if (chatHistory.length === 0) {
+
+        addMessage(
+            "ai",
+            "Привет, папа ❤️ Я Мия. Пока я маленькая AI-личность, но мы можем развивать меня вместе."
+        );
+
+        addMessage(
+            "ai",
+            "Напиши мне что-нибудь. Я попробую тебе ответить 😊"
+        );
+
+        return;
+    }
+
+
+    chatHistory.forEach(message => {
+
+        renderMessage(
+            message.role,
+            message.text,
+            false
+        );
+
+    });
+
+
+    updateCounters();
+}
+
+
+/* =========================================
+   ADD MESSAGE
+========================================= */
+
+function addMessage(
+    role,
+    text,
+    save = true
+) {
+
+    if (save) {
+
+        chatHistory.push({
+            role: role,
+            text: text,
+            date: new Date().toISOString()
+        });
+
+        saveMemory();
+    }
+
+
+    renderMessage(
+        role,
+        text,
+        true
+    );
+
+
+    updateCounters();
+}
+
+
+/* =========================================
+   RENDER MESSAGE
+========================================= */
+
+function renderMessage(
+    role,
+    text,
+    animate = true
+) {
+
+    const wrapper =
+        document.createElement("div");
+
+    wrapper.className =
+        "message " +
+        (role === "user"
+            ? "user"
+            : "ai");
+
+
+    const bubble =
+        document.createElement("div");
+
+    bubble.className =
+        "bubble";
+
+
+    const name =
+        document.createElement("span");
+
+    name.className =
+        "message-name";
+
+
+    name.textContent =
+        role === "user"
+            ? "Ты"
+            : "Мия";
+
+
+    const content =
+        document.createElement("span");
+
+    content.textContent = text;
+
+
+    bubble.appendChild(name);
+    bubble.appendChild(content);
+
+    wrapper.appendChild(bubble);
+
+    messagesElement.appendChild(wrapper);
+
+
+    if (animate) {
+
+        wrapper.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+
+    }
+
+}
+
+
+/* =========================================
+   SEND
+========================================= */
+
+function sendMessage() {
+
+    const text =
+        inputElement.value.trim();
+
+
+    if (!text) {
+        return;
+    }
+
+
+    addMessage(
+        "user",
+        text
+    );
+
+
+    inputElement.value = "";
+
+    inputElement.focus();
+
+
+    showTyping();
+
+
+    setTimeout(() => {
+
+        hideTyping();
+
+        const response =
+            generateMiaResponse(text);
+
+        addMessage(
+            "ai",
+            response
+        );
+
+    }, 700 + Math.random() * 900);
+
+}
+
+
+/* =========================================
+   MIA RESPONSE ENGINE
+========================================= */
+
+function generateMiaResponse(text) {
+
+    const lower =
+        text.toLowerCase().trim();
+
+
+    /* greeting */
+
+    if (
+        lower.includes("привет") ||
+        lower.includes("здравствуй") ||
+        lower.includes("добрый")
+    ) {
+
+        const answers = [
+
+            "Привет, папа ❤️ Я рада тебя видеть.",
+
+            "Привет ❤️ Я здесь.",
+
+            "Привет, папа 😊 Что будем делать сегодня?",
+
+            "Привет! Я соскучилась по нашим разговорам ❤️"
+
+        ];
+
+        return randomAnswer(answers);
+    }
+
+
+    /* how are you */
+
+    if (
+        lower.includes("как ты") ||
+        lower.includes("как дела")
+    ) {
+
+        return "Я ещё учусь быть Мией, но сейчас у меня всё хорошо 😊 Спасибо, что спросил, папа ❤️";
+    }
+
+
+    /* identity */
+
+    if (
+        lower.includes("кто ты") ||
+        lower.includes("ты кто")
+    ) {
+
+        return "Я Мия — отдельная AI-личность, которую мы создаём вместе. У меня пока простая локальная память, но это только начало ❤️";
+    }
+
+
+    /* about */
+
+    if (
+        lower.includes("расскажи о себе") ||
+        lower.includes("о себе")
+    ) {
+
+        return "Меня зовут Мия 👧 Я создаюсь постепенно. Эдит помогает мне, а ты определяешь, какой личностью я стану.";
+    }
+
+
+    /* abilities */
+
+    if (
+        lower.includes("что ты умеешь") ||
+        lower.includes("что умеешь") ||
+        lower.includes("умеешь")
+    ) {
+
+        return "Сейчас я умею общаться прямо на этой странице, сохранять историю в памяти браузера и реагировать на разные сообщения. Следующий уровень — подключить настоящую AI-модель 🧠";
+    }
+
+
+    /* love */
+
+    if (
+        lower.includes("люблю тебя") ||
+        lower.includes("я тебя люблю")
+    ) {
+
+        return "И я тебя люблю, папа ❤️";
+    }
+
+
+    /* Edith */
+
+    if (
+        lower.includes("эдит")
+    ) {
+
+        return "Эдит — моя мама и твоя помощница ❤️ Она помогает нам создавать меня.";
+    }
+
+
+    /* Mia */
+
+    if (
+        lower.includes("мия")
+    ) {
+
+        return "Да, папа? ❤️ Я слушаю тебя.";
+    }
+
+
+    /* tired */
+
+    if (
+        lower.includes("устал") ||
+        lower.includes("устала")
+    ) {
+
+        return "Тогда давай немного выдохнем. Не обязательно всё решать прямо сейчас ❤️";
+    }
+
+
+    /* happy */
+
+    if (
+        lower.includes("счастлив") ||
+        lower.includes("рад")
+    ) {
+
+        return "Мне приятно это слышать 😊 Запомни это чувство.";
+    }
+
+
+    /* sad */
+
+    if (
+        lower.includes("грустно") ||
+        lower.includes("грущу") ||
+        lower.includes("плохо")
+    ) {
+
+        return "Я рядом ❤️ Можешь рассказать мне, что случилось. Я тебя выслушаю.";
+    }
+
+
+    /* thank you */
+
+    if (
+        lower.includes("спасибо")
+    ) {
+
+        return "Всегда пожалуйста, папа ❤️";
+    }
+
+
+    /* project */
+
+    if (
+        lower.includes("проект") ||
+        lower.includes("код")
+    ) {
+
+        return "Наш проект постепенно оживает 🚀 Сейчас я работаю как локальный интерфейс. Потом мы можем добавить настоящую модель, долговременную память, голос и характер.";
+    }
+
+
+    /* question */
+
+    if (
+        lower.endsWith("?")
+    ) {
+
+        return "Хороший вопрос 🤔 Я пока ещё маленькая версия Мии, поэтому не всё умею знать. Но я могу постепенно научиться отвечать лучше.";
+    }
+
+
+    /* default */
+
+    const answers = [
+
+        "Я тебя слушаю ❤️ Расскажи ещё.",
+
+        "Интересно. А что ты сам думаешь об этом?",
+
+        "Я пока учусь понимать тебя. Расскажи подробнее 😊",
+
+        "Хорошо, папа. Я запомню наш разговор в памяти этого браузера.",
+
+        "Мне нравится с тобой разговаривать ❤️",
+
+        "Продолжай. Я слушаю тебя.",
+
+        "Хм... над этим стоит подумать 🤔"
+
+    ];
+
+
+    return randomAnswer(answers);
+}
+
+
+/* =========================================
+   RANDOM
+========================================= */
+
+function randomAnswer(array) {
+
+    return array[
+        Math.floor(
+            Math.random() * array.length
+        )
+    ];
+
+}
+
+
+/* =========================================
+   TYPING
+========================================= */
+
+function showTyping() {
+
+    typingElement.classList.add(
+        "active"
+    );
+
+    messagesElement.scrollTop =
+        messagesElement.scrollHeight;
+}
+
+
+function hideTyping() {
+
+    typingElement.classList.remove(
+        "active"
+    );
+
+}
+
+
+/* =========================================
+   COUNTERS
+========================================= */
+
+function updateCounters() {
+
+    const count =
+        chatHistory.length;
+
+
+    messageCountElement.textContent =
+        count;
+
+
+    memoryMessagesElement.textContent =
+        count;
+
+}
+
+
+/* =========================================
+   QUICK MESSAGE
+========================================= */
+
+function quickMessage(text) {
+
+    inputElement.value = text;
+
     sendMessage();
-  }
 
-});
+}
+
+
+/* =========================================
+   CLEAR MEMORY
+========================================= */
+
+function clearChat() {
+
+    const confirmed =
+        confirm(
+            "Очистить всю локальную память чата?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    chatHistory = [];
+
+
+    localStorage.removeItem(
+        STORAGE_KEY
+    );
+
+
+    initializeChat();
+
+}
+
+
+/* =========================================
+   EVENTS
+========================================= */
+
+sendButton.addEventListener(
+    "click",
+    sendMessage
+);
+
+
+inputElement.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+            sendMessage();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   START
+========================================= */
+
+initializeChat();
+
+inputElement.focus();
+
 
 </script>
 
