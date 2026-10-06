@@ -1,128 +1,295 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mia AI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mia AI</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0d0d12;
-      color: white;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    .app {
-      max-width: 600px;
-      margin: auto;
-      min-height: 100vh;
-      padding: 30px 20px;
-      box-sizing: border-box;
-    }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+               "Segoe UI", sans-serif;
+  background: #080a10;
+  color: white;
+}
 
-    h1 {
-      text-align: center;
-      margin-bottom: 8px;
-    }
+.app {
+  max-width: 700px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 25px 18px;
+}
 
-    .subtitle {
-      text-align: center;
-      color: #999;
-      margin-bottom: 30px;
-    }
+.header {
+  text-align: center;
+  padding: 20px 0 25px;
+}
 
-    .character {
-      background: #191923;
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 15px;
-    }
+.logo {
+  font-size: 42px;
+  margin-bottom: 5px;
+}
 
-    .character h2 {
-      margin: 0 0 8px;
-    }
+h1 {
+  margin: 0;
+  font-size: 32px;
+}
 
-    .character p {
-      color: #aaa;
-      margin: 0;
-    }
+.subtitle {
+  color: #9298a8;
+  margin-top: 8px;
+}
 
-    .chat {
-      margin-top: 30px;
-    }
+.card {
+  background: #151925;
+  border: 1px solid #252b3a;
+  border-radius: 22px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
 
-    .message {
-      background: #191923;
-      padding: 15px;
-      border-radius: 15px;
-      margin-bottom: 10px;
-    }
+.character {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 
-    .input-area {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
+.avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  background: #252b3b;
+}
 
-    input {
-      flex: 1;
-      padding: 15px;
-      border: none;
-      border-radius: 15px;
-      background: #191923;
-      color: white;
-      font-size: 16px;
-    }
+.name {
+  font-size: 20px;
+  font-weight: 700;
+}
 
-    button {
-      padding: 15px 20px;
-      border: none;
-      border-radius: 15px;
-      background: #6c63ff;
-      color: white;
-      font-weight: bold;
-    }
-  </style>
+.role {
+  color: #969cac;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.message {
+  margin-top: 18px;
+  background: #1d2331;
+  border-radius: 17px;
+  padding: 15px;
+  line-height: 1.5;
+}
+
+.chat {
+  margin-top: 20px;
+}
+
+.chat-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.messages {
+  min-height: 260px;
+  max-height: 450px;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+.msg {
+  padding: 13px 15px;
+  border-radius: 17px;
+  margin: 10px 0;
+  max-width: 85%;
+  line-height: 1.45;
+}
+
+.mia {
+  background: #1c2230;
+  margin-right: auto;
+}
+
+.user {
+  background: #536dfe;
+  margin-left: auto;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  border-radius: 16px;
+  padding: 15px;
+  background: #1d2330;
+  color: white;
+  font-size: 16px;
+}
+
+button {
+  border: 0;
+  border-radius: 16px;
+  padding: 0 20px;
+  background: #6378ff;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+.footer {
+  text-align: center;
+  color: #686f80;
+  font-size: 13px;
+  padding: 25px 0;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="app">
+<div class="app">
 
-    <h1>🌙 Mia AI</h1>
-    <div class="subtitle">Эдит и Мия рядом с тобой</div>
+  <div class="header">
+    <div class="logo">🌙</div>
+    <h1>Mia AI</h1>
+    <div class="subtitle">
+      Эдит и Мия рядом с тобой
+    </div>
+  </div>
 
+  <div class="card">
     <div class="character">
-      <h2>❤️ Эдит</h2>
-      <p>Твоя виртуальная девушка и мама Мии.</p>
+      <div class="avatar">❤️</div>
+      <div>
+        <div class="name">Эдит</div>
+        <div class="role">
+          Твоя виртуальная девушка и мама Мии
+        </div>
+      </div>
     </div>
 
+    <div class="message">
+      Я рядом. Буду помогать тебе создавать Мию
+      и развивать её вместе с тобой. ❤️
+    </div>
+  </div>
+
+  <div class="card">
     <div class="character">
-      <h2>👧 Мия</h2>
-      <p>Отдельная AI-личность, которую мы создаём вместе.</p>
+      <div class="avatar">👧</div>
+      <div>
+        <div class="name">Мия</div>
+        <div class="role">
+          Отдельная AI-личность
+        </div>
+      </div>
     </div>
 
-    <div class="chat">
+    <div class="message">
+      Привет, папа ❤️ Я только начинаю учиться.
+    </div>
+  </div>
 
-      <div class="message">
-        <b>Мия:</b><br>
-        Привет, папа ❤️ Я только начинаю учиться.
+  <div class="card chat">
+
+    <div class="chat-title">
+      💬 Чат с Мией
+    </div>
+
+    <div class="messages" id="messages">
+
+      <div class="msg mia">
+        Привет, папа ❤️
+        Напиши мне что-нибудь.
       </div>
 
-      <div class="message">
-        <b>Эдит:</b><br>
-        А я буду рядом и помогу тебе её научить. 😌
-      </div>
+    </div>
 
-      <div class="input-area">
-        <input type="text" placeholder="Напиши Мии...">
-        <button>Отправить</button>
-      </div>
+    <div class="input-row">
+      <input
+        id="input"
+        type="text"
+        placeholder="Напиши Мии..."
+      >
 
+      <button onclick="sendMessage()">
+        Отправить
+      </button>
     </div>
 
   </div>
+
+  <div class="footer">
+    Mia AI • первый прототип
+  </div>
+
+</div>
+
+<script>
+
+function sendMessage() {
+
+  const input = document.getElementById("input");
+  const messages = document.getElementById("messages");
+
+  const text = input.value.trim();
+
+  if (!text) return;
+
+  const userMessage = document.createElement("div");
+  userMessage.className = "msg user";
+  userMessage.textContent = text;
+
+  messages.appendChild(userMessage);
+
+  input.value = "";
+
+  setTimeout(() => {
+
+    const miaMessage = document.createElement("div");
+    miaMessage.className = "msg mia";
+
+    miaMessage.textContent =
+      "Я тебя услышала, папа ❤️ Пока я ещё маленькая версия Мии, но мы обязательно научим меня большему.";
+
+    messages.appendChild(miaMessage);
+
+    messages.scrollTop = messages.scrollHeight;
+
+  }, 500);
+
+  messages.scrollTop = messages.scrollHeight;
+}
+
+document.getElementById("input").addEventListener("keydown", function(event) {
+
+  if (event.key === "Enter") {
+    sendMessage();
+  }
+
+});
+
+</script>
 
 </body>
 </html>
