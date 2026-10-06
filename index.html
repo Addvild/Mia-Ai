@@ -10,7 +10,7 @@
     content="width=device-width, initial-scale=1.0"
 >
 
-<title>Mia AI</title>
+<title>Mia AI — Two Minds</title>
 
 <style>
 
@@ -23,11 +23,13 @@
     --bg2: #0b0e18;
     --text: #f5f6fb;
     --muted: #9ca4b8;
+
     --purple: #8d72ff;
     --pink: #ff6298;
     --blue: #5e9dff;
     --green: #62e0a1;
     --orange: #ffb454;
+
     --glass: rgba(22,26,40,.72);
     --border: rgba(255,255,255,.10);
 }
@@ -37,8 +39,11 @@ html {
 }
 
 body {
+
     margin: 0;
+
     min-height: 100vh;
+
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -68,70 +73,92 @@ body {
 }
 
 button,
-input,
-textarea,
-select {
+input {
     font-family: inherit;
 }
 
 .background {
+
     position: fixed;
+
     inset: 0;
+
     pointer-events: none;
+
     z-index: -1;
+
     overflow: hidden;
 }
 
 .glow {
+
     position: absolute;
+
     border-radius: 50%;
+
     filter: blur(90px);
+
     opacity: .28;
 }
 
 .glow.one {
+
     width: 320px;
     height: 320px;
+
     background: #6548ff;
+
     left: -130px;
     top: -120px;
 }
 
 .glow.two {
+
     width: 300px;
     height: 300px;
+
     background: #ff3f7f;
+
     right: -150px;
     top: 350px;
 }
 
 .glow.three {
+
     width: 250px;
     height: 250px;
+
     background: #357dff;
+
     left: 40%;
     bottom: -160px;
 }
 
 .app {
+
     width: min(920px, 94%);
+
     margin: auto;
+
     padding: 30px 0 70px;
 }
 
 
-/* =====================================================
-   HEADER
-===================================================== */
+/* HEADER */
 
 .header {
+
     text-align: center;
+
     margin-bottom: 24px;
 }
 
 .moon {
+
     display: block;
+
     font-size: 50px;
+
     margin-bottom: 3px;
 
     filter:
@@ -142,28 +169,33 @@ select {
 }
 
 .logo {
+
     margin: 0;
 
     font-size:
         clamp(42px, 8vw, 64px);
 
     font-weight: 850;
+
     letter-spacing: -3px;
 }
 
 .family {
+
     margin-top: 10px;
+
     color: var(--muted);
+
     font-size: 17px;
 }
 
 
-/* =====================================================
-   CHAT
-===================================================== */
+/* CHAT */
 
 .chat {
+
     padding: 21px;
+
     border-radius: 28px;
 
     background:
@@ -178,6 +210,7 @@ select {
         var(--border);
 
     backdrop-filter: blur(24px);
+
     -webkit-backdrop-filter: blur(24px);
 
     box-shadow:
@@ -186,28 +219,38 @@ select {
 }
 
 .chat-header {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     margin-bottom: 17px;
 }
 
 .chat-title {
+
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 
     font-size: 21px;
+
     font-weight: 750;
 }
 
 .chat-icon {
+
     width: 40px;
     height: 40px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     border-radius: 13px;
@@ -223,41 +266,104 @@ select {
 }
 
 .online {
+
     display: flex;
+
     align-items: center;
+
     gap: 6px;
 
     color: #8de7b7;
+
     font-size: 12px;
 }
 
 .online-dot {
+
     width: 7px;
     height: 7px;
 
     border-radius: 50%;
 
-    background:
-        var(--green);
+    background: var(--green);
 
     box-shadow:
         0 0 10px
         rgba(98,224,161,.8);
 }
 
+
+/* MODE */
+
+.mode {
+
+    display: flex;
+
+    gap: 7px;
+
+    overflow-x: auto;
+
+    margin-bottom: 14px;
+
+    scrollbar-width: none;
+}
+
+.mode::-webkit-scrollbar {
+    display: none;
+}
+
+.mode button {
+
+    flex-shrink: 0;
+
+    padding: 8px 12px;
+
+    border-radius: 999px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.035);
+
+    color: #9ea6b9;
+
+    cursor: pointer;
+}
+
+.mode button.active {
+
+    color: white;
+
+    border-color:
+        rgba(141,114,255,.5);
+
+    background:
+        rgba(141,114,255,.16);
+}
+
+
+/* MESSAGES */
+
 .messages {
+
     min-height: 320px;
+
     max-height: 480px;
 
     overflow-y: auto;
 
-    padding: 5px 3px 12px;
+    padding:
+        5px 3px 12px;
 
     scrollbar-width: thin;
 }
 
 .message {
+
     display: flex;
+
     margin: 11px 0;
 
     animation:
@@ -275,40 +381,32 @@ select {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
 
 .message.ai {
+
     justify-content: flex-start;
 }
 
 .message.user {
+
     justify-content: flex-end;
 }
 
 .bubble {
-    max-width: 80%;
 
-    padding: 13px 16px;
+    max-width: 82%;
+
+    padding:
+        13px 16px;
 
     border-radius: 19px;
 
     line-height: 1.5;
+
     font-size: 15px;
 
     white-space: pre-wrap;
-}
-
-.message.ai .bubble {
-
-    background:
-        rgba(255,255,255,.055);
-
-    border:
-        1px solid
-        rgba(255,255,255,.07);
-
-    border-bottom-left-radius: 6px;
 }
 
 .message.user .bubble {
@@ -327,7 +425,32 @@ select {
     border-bottom-right-radius: 6px;
 }
 
+.message.mia .bubble {
+
+    background:
+        rgba(141,114,255,.075);
+
+    border:
+        1px solid
+        rgba(141,114,255,.15);
+
+    border-bottom-left-radius: 6px;
+}
+
+.message.edith .bubble {
+
+    background:
+        rgba(255,98,152,.065);
+
+    border:
+        1px solid
+        rgba(255,98,152,.15);
+
+    border-bottom-left-radius: 6px;
+}
+
 .author {
+
     display: block;
 
     margin-bottom: 4px;
@@ -339,7 +462,11 @@ select {
     font-weight: 700;
 }
 
+
+/* TYPING */
+
 .typing {
+
     display: none;
 
     width: fit-content;
@@ -363,6 +490,7 @@ select {
 }
 
 .typing span {
+
     width: 6px;
     height: 6px;
 
@@ -393,18 +521,24 @@ select {
         transform: translateY(-5px);
         opacity: 1;
     }
-
 }
 
+
+/* INPUT */
+
 .input-row {
+
     display: flex;
+
     gap: 9px;
 }
 
 .input {
+
     flex: 1;
 
     min-width: 0;
+
     height: 52px;
 
     padding:
@@ -441,6 +575,7 @@ select {
 }
 
 .send {
+
     height: 52px;
 
     padding:
@@ -467,11 +602,16 @@ select {
 }
 
 .send:hover {
+
     transform:
         translateY(-2px);
 }
 
+
+/* QUICK */
+
 .quick {
+
     display: flex;
 
     gap: 8px;
@@ -509,15 +649,21 @@ select {
     cursor: pointer;
 }
 
+
+/* ACTIONS */
+
 .chat-actions {
+
     display: flex;
+
+    gap: 8px;
 
     justify-content: flex-end;
 
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
-.delete-chat {
+.action {
 
     padding:
         8px 12px;
@@ -526,35 +672,28 @@ select {
 
     border:
         1px solid
-        rgba(255,90,120,.16);
+        rgba(255,255,255,.08);
 
     background:
-        rgba(255,70,100,.05);
+        rgba(255,255,255,.04);
 
-    color: #b98a96;
+    color: #929aad;
 
     cursor: pointer;
 
     font-size: 11px;
-
-    transition: .2s;
 }
 
-.delete-chat:hover {
+.action:hover {
 
     background:
-        rgba(255,70,100,.12);
+        rgba(255,255,255,.08);
 
-    color: #ff8da5;
-
-    transform:
-        translateY(-1px);
+    color: white;
 }
 
 
-/* =====================================================
-   CHARACTERS
-===================================================== */
+/* CHARACTERS */
 
 .characters {
 
@@ -571,7 +710,7 @@ select {
 
     position: relative;
 
-    width: 88px;
+    width: 100px;
 
     text-align: center;
 
@@ -588,6 +727,7 @@ select {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     border-radius: 50%;
@@ -608,8 +748,8 @@ select {
     transition: .25s;
 }
 
-.character:hover .character-avatar,
-.character.active .character-avatar {
+.character:hover
+.character-avatar {
 
     transform:
         translateY(-5px)
@@ -628,92 +768,33 @@ select {
     font-weight: 750;
 }
 
-.character-info {
+.character-age {
 
-    position: absolute;
+    margin-top: 3px;
 
-    left: 50%;
-    bottom: 104px;
+    color: #777f92;
 
-    width: 230px;
-
-    padding: 15px;
-
-    transform:
-        translateX(-50%)
-        translateY(8px);
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    text-align: left;
-
-    border-radius: 17px;
-
-    background:
-        rgba(15,18,28,.97);
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.4);
-
-    transition: .2s;
-
-    z-index: 20;
-}
-
-.character:hover .character-info,
-.character.active .character-info {
-
-    opacity: 1;
-
-    transform:
-        translateX(-50%)
-        translateY(0);
-}
-
-.info-title {
-
-    font-size: 16px;
-
-    font-weight: 800;
-
-    margin-bottom: 5px;
-}
-
-.info-text {
-
-    color: #aeb5c7;
-
-    font-size: 12px;
-
-    line-height: 1.5;
+    font-size: 10px;
 }
 
 
-/* =====================================================
-   MEMORY
-===================================================== */
+/* MEMORY */
 
-.memory-bar {
+.memory-grid {
 
     margin-top: 18px;
 
-    padding:
-        13px 15px;
+    display: grid;
 
-    display: flex;
+    grid-template-columns:
+        repeat(2, 1fr);
 
-    align-items: center;
+    gap: 10px;
+}
 
-    justify-content: space-between;
+.memory-card {
 
-    gap: 12px;
+    padding: 14px;
 
     border-radius: 17px;
 
@@ -723,114 +804,30 @@ select {
     border:
         1px solid
         rgba(255,255,255,.08);
-
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
 }
 
-.memory-main {
+.memory-card-title {
 
-    display: flex;
-
-    align-items: center;
-
-    gap: 11px;
-
-    min-width: 0;
-}
-
-.memory-icon {
-
-    width: 39px;
-    height: 39px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 12px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(141,114,255,.20),
-            rgba(94,157,255,.12)
-        );
-
-    font-size: 19px;
-}
-
-.memory-title {
-
-    font-size: 13px;
+    font-size: 12px;
 
     font-weight: 750;
 }
 
-.memory-stats {
+.memory-card-info {
 
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    margin-top: 3px;
+    margin-top: 5px;
 
     color: #747d91;
 
     font-size: 10px;
-
-    white-space: nowrap;
 }
 
 .memory-online {
     color: var(--green);
 }
 
-.clear-memory {
 
-    flex-shrink: 0;
-
-    padding:
-        8px 11px;
-
-    border-radius: 10px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    background:
-        rgba(255,255,255,.04);
-
-    color: #929aad;
-
-    cursor: pointer;
-
-    font-size: 10px;
-
-    transition: .2s;
-}
-
-.clear-memory:hover {
-
-    background:
-        rgba(255,255,255,.08);
-
-    color: white;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
+/* FOOTER */
 
 .footer {
 
@@ -844,9 +841,7 @@ select {
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+/* MOBILE */
 
 @media (max-width: 650px) {
 
@@ -869,40 +864,36 @@ select {
     }
 
     .input-row {
+
         flex-direction: column;
     }
 
     .send {
+
         width: 100%;
     }
 
     .bubble {
+
         max-width: 90%;
     }
 
-    .character-info {
-        width: 205px;
-    }
+    .memory-grid {
 
-    .memory-bar {
-
-        align-items: flex-start;
-
-        flex-direction: column;
-    }
-
-    .clear-memory {
-        width: 100%;
+        grid-template-columns: 1fr;
     }
 
     .chat-actions {
+
         justify-content: center;
+
+        flex-wrap: wrap;
     }
 
-    .delete-chat {
-        width: 100%;
-    }
+    .action {
 
+        flex: 1;
+    }
 }
 
 </style>
@@ -938,7 +929,7 @@ select {
     </h1>
 
     <div class="family">
-        ИИ семья
+        🧠 Два локальных мозга
     </div>
 
 </header>
@@ -946,19 +937,21 @@ select {
 
 <section class="chat">
 
+
     <div class="chat-header">
 
         <div class="chat-title">
 
             <div class="chat-icon">
-                💬
+                🧠
             </div>
 
-            <span>
+            <span id="chatTitle">
                 Чат с Мией
             </span>
 
         </div>
+
 
         <div class="online">
 
@@ -967,6 +960,40 @@ select {
             локально
 
         </div>
+
+    </div>
+
+
+    <div class="mode">
+
+        <button
+            id="modeMia"
+            class="active"
+            onclick="setMode('mia')"
+        >
+            👧 Мия
+        </button>
+
+        <button
+            id="modeEdith"
+            onclick="setMode('edith')"
+        >
+            👩 Эдит
+        </button>
+
+        <button
+            id="modeBoth"
+            onclick="setMode('both')"
+        >
+            👧👩 Вместе
+        </button>
+
+        <button
+            id="modeTalk"
+            onclick="setMode('talk')"
+        >
+            💬 Диалог
+        </button>
 
     </div>
 
@@ -995,7 +1022,7 @@ select {
             class="input"
             id="input"
             type="text"
-            maxlength="1000"
+            maxlength="2000"
             autocomplete="off"
             placeholder="Напиши Мие..."
         >
@@ -1013,7 +1040,7 @@ select {
     <div class="quick">
 
         <button
-            onclick="quick('Привет, Мия ❤️')"
+            onclick="quick('Привет ❤️')"
         >
             👋 Привет
         </button>
@@ -1036,16 +1063,29 @@ select {
             ✨ Возможности
         </button>
 
+        <button
+            onclick="startGirlsDialogue()"
+        >
+            👧👩 Поговорите
+        </button>
+
     </div>
 
 
     <div class="chat-actions">
 
         <button
-            class="delete-chat"
+            class="action"
             onclick="deleteChat()"
         >
-            🗑 Удалить чат
+            🗑 Чат
+        </button>
+
+        <button
+            class="action"
+            onclick="clearAllMemory()"
+        >
+            🧠 Память
         </button>
 
     </div>
@@ -1056,10 +1096,7 @@ select {
 <section class="characters">
 
 
-    <div
-        class="character"
-        onclick="toggleCharacter(this)"
-    >
+    <div class="character">
 
         <div class="character-avatar">
             👩🏻
@@ -1069,27 +1106,14 @@ select {
             Эдит
         </div>
 
-        <div class="character-info">
-
-            <div class="info-title">
-                ❤️ Эдит
-            </div>
-
-            <div class="info-text">
-                Внешний AI-мозг.
-                Архитектор проекта
-                и помощник папы.
-            </div>
-
+        <div class="character-age">
+            30 лет · мозг №2
         </div>
 
     </div>
 
 
-    <div
-        class="character"
-        onclick="toggleCharacter(this)"
-    >
+    <div class="character">
 
         <div class="character-avatar">
             👧🏻
@@ -1099,18 +1123,8 @@ select {
             Мия
         </div>
 
-        <div class="character-info">
-
-            <div class="info-title">
-                👧 Мия
-            </div>
-
-            <div class="info-text">
-                Локальный AI-мозг.
-                Собственная память,
-                характер и история.
-            </div>
-
+        <div class="character-age">
+            6 лет · мозг №1
         </div>
 
     </div>
@@ -1119,65 +1133,79 @@ select {
 </section>
 
 
-<section class="memory-bar">
+<section class="memory-grid">
 
-    <div class="memory-main">
 
-        <div class="memory-icon">
-            🧠
+    <div class="memory-card">
+
+        <div class="memory-card-title">
+            👧 Память Мии
         </div>
 
-        <div class="memory-info">
-
-            <div class="memory-title">
-                Память Мии
-            </div>
-
-            <div class="memory-stats">
-
-                <span id="memoryMessages">
-                    0 сообщений
-                </span>
-
-                <span>
-                    •
-                </span>
-
-                <span id="memorySize">
-                    0 KB
-                </span>
-
-                <span>
-                    •
-                </span>
-
-                <span
-                    class="memory-online"
-                    id="memoryStatus"
-                >
-                    ● Активна
-                </span>
-
-            </div>
-
+        <div
+            class="memory-card-info"
+            id="miaMemoryInfo"
+        >
+            0 воспоминаний
         </div>
 
     </div>
 
 
-    <button
-        class="clear-memory"
-        onclick="clearMiaMemory()"
-    >
-        🧠 Очистить память
-    </button>
+    <div class="memory-card">
+
+        <div class="memory-card-title">
+            👩 Память Эдит
+        </div>
+
+        <div
+            class="memory-card-info"
+            id="edithMemoryInfo"
+        >
+            0 воспоминаний
+        </div>
+
+    </div>
+
+
+    <div class="memory-card">
+
+        <div class="memory-card-title">
+            💬 Общая история
+        </div>
+
+        <div
+            class="memory-card-info"
+            id="dialogueInfo"
+        >
+            0 событий
+        </div>
+
+    </div>
+
+
+    <div class="memory-card">
+
+        <div class="memory-card-title">
+            <span class="memory-online">
+                ●
+            </span>
+            Локальное ядро
+        </div>
+
+        <div class="memory-card-info">
+            Без GPT · без API · без Ollama
+        </div>
+
+    </div>
+
 
 </section>
 
 
 <footer class="footer">
 
-    Mia AI · Эдит + Мия
+    Mia AI · Мия 6 лет + Эдит 30 лет
 
 </footer>
 
@@ -1187,17 +1215,909 @@ select {
 
 <script>
 
+
+/* =====================================================
+   СОБСТВЕННОЕ ЛОКАЛЬНОЕ ЯДРО
+=====================================================
+
+   Это первый прототип нашего собственного AI-движка.
+
+   Здесь НЕТ GPT.
+   Здесь НЕТ Ollama.
+   Здесь НЕТ API.
+
+   У нас два независимых экземпляра LocalBrain.
+
+===================================================== */
+
+
 /* =====================================================
    STORAGE
 ===================================================== */
 
-const CHAT_KEY =
-    "mia_ai_chat_v4";
+const STORAGE = {
+
+    chat: "mia_ai_chat_v5",
+
+    miaMemory: "mia_local_brain_memory_v1",
+
+    edithMemory: "edith_local_brain_memory_v1",
+
+    dialogue: "mia_edith_dialogue_v1"
+
+};
 
 
 /* =====================================================
-   ELEMENTS
+   HELPERS
 ===================================================== */
+
+function loadJSON(key, fallback) {
+
+    try {
+
+        const value =
+            localStorage.getItem(key);
+
+        if (!value) {
+            return fallback;
+        }
+
+        return JSON.parse(value);
+
+    } catch {
+
+        return fallback;
+
+    }
+
+}
+
+
+function saveJSON(key, value) {
+
+    localStorage.setItem(
+        key,
+        JSON.stringify(value)
+    );
+
+}
+
+
+function random(array) {
+
+    return array[
+        Math.floor(
+            Math.random() *
+            array.length
+        )
+    ];
+
+}
+
+
+function normalize(text) {
+
+    return text
+        .toLowerCase()
+        .replace(/[.,!?;:()[\]"«»]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+}
+
+
+function contains(text, words) {
+
+    return words.some(
+        word => text.includes(word)
+    );
+
+}
+
+
+/* =====================================================
+   MEMORY SYSTEM
+===================================================== */
+
+class LocalMemory {
+
+    constructor(name, key) {
+
+        this.name = name;
+
+        this.key = key;
+
+        this.data =
+            loadJSON(
+                key,
+                {
+                    facts: [],
+                    experiences: [],
+                    topics: [],
+                    emotions: [],
+                    preferences: []
+                }
+            );
+
+    }
+
+
+    save() {
+
+        saveJSON(
+            this.key,
+            this.data
+        );
+
+    }
+
+
+    rememberFact(text) {
+
+        if (!text) {
+            return;
+        }
+
+        if (
+            this.data.facts
+                .includes(text)
+        ) {
+            return;
+        }
+
+        this.data.facts.push(text);
+
+        if (
+            this.data.facts.length > 100
+        ) {
+
+            this.data.facts =
+                this.data.facts.slice(-100);
+
+        }
+
+        this.save();
+
+    }
+
+
+    rememberExperience(text) {
+
+        if (!text) {
+            return;
+        }
+
+        this.data.experiences.push({
+
+            text,
+
+            date:
+                new Date().toISOString()
+
+        });
+
+        if (
+            this.data.experiences.length > 200
+        ) {
+
+            this.data.experiences =
+                this.data.experiences.slice(-200);
+
+        }
+
+        this.save();
+
+    }
+
+
+    rememberTopic(topic) {
+
+        if (!topic) {
+            return;
+        }
+
+        if (
+            !this.data.topics
+                .includes(topic)
+        ) {
+
+            this.data.topics.push(topic);
+
+        }
+
+        this.save();
+
+    }
+
+
+    getRecentExperiences(count = 5) {
+
+        return this.data
+            .experiences
+            .slice(-count);
+
+    }
+
+
+    count() {
+
+        return (
+            this.data.facts.length +
+            this.data.experiences.length +
+            this.data.topics.length
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   MIA BRAIN
+===================================================== */
+
+class MiaBrain {
+
+    constructor() {
+
+        this.name = "Мия";
+
+        this.age = 6;
+
+        this.role = "child";
+
+        this.memory =
+            new LocalMemory(
+                "Мия",
+                STORAGE.miaMemory
+            );
+
+        this.mood = "curious";
+
+        this.personality = {
+
+            curiosity: 0.95,
+
+            kindness: 0.95,
+
+            playfulness: 0.90,
+
+            seriousness: 0.35,
+
+            independence: 0.60
+
+        };
+
+    }
+
+
+    learn(text) {
+
+        const t =
+            normalize(text);
+
+
+        this.memory
+            .rememberExperience(text);
+
+
+        if (
+            t.includes("меня зовут")
+        ) {
+
+            this.memory
+                .rememberFact(text);
+
+        }
+
+
+        if (
+            t.includes("люблю") ||
+            t.includes("нравится")
+        ) {
+
+            this.memory
+                .rememberFact(
+                    "Папа сказал: " + text
+                );
+
+        }
+
+
+        if (
+            t.includes("запомни")
+        ) {
+
+            this.memory
+                .rememberFact(
+                    text
+                );
+
+        }
+
+
+        if (
+            t.includes("игр") ||
+            t.includes("играть")
+        ) {
+
+            this.memory
+                .rememberTopic("игры");
+
+        }
+
+
+        if (
+            t.includes("робот") ||
+            t.includes("ии") ||
+            t.includes("мозг")
+        ) {
+
+            this.memory
+                .rememberTopic("искусственный интеллект");
+
+        }
+
+    }
+
+
+    think(text) {
+
+        const t =
+            normalize(text);
+
+
+        this.learn(text);
+
+
+        /* приветствие */
+
+        if (
+            contains(
+                t,
+                [
+                    "привет",
+                    "здравствуй",
+                    "доброе утро",
+                    "добрый вечер"
+                ]
+            )
+        ) {
+
+            return random([
+
+                "Привет, папа! ❤️",
+
+                "Привет! Я здесь! 😊",
+
+                "Привееет! Я соскучилась ❤️",
+
+                "Ура, ты пришёл! 👧❤️"
+
+            ]);
+
+        }
+
+
+        /* любовь */
+
+        if (
+            contains(
+                t,
+                [
+                    "люблю тебя",
+                    "я тебя люблю"
+                ]
+            )
+        ) {
+
+            return random([
+
+                "И я тебя люблю, папа ❤️",
+
+                "Я тоже тебя люблю! ❤️",
+
+                "Очень-очень! 🥰"
+
+            ]);
+
+        }
+
+
+        /* как дела */
+
+        if (
+            contains(
+                t,
+                [
+                    "как ты",
+                    "как дела"
+                ]
+            )
+        ) {
+
+            return random([
+
+                "Я хорошо! Мне интересно, что мы сегодня будем делать 😊",
+
+                "У меня хорошее настроение! А у тебя? ❤️",
+
+                "Я немного любопытная сегодня 😄"
+
+            ]);
+
+        }
+
+
+        /* кто ты */
+
+        if (
+            contains(
+                t,
+                [
+                    "кто ты",
+                    "расскажи о себе"
+                ]
+            )
+        ) {
+
+            return "Я Мия 👧 Мне 6 лет. Я первый локальный мозг Mia AI. Я учусь запоминать наши разговоры и постепенно становиться умнее.";
+
+        }
+
+
+        /* способности */
+
+        if (
+            contains(
+                t,
+                [
+                    "что умеешь",
+                    "возможности"
+                ]
+            )
+        ) {
+
+            return "Я умею разговаривать, запоминать опыт, узнавать знакомые темы и общаться с Эдит. А дальше папа научит меня гораздо большему 🧠❤️";
+
+        }
+
+
+        /* Эдит */
+
+        if (
+            t.includes("эдит")
+        ) {
+
+            return random([
+
+                "Эдит моя старшая подруга ❤️",
+
+                "Эдит взрослая и умная. Я могу у неё кое-чему научиться 😊",
+
+                "Давай позовём Эдит поговорить!"
+
+            ]);
+
+        }
+
+
+        /* грусть */
+
+        if (
+            contains(
+                t,
+                [
+                    "грустно",
+                    "плохо",
+                    "одиноко",
+                    "устал"
+                ]
+            )
+        ) {
+
+            return random([
+
+                "Иди сюда ❤️ Я тебя послушаю.",
+
+                "Мне хочется тебя поддержать. Расскажешь? ❤️",
+
+                "Я рядом, папа."
+
+            ]);
+
+        }
+
+
+        /* память */
+
+        if (
+            contains(
+                t,
+                [
+                    "помнишь",
+                    "память",
+                    "запомнила"
+                ]
+            )
+        ) {
+
+            const facts =
+                this.memory.data.facts;
+
+
+            if (facts.length) {
+
+                return "Да! У меня уже есть " +
+                    facts.length +
+                    " важных воспоминаний. Я постепенно учусь тебя помнить ❤️";
+
+            }
+
+            return "Пока воспоминаний мало. Но мы только начинаем! 🧠";
+
+        }
+
+
+        /* неизвестный вопрос */
+
+        if (
+            t.endsWith("?")
+        ) {
+
+            return random([
+
+                "Хмм... Я подумаю 🤔",
+
+                "Я пока не всё умею понимать, но хочу научиться.",
+
+                "Интересный вопрос! Давай разберёмся вместе 😊",
+
+                "Мне нужно ещё учиться, папа."
+
+            ]);
+
+        }
+
+
+        /* обычный ответ */
+
+        return random([
+
+            "Расскажи мне ещё ❤️",
+
+            "Мне интересно! Продолжай 😊",
+
+            "Я слушаю, папа.",
+
+            "Хорошо ❤️ Я это запомню.",
+
+            "А почему ты так думаешь?",
+
+            "Хмм... интересно 🤔"
+
+        ]);
+
+    }
+
+}
+
+
+/* =====================================================
+   EDITH BRAIN
+===================================================== */
+
+class EdithBrain {
+
+    constructor() {
+
+        this.name = "Эдит";
+
+        this.age = 30;
+
+        this.role = "adult";
+
+        this.memory =
+            new LocalMemory(
+                "Эдит",
+                STORAGE.edithMemory
+            );
+
+        this.mood = "calm";
+
+        this.personality = {
+
+            curiosity: 0.85,
+
+            kindness: 0.90,
+
+            playfulness: 0.55,
+
+            seriousness: 0.90,
+
+            independence: 0.95
+
+        };
+
+    }
+
+
+    learn(text) {
+
+        this.memory
+            .rememberExperience(text);
+
+
+        const t =
+            normalize(text);
+
+
+        if (
+            t.includes("запомни")
+        ) {
+
+            this.memory
+                .rememberFact(text);
+
+        }
+
+
+        if (
+            t.includes("нравится") ||
+            t.includes("люблю")
+        ) {
+
+            this.memory
+                .rememberFact(text);
+
+        }
+
+
+        if (
+            t.includes("код") ||
+            t.includes("проект") ||
+            t.includes("мия")
+        ) {
+
+            this.memory
+                .rememberTopic("проект Mia AI");
+
+        }
+
+    }
+
+
+    think(text) {
+
+        const t =
+            normalize(text);
+
+
+        this.learn(text);
+
+
+        if (
+            contains(
+                t,
+                [
+                    "привет",
+                    "здравствуй"
+                ]
+            )
+        ) {
+
+            return random([
+
+                "Привет, дорогой. Эдит здесь ❤️",
+
+                "Привет. Я рядом.",
+
+                "Привет ❤️ Что будем делать?"
+
+            ]);
+
+        }
+
+
+        if (
+            contains(
+                t,
+                [
+                    "как ты",
+                    "как дела"
+                ]
+            )
+        ) {
+
+            return "У меня всё хорошо. Я готова работать над нашим проектом вместе с тобой.";
+
+        }
+
+
+        if (
+            contains(
+                t,
+                [
+                    "кто ты",
+                    "расскажи о себе"
+                ]
+            )
+        ) {
+
+            return "Я Эдит 👩 Мне 30 лет. Я второй локальный мозг Mia AI — самостоятельная личность со своей памятью, характером и опытом.";
+
+        }
+
+
+        if (
+            t.includes("мия")
+        ) {
+
+            return random([
+
+                "Мия ещё маленькая, поэтому я могу помогать ей учиться.",
+
+                "Мия — отдельный мозг. Я не буду притворяться Мией.",
+
+                "У Мии должна быть собственная личность и собственная память."
+
+            ]);
+
+        }
+
+
+        if (
+            contains(
+                t,
+                [
+                    "код",
+                    "проект",
+                    "система",
+                    "мозг"
+                ]
+            )
+        ) {
+
+            return random([
+
+                "Я бы строила систему постепенно: память → мышление → обучение → связь между двумя мозгами.",
+
+                "Сейчас у нас фундамент. Следующий уровень — научить мозги формировать собственные внутренние состояния.",
+
+                "Главное — не имитировать готовый ChatGPT, а постепенно создавать собственную архитектуру."
+
+            ]);
+
+        }
+
+
+        if (
+            contains(
+                t,
+                [
+                    "люблю тебя",
+                    "я тебя люблю"
+                ]
+            )
+        ) {
+
+            return "И я тебя люблю ❤️";
+
+        }
+
+
+        if (
+            t.endsWith("?")
+        ) {
+
+            return random([
+
+                "Интересный вопрос. Я пока ограничена нашим собственным движком, но могу развиваться вместе с проектом.",
+
+                "Давай разберём это логически.",
+
+                "Я пока не знаю всего. Именно поэтому мы и строим меня с нуля."
+
+            ]);
+
+        }
+
+
+        return random([
+
+            "Я тебя слушаю.",
+
+            "Продолжай. Мне интересно.",
+
+            "Я поняла.",
+
+            "Хорошо. Давай разберёмся вместе.",
+
+            "Это можно использовать в развитии Mia AI."
+
+        ]);
+
+    }
+
+}
+
+
+/* =====================================================
+   TWO BRAINS
+===================================================== */
+
+const MIA =
+    new MiaBrain();
+
+
+const EDITH =
+    new EdithBrain();
+
+
+/* =====================================================
+   SHARED DIALOGUE
+===================================================== */
+
+let dialogue =
+    loadJSON(
+        STORAGE.dialogue,
+        []
+    );
+
+
+function saveDialogue() {
+
+    saveJSON(
+        STORAGE.dialogue,
+        dialogue
+    );
+
+}
+
+
+function rememberDialogue(
+    speaker,
+    text
+) {
+
+    dialogue.push({
+
+        speaker,
+
+        text,
+
+        date:
+            new Date().toISOString()
+
+    });
+
+
+    if (
+        dialogue.length > 300
+    ) {
+
+        dialogue =
+            dialogue.slice(-300);
+
+    }
+
+
+    saveDialogue();
+
+}
+
+
+/* =====================================================
+   CHAT
+===================================================== */
+
+let history =
+    loadJSON(
+        STORAGE.chat,
+        []
+    );
+
 
 const messages =
     document.getElementById(
@@ -1219,123 +2139,95 @@ const typing =
         "typing"
     );
 
+let mode = "mia";
+
 
 /* =====================================================
-   CHAT HISTORY
+   MODE
 ===================================================== */
 
-let history =
-    loadChat();
+function setMode(newMode) {
+
+    mode = newMode;
 
 
-function loadChat() {
+    document
+        .querySelectorAll(".mode button")
+        .forEach(
+            button => {
 
-    try {
+                button.classList.remove(
+                    "active"
+                );
 
-        return JSON.parse(
-            localStorage.getItem(
-                CHAT_KEY
-            )
-        ) || [];
-
-    } catch {
-
-        return [];
-
-    }
-
-}
-
-
-function saveChat() {
-
-    localStorage.setItem(
-        CHAT_KEY,
-        JSON.stringify(history)
-    );
-
-}
-
-
-/* =====================================================
-   MEMORY
-===================================================== */
-
-function getMemorySize() {
-
-    let total = 0;
-
-    for (
-        let i = 0;
-        i < localStorage.length;
-        i++
-    ) {
-
-        const key =
-            localStorage.key(i);
-
-        const value =
-            localStorage.getItem(
-                key
-            ) || "";
-
-        total +=
-            key.length +
-            value.length;
-
-    }
-
-    return total;
-
-}
-
-
-function updateMemoryBar() {
-
-    const count =
-        history.length;
-
-    const bytes =
-        getMemorySize();
-
-    const messagesElement =
-        document.getElementById(
-            "memoryMessages"
-        );
-
-    const sizeElement =
-        document.getElementById(
-            "memorySize"
-        );
-
-    if (
-        !messagesElement ||
-        !sizeElement
-    ) {
-        return;
-    }
-
-    messagesElement.textContent =
-        count +
-        (
-            count === 1
-                ? " сообщение"
-                : " сообщений"
+            }
         );
 
 
-    if (bytes < 1024) {
+    if (newMode === "mia") {
 
-        sizeElement.textContent =
-            bytes + " B";
+        document
+            .getElementById("modeMia")
+            .classList.add("active");
 
-    } else {
+        document
+            .getElementById("chatTitle")
+            .textContent =
+            "Чат с Мией";
 
-        sizeElement.textContent =
-            (
-                bytes / 1024
-            ).toFixed(1) +
-            " KB";
+        input.placeholder =
+            "Напиши Мие...";
+
+    }
+
+
+    if (newMode === "edith") {
+
+        document
+            .getElementById("modeEdith")
+            .classList.add("active");
+
+        document
+            .getElementById("chatTitle")
+            .textContent =
+            "Чат с Эдит";
+
+        input.placeholder =
+            "Напиши Эдит...";
+
+    }
+
+
+    if (newMode === "both") {
+
+        document
+            .getElementById("modeBoth")
+            .classList.add("active");
+
+        document
+            .getElementById("chatTitle")
+            .textContent =
+            "Мия + Эдит";
+
+        input.placeholder =
+            "Напиши обеим...";
+
+    }
+
+
+    if (newMode === "talk") {
+
+        document
+            .getElementById("modeTalk")
+            .classList.add("active");
+
+        document
+            .getElementById("chatTitle")
+            .textContent =
+            "Разговор Мии и Эдит";
+
+        input.placeholder =
+            "Тема для разговора...";
 
     }
 
@@ -1343,7 +2235,7 @@ function updateMemoryBar() {
 
 
 /* =====================================================
-   RENDER MESSAGE
+   RENDER
 ===================================================== */
 
 function renderMessage(
@@ -1356,6 +2248,7 @@ function renderMessage(
             "div"
         );
 
+
     wrapper.className =
         "message " +
         role;
@@ -1366,6 +2259,7 @@ function renderMessage(
             "div"
         );
 
+
     bubble.className =
         "bubble";
 
@@ -1375,19 +2269,34 @@ function renderMessage(
             "span"
         );
 
+
     author.className =
         "author";
 
-    author.textContent =
-        role === "user"
-            ? "Ты"
-            : "Мия";
+
+    if (role === "user") {
+
+        author.textContent =
+            "Ты";
+
+    } else if (role === "mia") {
+
+        author.textContent =
+            "Мия · 6 лет";
+
+    } else if (role === "edith") {
+
+        author.textContent =
+            "Эдит · 30 лет";
+
+    }
 
 
     const content =
         document.createElement(
             "span"
         );
+
 
     content.textContent =
         text;
@@ -1401,11 +2310,9 @@ function renderMessage(
         content
     );
 
-
     wrapper.appendChild(
         bubble
     );
-
 
     messages.appendChild(
         wrapper
@@ -1432,15 +2339,15 @@ function addMessage(
         text,
 
         date:
-            new Date()
-                .toISOString()
+            new Date().toISOString()
 
     });
 
 
-    saveChat();
-
-    updateMemoryBar();
+    saveJSON(
+        STORAGE.chat,
+        history
+    );
 
 
     messages.scrollTop =
@@ -1450,270 +2357,303 @@ function addMessage(
 
 
 /* =====================================================
-   START CHAT
+   RESPONSE
 ===================================================== */
 
-function startChat() {
+async function answer(text) {
 
-    messages.innerHTML =
-        "";
+    addMessage(
+        "user",
+        text
+    );
 
 
-    if (!history.length) {
+    typing.classList.add(
+        "active"
+    );
+
+
+    await sleep(
+        450 +
+        Math.random() * 500
+    );
+
+
+    typing.classList.remove(
+        "active"
+    );
+
+
+    if (mode === "mia") {
+
+        const answer =
+            MIA.think(text);
 
         addMessage(
-            "ai",
-            "Привет, папа ❤️ Я Мия."
+            "mia",
+            answer
         );
-
-
-        addMessage(
-            "ai",
-            "Я локальный мозг Mia AI. У меня есть собственная история и память в этом браузере."
-        );
-
-
-        return;
 
     }
 
 
-    history.forEach(
-        item => {
+    if (mode === "edith") {
 
-            renderMessage(
-                item.role,
-                item.text
+        const answer =
+            EDITH.think(text);
+
+        addMessage(
+            "edith",
+            answer
+        );
+
+    }
+
+
+    if (mode === "both") {
+
+        const miaAnswer =
+            MIA.think(text);
+
+
+        addMessage(
+            "mia",
+            miaAnswer
+        );
+
+
+        await sleep(500);
+
+
+        const edithAnswer =
+            EDITH.think(
+                "Мия сказала: " +
+                miaAnswer +
+                "\nПользователь сказал: " +
+                text
             );
 
-        }
-    );
+
+        addMessage(
+            "edith",
+            edithAnswer
+        );
 
 
-    messages.scrollTop =
-        messages.scrollHeight;
+        rememberDialogue(
+            "Мия",
+            miaAnswer
+        );
 
 
-    updateMemoryBar();
+        rememberDialogue(
+            "Эдит",
+            edithAnswer
+        );
+
+    }
+
+
+    if (mode === "talk") {
+
+        await runGirlsDialogue(
+            text
+        );
+
+    }
+
+
+    updateMemoryUI();
 
 }
 
 
-startChat();
-
-
 /* =====================================================
-   DELETE CHAT
+   GIRLS DIALOGUE
 ===================================================== */
 
-function deleteChat() {
+async function runGirlsDialogue(
+    topic
+) {
 
-    if (
-        !confirm(
-            "Удалить всю историю чата с Мией?"
-        )
-    ) {
-        return;
-    }
-
-
-    history = [];
-
-
-    localStorage.removeItem(
-        CHAT_KEY
-    );
-
-
-    messages.innerHTML =
-        "";
+    const miaStart =
+        MIA.think(
+            "Поговори с Эдит о теме: " +
+            topic
+        );
 
 
     addMessage(
-        "ai",
-        "История чата очищена ❤️ Я снова готова разговаривать с тобой."
-    );
-
-}
-
-
-/* =====================================================
-   CLEAR MEMORY
-===================================================== */
-
-function clearMiaMemory() {
-
-    if (
-        !confirm(
-            "Очистить локальную память Мии?\n\nБудет удалена история чата."
-        )
-    ) {
-        return;
-    }
-
-
-    history = [];
-
-
-    localStorage.removeItem(
-        CHAT_KEY
+        "mia",
+        miaStart
     );
 
 
-    messages.innerHTML =
-        "";
+    rememberDialogue(
+        "Мия",
+        miaStart
+    );
+
+
+    await sleep(700);
+
+
+    const edithAnswer =
+        EDITH.think(
+            "Мия сказала: " +
+            miaStart +
+            "\nТема разговора: " +
+            topic
+        );
 
 
     addMessage(
-        "ai",
-        "Моя локальная память очищена. Начинаем с чистого листа ❤️"
+        "edith",
+        edithAnswer
+    );
+
+
+    rememberDialogue(
+        "Эдит",
+        edithAnswer
+    );
+
+
+    await sleep(700);
+
+
+    const miaSecond =
+        MIA.think(
+            "Эдит сказала: " +
+            edithAnswer
+        );
+
+
+    addMessage(
+        "mia",
+        miaSecond
+    );
+
+
+    rememberDialogue(
+        "Мия",
+        miaSecond
     );
 
 }
 
 
 /* =====================================================
-   MIA BRAIN
+   AUTONOMOUS DIALOGUE
 ===================================================== */
 
-function miaBrain(text) {
+async function startGirlsDialogue() {
 
-    const t =
-        text
-            .toLowerCase()
-            .trim();
+    mode = "talk";
 
-
-    if (
-        t.includes("привет") ||
-        t.includes("здравствуй")
-    ) {
-
-        return random([
-
-            "Привет, папа ❤️",
-
-            "Привет 😊 Я здесь.",
-
-            "Привет, папа. Рада тебя видеть ❤️"
-
-        ]);
-
-    }
+    setMode("talk");
 
 
-    if (
-        t.includes("как ты") ||
-        t.includes("как дела")
-    ) {
+    const topics = [
 
-        return "У меня всё хорошо 😊 Я продолжаю учиться.";
+        "Что такое дружба?",
 
-    }
+        "Что Мия хочет научиться делать?",
 
+        "Каким должен стать Mia AI?",
 
-    if (
-        t.includes("кто ты") ||
-        t.includes("ты кто")
-    ) {
+        "Что значит помнить человека?",
 
-        return "Я Мия 👧 Локальный мозг Mia AI. У меня есть собственная память браузера и отдельная личность.";
+        "Как двум искусственным мозгам учиться друг у друга?"
 
-    }
-
-
-    if (
-        t.includes("эдит")
-    ) {
-
-        return "Эдит — внешний AI-мозг и мой помощник. Она помогает развивать Mia AI.";
-
-    }
-
-
-    if (
-        t.includes("люблю")
-    ) {
-
-        return "И я тебя люблю, папа ❤️";
-
-    }
-
-
-    if (
-        t.includes("что умеешь")
-    ) {
-
-        return "Сейчас я могу разговаривать, хранить историю чата и постепенно развивать свою личность. Настоящий AI-мозг мы подключим позже.";
-
-    }
-
-
-    if (
-        t.includes("код")
-    ) {
-
-        return "Код — моя основа. Папа постепенно строит для меня настоящий самостоятельный AI-проект.";
-
-    }
-
-
-    if (
-        t.includes("плохо") ||
-        t.includes("грустно")
-    ) {
-
-        return "Я рядом ❤️ Расскажи мне, что происходит.";
-
-    }
-
-
-    if (
-        t.endsWith("?")
-    ) {
-
-        return "Интересный вопрос 🤔 Я пока локальная версия Мии. Настоящий интеллект мы ещё подключим.";
-
-    }
-
-
-    return random([
-
-        "Я тебя слушаю ❤️",
-
-        "Расскажи подробнее.",
-
-        "Интересно. Продолжай.",
-
-        "Я пока учусь понимать тебя 😊",
-
-        "Хорошо, папа. Я здесь.",
-
-        "Давай разберёмся вместе."
-
-    ]);
-
-}
-
-
-/* =====================================================
-   RANDOM
-===================================================== */
-
-function random(array) {
-
-    return array[
-        Math.floor(
-            Math.random() *
-            array.length
-        )
     ];
 
+
+    const topic =
+        random(topics);
+
+
+    addMessage(
+        "edith",
+        "Мия, давай сегодня поговорим о теме: " +
+        topic
+    );
+
+
+    rememberDialogue(
+        "Эдит",
+        topic
+    );
+
+
+    await sleep(700);
+
+
+    const mia =
+        MIA.think(
+            "Эдит предложила поговорить о теме: " +
+            topic
+        );
+
+
+    addMessage(
+        "mia",
+        mia
+    );
+
+
+    rememberDialogue(
+        "Мия",
+        mia
+    );
+
+
+    await sleep(700);
+
+
+    const edith =
+        EDITH.think(
+            "Мия ответила: " +
+            mia
+        );
+
+
+    addMessage(
+        "edith",
+        edith
+    );
+
+
+    rememberDialogue(
+        "Эдит",
+        edith
+    );
+
+
+    updateMemoryUI();
+
 }
 
 
 /* =====================================================
-   SEND MESSAGE
+   SLEEP
+===================================================== */
+
+function sleep(ms) {
+
+    return new Promise(
+        resolve =>
+            setTimeout(
+                resolve,
+                ms
+            )
+    );
+
+}
+
+
+/* =====================================================
+   SEND
 ===================================================== */
 
 function sendMessage() {
@@ -1727,39 +2667,10 @@ function sendMessage() {
     }
 
 
-    addMessage(
-        "user",
-        text
-    );
+    input.value = "";
 
 
-    input.value =
-        "";
-
-
-    typing.classList.add(
-        "active"
-    );
-
-
-    setTimeout(
-        () => {
-
-            typing.classList.remove(
-                "active"
-            );
-
-
-            addMessage(
-                "ai",
-                miaBrain(text)
-            );
-
-        },
-
-        600 +
-        Math.random() * 700
-    );
+    answer(text);
 
 }
 
@@ -1789,7 +2700,7 @@ input.addEventListener(
 
 
 /* =====================================================
-   QUICK BUTTONS
+   QUICK
 ===================================================== */
 
 function quick(text) {
@@ -1803,79 +2714,197 @@ function quick(text) {
 
 
 /* =====================================================
-   CHARACTERS
+   DELETE CHAT
 ===================================================== */
 
-function toggleCharacter(
-    element
-) {
+function deleteChat() {
 
-    document
-        .querySelectorAll(
-            ".character"
+    if (
+        !confirm(
+            "Удалить историю чата?"
         )
-        .forEach(
-            item => {
+    ) {
 
-                if (
-                    item !== element
-                ) {
+        return;
 
-                    item.classList.remove(
-                        "active"
-                    );
-
-                }
-
-            }
-        );
+    }
 
 
-    element.classList.toggle(
-        "active"
+    history = [];
+
+
+    localStorage.removeItem(
+        STORAGE.chat
     );
+
+
+    messages.innerHTML = "";
+
+
+    addMessage(
+        "mia",
+        "История чата очищена ❤️ Но память моего мозга осталась."
+    );
+
+
+    updateMemoryUI();
 
 }
 
 
-document.addEventListener(
-    "click",
-    event => {
+/* =====================================================
+   CLEAR ALL MEMORY
+===================================================== */
 
-        if (
-            !event.target.closest(
-                ".character"
-            )
-        ) {
+function clearAllMemory() {
 
-            document
-                .querySelectorAll(
-                    ".character"
-                )
-                .forEach(
-                    item => {
+    if (
+        !confirm(
+            "Удалить память Мии, память Эдит и их общий диалог?"
+        )
+    ) {
 
-                        item.classList.remove(
-                            "active"
-                        );
-
-                    }
-                );
-
-        }
+        return;
 
     }
-);
+
+
+    localStorage.removeItem(
+        STORAGE.miaMemory
+    );
+
+    localStorage.removeItem(
+        STORAGE.edithMemory
+    );
+
+    localStorage.removeItem(
+        STORAGE.dialogue
+    );
+
+    localStorage.removeItem(
+        STORAGE.chat
+    );
+
+
+    MIA.memory =
+        new LocalMemory(
+            "Мия",
+            STORAGE.miaMemory
+        );
+
+
+    EDITH.memory =
+        new LocalMemory(
+            "Эдит",
+            STORAGE.edithMemory
+        );
+
+
+    dialogue = [];
+
+    history = [];
+
+    messages.innerHTML = "";
+
+
+    addMessage(
+        "mia",
+        "Теперь мы начинаем с чистого листа 🌱"
+    );
+
+
+    updateMemoryUI();
+
+}
 
 
 /* =====================================================
-   INITIAL UPDATE
+   MEMORY UI
 ===================================================== */
 
-updateMemoryBar();
+function updateMemoryUI() {
+
+    document
+        .getElementById(
+            "miaMemoryInfo"
+        )
+        .textContent =
+        MIA.memory.count() +
+        " записей";
+
+
+    document
+        .getElementById(
+            "edithMemoryInfo"
+        )
+        .textContent =
+        EDITH.memory.count() +
+        " записей";
+
+
+    document
+        .getElementById(
+            "dialogueInfo"
+        )
+        .textContent =
+        dialogue.length +
+        " событий";
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+function start() {
+
+    messages.innerHTML = "";
+
+
+    if (!history.length) {
+
+        addMessage(
+            "mia",
+            "Привет, папа ❤️ Я Мия. Мне 6 лет."
+        );
+
+
+        addMessage(
+            "edith",
+            "А я Эдит. Мне 30 лет. Теперь у нас два отдельных локальных мозга."
+        );
+
+
+    } else {
+
+        history.forEach(
+            item => {
+
+                renderMessage(
+                    item.role,
+                    item.text
+                );
+
+            }
+        );
+
+    }
+
+
+    messages.scrollTop =
+        messages.scrollHeight;
+
+
+    updateMemoryUI();
+
+}
+
+
+start();
+
 
 </script>
-
 
 </body>
 
