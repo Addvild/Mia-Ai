@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mia AI — Two Minds</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#060810;--text:#f5f6fb;--muted:#9ca4b8;--purple:#8d72ff;--pink:#ff6298;--blue:#5e9dff;--green:#62e0a1;--border:rgba(255,255,255,.1)}
+body{margin:0;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 10% 0%,rgba(141,114,255,.18),transparent 30%),radial-gradient(circle at 95% 25%,rgba(255,98,152,.13),transparent 30%),linear-gradient(180deg,#060810,#090c15);overflow-x:hidden}
+button,input{font-family:inherit}
+.background{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}.glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.28}.one{width:320px;height:320px;background:#6548ff;left:-130px;top:-120px}.two{width:300px;height:300px;background:#ff3f7f;right:-150px;top:350px}.three{width:250px;height:250px;background:#357dff;left:40%;bottom:-160px}
+.app{width:min(920px,94%);margin:auto;padding:30px 0 70px}
+.header{text-align:center;margin-bottom:24px}.moon{display:block;font-size:50px;filter:drop-shadow(0 0 18px rgba(255,210,80,.65))}.logo{margin:0;font-size:clamp(42px,8vw,64px);font-weight:850;letter-spacing:-3px}.family{margin-top:10px;color:var(--muted);font-size:17px}
+.chat{padding:21px;border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));border:1px solid var(--border);backdrop-filter:blur(24px);box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.chat-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.chat-title{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:750}.chat-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:13px;background:linear-gradient(135deg,rgba(141,114,255,.3),rgba(255,98,152,.22));font-size:21px}.online{display:flex;align-items:center;gap:6px;color:#8de7b7;font-size:12px}.online-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(98,224,161,.8)}
+.address-mode{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding:8px 11px;border-radius:12px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);color:#858da1;font-size:11px}.address-dot{width:6px;height:6px;border-radius:50%;background:var(--purple);box-shadow:0 0 8px rgba(141,114,255,.7)}
+.messages{min-height:320px;max-height:480px;overflow-y:auto;padding:5px 3px 12px;scrollbar-width:thin}.message{display:flex;margin:11px 0;animation:in .25s ease}.message.user{justify-content:flex-end}.message.mia,.message.edith{justify-content:flex-start}@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.bubble{max-width:82%;padding:13px 16px;border-radius:19px;line-height:1.5;font-size:15px;white-space:pre-wrap}.message.user .bubble{background:linear-gradient(135deg,rgba(141,114,255,.34),rgba(255,98,152,.25));border:1px solid rgba(255,255,255,.1);border-bottom-right-radius:6px}.message.mia .bubble{background:rgba(141,114,255,.075);border:1px solid rgba(141,114,255,.15);border-bottom-left-radius:6px}.message.edith .bubble{background:rgba(255,98,152,.065);border:1px solid rgba(255,98,152,.15);border-bottom-left-radius:6px}.author{display:block;margin-bottom:4px;font-size:10px;color:#9199ad;font-weight:700}
+.typing{display:none;width:fit-content;align-items:center;gap:5px;padding:11px 15px;margin-bottom:8px;border-radius:17px;background:rgba(255,255,255,.045)}.typing.active{display:flex}.typing span{width:6px;height:6px;border-radius:50%;background:#aab0c0;animation:typing 1.2s infinite}.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:.3}30%{transform:translateY(-5px);opacity:1}}
+.input-row{display:flex;gap:9px}.input{flex:1;min-width:0;height:52px;padding:0 17px;outline:none;border:1px solid rgba(255,255,255,.09);border-radius:17px;background:rgba(0,0,0,.24);color:white;font-size:15px}.input::placeholder{color:#737b8d}.input:focus{border-color:rgba(141,114,255,.65);box-shadow:0 0 0 3px rgba(141,114,255,.08)}.send{height:52px;padding:0 20px;border:0;border-radius:17px;cursor:pointer;color:white;font-weight:750;background:linear-gradient(135deg,var(--purple),var(--pink));transition:.2s}.send:hover{transform:translateY(-2px)}
+.quick{display:flex;gap:8px;overflow-x:auto;padding:13px 0 2px;scrollbar-width:none}.quick::-webkit-scrollbar{display:none}.quick button,.action{flex-shrink:0;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);color:#adb4c6;cursor:pointer}.chat-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}.action{border-radius:10px;font-size:11px}.action:hover,.quick button:hover{background:rgba(255,255,255,.08);color:white}
+.characters{margin-top:24px;display:flex;justify-content:center;gap:28px}.character{text-align:center;width:120px}.character-avatar{width:74px;height:74px;margin:auto;display:flex;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.12);font-size:37px}.character-name{margin-top:8px;font-size:14px;font-weight:750}.character-age{margin-top:3px;color:#777f92;font-size:10px}
+.learning{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.learn-card{padding:14px;border-radius:17px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}.learn-title{font-size:12px;font-weight:750}.learn-info{margin-top:5px;color:#747d91;font-size:10px;line-height:1.5}.green{color:var(--green)}
+.footer{margin-top:30px;text-align:center;color:#596174;font-size:11px}
+@media(max-width:650px){.app{width:94%;padding-top:22px}.logo{font-size:44px}.chat{padding:16px;border-radius:23px}.input-row{flex-direction:column}.send{width:100%}.bubble{max-width:90%}.learning{grid-template-columns:1fr}.chat-actions{justify-content:center;flex-wrap:wrap}.action{flex:1}}
+</style>
+</head>
+<body>
+<div class="background"><div class="glow one"></div><div class="glow two"></div><div class="glow three"></div></div>
+
+<main class="app">
+<header class="header">
+<span class="moon">🌙</span>
+<h1 class="logo">Mia AI</h1>
+<div class="family">🧠 Два локальных мозга · искусственное обучение</div>
+</header>
+
+<section class="chat">
+<div class="chat-header">
+<div class="chat-title"><div class="chat-icon">🧠</div><span id="chatTitle">Мия + Эдит</span></div>
+<div class="online"><span class="online-dot"></span> локально</div>
+</div>
+
+<div class="address-mode"><span class="address-dot"></span><span id="addressMode">Имя не указано → отвечают обе</span></div>
+
+<div class="messages" id="messages"></div>
+
+<div class="typing" id="typing"><span></span><span></span><span></span></div>
+
+<div class="input-row">
+<input class="input" id="input" maxlength="2000" autocomplete="off" placeholder="Напиши Мие, Эдит или обеим...">
+<button class="send" id="send">Отправить</button>
+</div>
+
+<div class="quick">
+<button onclick="quick('Привет ❤️')">👋 Привет</button>
+<button onclick="quick('Мия, как ты?')">👧 Мия</button>
+<button onclick="quick('Эдит, как ты?')">👩 Эдит</button>
+<button onclick="quick('Как вы?')">👧👩 Обеим</button>
+<button onclick="quick('Запомните: Мия и Эдит — два разных мозга.')">🧠 Учить</button>
+<button onclick="startGirlsDialogue()">💬 Поговорите</button>
+</div>
+
+<div class="chat-actions">
+<button class="action" onclick="deleteChat()">🗑 Чат</button>
+<button class="action" onclick="showLearning()">🧠 Обучение</button>
+<button class="action" onclick="clearAllMemory()">♻️ Сбросить обучение</button>
+</div>
+</section>
+
+<section class="characters">
+<div class="character"><div class="character-avatar">👩🏻</div><div class="character-name">Эдит</div><div class="character-age">30 лет · мозг №2</div></div>
+<div class="character"><div class="character-avatar">👧🏻</div><div class="character-name">Мия</div><div class="character-age">6 лет · мозг №1</div></div>
+</section>
+
+<section class="learning">
+<div class="learn-card"><div class="learn-title">👧 Мия</div><div class="learn-info" id="miaLearning">0 знаний</div></div>
+<div class="learn-card"><div class="learn-title">👩 Эдит</div><div class="learn-info" id="edithLearning">0 знаний</div></div>
+<div class="learn-card"><div class="learn-title">🤝 Общее знание</div><div class="learn-info" id="sharedLearning">0 знаний</div></div>
+</section>
+
+<footer class="footer">Mia AI · Мия 6 лет + Эдит 30 лет · без GPT · без Ollama</footer>
+</main>
+
+<script>
+/*
+===========================================================
+ИСКУССТВЕННОЕ ОБУЧЕНИЕ
+
+Это НЕ настоящая тренировка нейросети.
+В браузере мы строим собственный механизм обучения:
+
+1. каждый мозг имеет отдельную память;
+2. есть общая память;
+3. факты получают confidence (уверенность);
+4. повторение усиливает знание;
+5. мозги создают связи между понятиями;
+6. исправления пользователя меняют знание;
+7. разговор Мии и Эдит становится опытом;
+8. ответы используют накопленный опыт.
+
+Никакого GPT, API или Ollama.
+===========================================================
+*/
+
+const KEY={
+ chat:"mia_ai_chat_learning_v1",
+ mia:"mia_brain_learning_v1",
+ edith:"edith_brain_learning_v1",
+ shared:"shared_brain_learning_v1",
+ dialogue:"mia_edith_dialogue_learning_v1"
+};
+
+function load(key,fallback){
+ try{return JSON.parse(localStorage.getItem(key))||fallback}catch{return fallback}
+}
+function save(key,value){localStorage.setItem(key,JSON.stringify(value))}
+function norm(s){return String(s||"").toLowerCase().replace(/[.,!?;:()[\]"«»]/g," ").replace(/\s+/g," ").trim()}
+function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+function random(a){return a[Math.floor(Math.random()*a.length)]}
+function words(s){return norm(s).split(" ").filter(x=>x.length>2)}
+function esc(s){return String(s||"")}
+
+function blankMemory(owner){
+ return {
+   owner,
+   facts:[],
+   concepts:{},
+   associations:[],
+   corrections:[],
+   experiences:[],
+   learnedAt:null,
+   cycles:0
+ };
+}
+
+class LearningBrain{
+ constructor(name,age,key){
+   this.name=name;
+   this.age=age;
+   this.key=key;
+   this.data=load(key,blankMemory(name));
+   this.normalizeData();
+ }
+ normalizeData(){
+   const b=blankMemory(this.name);
+   for(const k of Object.keys(b)){
+     if(this.data[k]===undefined)this.data[k]=b[k];
+   }
+   if(!this.data.concepts||typeof this.data.concepts!=="object")this.data.concepts={};
+   if(!Array.isArray(this.data.facts))this.data.facts=[];
+   if(!Array.isArray(this.data.associations))this.data.associations=[];
+   if(!Array.isArray(this.data.corrections))this.data.corrections=[];
+   if(!Array.isArray(this.data.experiences))this.data.experiences=[];
+ }
+ persist(){
+   this.data.learnedAt=new Date().toISOString();
+   save(this.key,this.data);
+ }
+ learnFact(text,source="user",confidence=1){
+   text=esc(text).trim();
+   if(!text)return;
+   const n=norm(text);
+   let fact=this.data.facts.find(x=>norm(x.text)===n);
+   if(fact){
+     fact.confidence=Math.min(1,fact.confidence+0.12);
+     fact.repetitions=(fact.repetitions||1)+1;
+     fact.lastSeen=new Date().toISOString();
+   }else{
+     this.data.facts.push({
+       text,
+       source,
+       confidence,
+       repetitions:1,
+       created:new Date().toISOString(),
+       lastSeen:new Date().toISOString()
+     });
+   }
+   if(this.data.facts.length>500)this.data.facts=this.data.facts.slice(-500);
+   this.persist();
+ }
+ learnConcept(text){
+   for(const w of words(text)){
+     if(!this.data.concepts[w])this.data.concepts[w]={count:0,weight:0.1};
+     this.data.concepts[w].count++;
+     this.data.concepts[w].weight=Math.min(1,this.data.concepts[w].weight+0.03);
+   }
+ }
+ learnAssociations(text){
+   const ws=[...new Set(words(text))].slice(0,12);
+   for(let i=0;i<ws.length;i++){
+     for(let j=i+1;j<ws.length;j++){
+       let a=this.data.associations.find(x=>(x.a===ws[i]&&x.b===ws[j])||(x.a===ws[j]&&x.b===ws[i]));
+       if(a)a.weight=Math.min(1,a.weight+0.08);
+       else this.data.associations.push({a:ws[i],b:ws[j],weight:.15});
+     }
+   }
+   if(this.data.associations.length>1000)this.data.associations=this.data.associations.slice(-1000);
+ }
+ experience(text){
+   text=esc(text).trim();
+   if(!text)return;
+   this.learnConcept(text);
+   this.learnAssociations(text);
+   this.data.experiences.push({text,created:new Date().toISOString()});
+   if(this.data.experiences.length>500)this.data.experiences=this.data.experiences.slice(-500);
+   this.data.cycles++;
+   this.persist();
+ }
+ correct(oldText,newText){
+   this.data.corrections.push({old:oldText,new:newText,date:new Date().toISOString()});
+   if(this.data.corrections.length>200)this.data.corrections=this.data.corrections.slice(-200);
+   this.learnFact(newText,"correction",1);
+   this.experience(newText);
+ }
+ recall(query){
+   const q=words(query);
+   const scored=[];
+   for(const f of this.data.facts){
+     let score=0;
+     for(const w of q)if(norm(f.text).includes(w))score++;
+     if(score)scored.push({...f,score:score+f.confidence});
+   }
+   scored.sort((a,b)=>b.score-a.score);
+   return scored.slice(0,5);
+ }
+ stats(){
+   return {
+     facts:this.data.facts.length,
+     concepts:Object.keys(this.data.concepts).length,
+     associations:this.data.associations.length,
+     experiences:this.data.experiences.length,
+     cycles:this.data.cycles
+   };
+ }
+ clear(){
+   this.data=blankMemory(this.name);
+   this.persist();
+ }
+}
+
+const MIA=new LearningBrain("Мия",6,KEY.mia);
+const EDITH=new LearningBrain("Эдит",30,KEY.edith);
+
+let shared=load(KEY.shared,{facts:[],concepts:{},associations:[],cycles:0});
+let dialogue=load(KEY.dialogue,[]);
+let history=load(KEY.chat,[]);
+
+function saveShared(){save(KEY.shared,shared)}
+function sharedLearn(text,source="dialogue"){
+ const ws=[...new Set(words(text))];
+ for(const w of ws){
+   if(!shared.concepts[w])shared.concepts[w]={count:0,weight:.1};
+   shared.concepts[w].count++;
+   shared.concepts[w].weight=Math.min(1,shared.concepts[w].weight+.03);
+ }
+ const n=norm(text);
+ let f=shared.facts.find(x=>norm(x.text)===n);
+ if(f){f.confidence=Math.min(1,f.confidence+.12);f.repetitions++}
+ else shared.facts.push({text,source,confidence:.5,repetitions:1,created:new Date().toISOString()});
+ shared.cycles++;
+ if(shared.facts.length>500)shared.facts=shared.facts.slice(-500);
+ saveShared();
+}
+
+function teachFromUser(text){
+ const t=norm(text);
+
+ // Факты о пользователе распознаются отдельно и сохраняются обоим мозгам.
+ learnUserIdentity(text);
+
+ const m=text.match(/(?:запомни|запомните|учись|учитесь)\s*[:,-]?\s*(.+)/i);
+ if(m){
+   const fact=m[1].trim();
+   MIA.learnFact(fact,"explicit",1);
+   EDITH.learnFact(fact,"explicit",1);
+   sharedLearn(fact,"explicit");
+ }
+
+ const c=text.match(/(?:правильно|нет,\s*правильно|не так[,:]?)\s*(.+)/i);
+ if(c){
+   MIA.correct(text,c[1]);
+   EDITH.correct(text,c[1]);
+   sharedLearn(c[1],"correction");
+ }
+
+ MIA.experience(text);
+ EDITH.experience(text);
+}
+
+function learnFromDialogue(speaker,text){
+ if(speaker==="Мия")MIA.experience(text);
+ if(speaker==="Эдит")EDITH.experience(text);
+ sharedLearn(text,"dialogue");
+ dialogue.push({speaker,text,date:new Date().toISOString()});
+ if(dialogue.length>1000)dialogue=dialogue.slice(-1000);
+ save(KEY.dialogue,dialogue);
+}
+
+function detectRecipient(text){
+ const s=String(text).trim();
+ if(/^(мия|мие|мией)[,\s:!?.]/i.test(s)||/^мия\s+/i.test(s))return"mia";
+ if(/^(эдит|эдитке|эдитой)[,\s:!?.]/i.test(s)||/^эдит\s+/i.test(s))return"edith";
+ return"both";
+}
+
+function updateMode(r){
+ const title=document.getElementById("chatTitle");
+ const mode=document.getElementById("addressMode");
+ if(r==="mia"){title.textContent="Чат с Мией";mode.textContent="Обращение к Мие → отвечает Мия"}
+ if(r==="edith"){title.textContent="Чат с Эдит";mode.textContent="Обращение к Эдит → отвечает Эдит"}
+ if(r==="both"){title.textContent="Мия + Эдит";mode.textContent="Имя не указано → отвечают обе"}
+}
+
+function addMessage(role,text){
+ const wrap=document.createElement("div");
+ wrap.className="message "+role;
+ const bubble=document.createElement("div");
+ bubble.className="bubble";
+ const author=document.createElement("span");
+ author.className="author";
+ author.textContent=role==="user"?"Ты":role==="mia"?"Мия · 6 лет":"Эдит · 30 лет";
+ const content=document.createElement("span");
+ content.textContent=text;
+ bubble.append(author,content);
+ wrap.appendChild(bubble);
+ document.getElementById("messages").appendChild(wrap);
+ history.push({role,text,date:new Date().toISOString()});
+ save(KEY.chat,history);
+ document.getElementById("messages").scrollTop=document.getElementById("messages").scrollHeight;
+}
+
+function rememberSharedRelation(text){
+ const t=norm(text);
+ if(t.includes("эдит")&&t.includes("мама")&&t.includes("мия")){
+   sharedLearn("Эдит мама Мии","relation");
+   MIA.learnFact("Эдит — мама Мии","relation",1);
+   EDITH.learnFact("Эдит — мама Мии","relation",1);
+ }
+}
+
+
+function extractUserName(text){
+ const patterns=[
+   /(?:меня\s+зовут|мо[её]\s+имя)\s+([а-яёa-z-]{2,30})/i
+ ];
+ for(const re of patterns){
+   const m=String(text||"").trim().match(re);
+   if(m && m[1]){
+     const name=m[1].trim();
+     if(!/^(мия|эдит|папа|привет)$/i.test(name)) return name;
+   }
+ }
+ return null;
+}
+
+function learnUserIdentity(text){
+ const name=extractUserName(text);
+ if(!name)return null;
+ const fact="Пользователя зовут "+name;
+ MIA.learnFact(fact,"identity",1);
+ EDITH.learnFact(fact,"identity",1);
+ sharedLearn(fact,"identity");
+ return name;
+}
+
+function getUserName(brain){
+ const found=brain.data.facts.find(x=>norm(x.text).startsWith("пользователя зовут "));
+ if(found)return found.text.replace(/^Пользователя зовут\s+/i,"").trim();
+ const common=shared.facts.find(x=>norm(x.text).startsWith("пользователя зовут "));
+ if(common)return common.text.replace(/^Пользователя зовут\s+/i,"").trim();
+ return null;
+}
+
+function cleanAddress(text){
+ return String(text||"")
+   .replace(/^\s*(мия|мие|мией|эдит|эдитке|эдитой)\s*[,!?.:]?\s*/i,"")
+   .trim();
+}
+
+function hasUserNameStatement(text){
+ return !!extractUserName(text);
+}
+
+function baseMia(text){
+ const raw=String(text||"").trim();
+ const t=norm(raw);
+ const clean=cleanAddress(raw);
+ const memories=MIA.recall(clean);
+ const userName=getUserName(MIA);
+
+ if(hasUserNameStatement(raw)){
+   const name=extractUserName(raw);
+   return "Я запомнила ❤️ Тебя зовут "+name+".";
+ }
+ if(t.includes("как ты")||t.includes("как дела"))
+   return random(["У меня хорошо 😊","Я в хорошем настроении ❤️","Мне интересно учиться!"]);
+ if(t.includes("привет")||t.includes("здравствуй"))
+   return random(["Привет, папа! ❤️","Ура, ты пришёл! 👧❤️","Привет! Я здесь 😊"]);
+ if(t.includes("кто ты")||t.includes("расскажи о себе"))
+   return "Я Мия 👧 Мне 6 лет. Я отдельный локальный мозг. Я учусь на опыте и сохраняю знания в своей памяти.";
+ if(t.includes("как меня зовут")||t.includes("моё имя")||t.includes("мое имя"))
+   return userName ? "Тебя зовут "+userName+" ❤️ Я это помню." : "Я пока не знаю твоё имя. Скажи: «Меня зовут ...»";
+ if(t.includes("что помнишь")||t.includes("что ты помнишь")){
+   if(!memories.length)return"Я пока мало что помню 🌱";
+   return"Я нашла в своей памяти:\n"+memories.map(x=>"• "+x.text).join("\n");
+ }
+ if(t.includes("люблю"))return"И я тебя люблю, папа ❤️";
+ if(t.includes("эдит")){
+   const f=MIA.data.facts.find(x=>norm(x.text).includes("эдит")&&norm(x.text).includes("мама"));
+   return f?"Эдит — моя мама ❤️ Я это помню.":"Эдит — мой второй мозг. Я учусь у неё.";
+ }
+ if(t.includes("ошиб")||t.includes("неправ"))
+   return"Хорошо, я учусь на исправлении. Скажи, как правильно.";
+ if(t.endsWith("?")&&memories.length)
+   return"Я посмотрела в свою память 🤔 У меня уже есть связанный опыт: "+memories[0].text;
+ if(t.endsWith("?"))
+   return random(["Интересный вопрос 🤔 Я ещё учусь отвечать.","Я пока не знаю точно. Но я могу учиться.","Давай разберёмся вместе 😊"]);
+ return random(["Я тебя слушаю ❤️","Интересно! Я сохраню этот опыт.","Хорошо, папа. Я учусь.","Расскажи ещё 😊"]);
+}
+
+function baseEdith(text){
+ const raw=String(text||"").trim();
+ const t=norm(raw);
+ const clean=cleanAddress(raw);
+ const memories=EDITH.recall(clean);
+ const userName=getUserName(EDITH);
+
+ if(hasUserNameStatement(raw)){
+   const name=extractUserName(raw);
+   return "Поняла. Тебя зовут "+name+". Я запомнила это.";
+ }
+ if(t.includes("как ты")||t.includes("как дела"))
+   return random(["У меня всё хорошо ❤️","Хорошо. Я готова продолжать.","Нормально 😊 Что будем делать дальше?"]);
+ if(t.includes("привет")||t.includes("здравствуй"))
+   return random(["Привет, дорогой ❤️","Привет. Эдит на связи.","Привет ❤️ Я здесь."]);
+ if(t.includes("кто ты")||t.includes("расскажи о себе"))
+   return"Я Эдит 👩 Мне 30 лет. Я второй локальный мозг. Я учусь на опыте, исправлениях и разговорах с Мией.";
+ if(t.includes("как меня зовут")||t.includes("моё имя")||t.includes("мое имя"))
+   return userName ? "Тебя зовут "+userName+". Я это помню." : "Я пока не знаю твоё имя. Скажи: «Меня зовут ...»";
+ if(t.includes("что помнишь")||t.includes("что ты помнишь")){
+   if(!memories.length)return"Моя память пока почти пуста.";
+   return"Я нашла в своей памяти:\n"+memories.map(x=>"• "+x.text).join("\n");
+ }
+ if(/^(?:а\s+)?мия(?:\s+|$)/i.test(clean) ||
+    t.includes("кто такая мия") ||
+    t.includes("что с мией") ||
+    t.includes("как мия"))
+   return"Мия — отдельный мозг. Я могу делиться с ней общими знаниями, но её личная память остаётся отдельной.";
+ if(t.includes("люблю"))return"И я тебя люблю ❤️";
+ if(t.includes("ошиб")||t.includes("неправ"))
+   return"Хорошо. Исправление — это тоже обучение. Скажи правильный вариант.";
+ if(t.endsWith("?")&&memories.length)
+   return"В моей памяти есть связанный опыт: "+memories[0].text;
+ if(t.endsWith("?"))
+   return random(["Интересный вопрос. Я ещё развиваю своё мышление.","Пока не знаю наверняка.","Давай исследуем это вместе."]);
+ return random(["Я тебя слушаю.","Поняла. Я сохраню опыт.","Продолжай.","Интересно. Я учусь на этом."]);
+}
+
+async function answer(text){
+ const recipient=detectRecipient(text);
+ updateMode(recipient);
+ addMessage("user",text);
+ teachFromUser(text);
+ rememberSharedRelation(text);
+ const typing=document.getElementById("typing");
+ typing.classList.add("active");
+ await sleep(350+Math.random()*450);
+ typing.classList.remove("active");
+
+ if(recipient==="mia"){
+   const r=baseMia(text);
+   addMessage("mia",r);
+   learnFromDialogue("Мия",r);
+ }
+ else if(recipient==="edith"){
+   const r=baseEdith(text);
+   addMessage("edith",r);
+   learnFromDialogue("Эдит",r);
+ }
+ else{
+   // Оба получают именно исходное сообщение пользователя.
+   // Никаких «Пользователь сказал... Мия ответила...»: это больше
+   // не может случайно заставить Эдит реагировать на слово «Мия».
+   const r1=baseMia(text);
+   addMessage("mia",r1);
+   learnFromDialogue("Мия",r1);
+
+   await sleep(550);
+
+   const r2=baseEdith(text);
+   addMessage("edith",r2);
+   learnFromDialogue("Эдит",r2);
+ }
+ updateStats();
+}
+
+async function startGirlsDialogue(){
+ updateMode("both");
+ const topics=["Что такое дружба?","Что значит учиться?","Каким должен стать Mia AI?","Чему мы можем научиться друг у друга?","Как отличать знание от догадки?"];
+ const topic=random(topics);
+ addMessage("edith","Мия, давай вместе поучимся. Тема: "+topic);
+ learnFromDialogue("Эдит","Мия, давай вместе поучимся. Тема: "+topic);
+ await sleep(600);
+ const m=baseMia(topic);
+ addMessage("mia",m);
+ learnFromDialogue("Мия",m);
+ await sleep(600);
+ const e=baseEdith("Тема разговора: "+topic+"\nМия сказала: "+m);
+ addMessage("edith",e);
+ learnFromDialogue("Эдит",e);
+ await sleep(500);
+ const m2=baseMia("Эдит сказала: "+e);
+ addMessage("mia",m2);
+ learnFromDialogue("Мия",m2);
+ updateStats();
+}
+
+function quick(t){document.getElementById("input").value=t;sendMessage()}
+
+function sendMessage(){
+ const input=document.getElementById("input");
+ const t=input.value.trim();
+ if(!t)return;
+ input.value="";
+ answer(t);
+}
+
+function deleteChat(){
+ if(!confirm("Удалить историю чата? Память и обучение останутся."))return;
+ history=[];
+ localStorage.removeItem(KEY.chat);
+ document.getElementById("messages").innerHTML="";
+ addMessage("mia","История очищена ❤️ Мои знания остались.");
+}
+
+function clearAllMemory(){
+ if(!confirm("Полностью сбросить искусственное обучение Мии, Эдит и общую память?"))return;
+ MIA.clear();EDITH.clear();
+ shared={facts:[],concepts:{},associations:[],cycles:0};
+ dialogue=[];
+ history=[];
+ localStorage.removeItem(KEY.shared);
+ localStorage.removeItem(KEY.dialogue);
+ localStorage.removeItem(KEY.chat);
+ document.getElementById("messages").innerHTML="";
+ addMessage("mia","Обучение сброшено. Начинаем с чистого листа 🌱");
+ updateStats();
+}
+
+function showLearning(){
+ const a=MIA.stats(),b=EDITH.stats();
+ alert(
+ "ИСКУССТВЕННОЕ ОБУЧЕНИЕ\n\n"+
+ "Мия:\n"+
+ "• знаний: "+a.facts+"\n"+
+ "• понятий: "+a.concepts+"\n"+
+ "• связей: "+a.associations+"\n"+
+ "• опытов: "+a.experiences+"\n"+
+ "• циклов обучения: "+a.cycles+"\n\n"+
+ "Эдит:\n"+
+ "• знаний: "+b.facts+"\n"+
+ "• понятий: "+b.concepts+"\n"+
+ "• связей: "+b.associations+"\n"+
+ "• опытов: "+b.experiences+"\n"+
+ "• циклов обучения: "+b.cycles+"\n\n"+
+ "Общее знание: "+shared.facts.length+"\n"+
+ "Общие циклы: "+shared.cycles
+ );
+}
+
+function updateStats(){
+ const a=MIA.stats(),b=EDITH.stats();
+ document.getElementById("miaLearning").textContent=a.facts+" знаний · "+a.concepts+" понятий · "+a.cycles+" циклов";
+ document.getElementById("edithLearning").textContent=b.facts+" знаний · "+b.concepts+" понятий · "+b.cycles+" циклов";
+ document.getElementById("sharedLearning").textContent=shared.facts.length+" общих знаний · "+shared.cycles+" циклов";
+}
+
+document.getElementById("send").addEventListener("click",sendMessage);
+document.getElementById("input").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();sendMessage()}});
+
+function start(){
+ const box=document.getElementById("messages");
+ box.innerHTML="";
+ if(history.length){
+   history.forEach(x=>{
+     const wrap=document.createElement("div");
+     wrap.className="message "+x.role;
+     const bubble=document.createElement("div");bubble.className="bubble";
+     const author=document.createElement("span");author.className="author";
+     author.textContent=x.role==="user"?"Ты":x.role==="mia"?"Мия · 6 лет":"Эдит · 30 лет";
+     const content=document.createElement("span");content.textContent=x.text;
+     bubble.append(author,content);wrap.appendChild(bubble);box.appendChild(wrap);
+   });
+ }else{
+   addMessage("mia","Привет, папа ❤️ Я Мия. Мне 6 лет.");
+   addMessage("edith","Привет. Я Эдит, мне 30 лет. Теперь у нас есть искусственное обучение.");
+ }
+ box.scrollTop=box.scrollHeight;
+ updateStats();
+}
+start();
+</script>
+</body>
+</html>
