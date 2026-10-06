@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mia AI — ИИ семья</title>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Mia AI</title>
 
 <style>
 
 /* =====================================================
-   ОСНОВА
+   GLOBAL
 ===================================================== */
 
 * {
@@ -17,21 +22,23 @@
 }
 
 :root {
-    --bg: #070910;
-    --bg-soft: #0c101b;
 
-    --white: #ffffff;
-    --text: #f4f5fa;
+    --bg: #060810;
+    --bg2: #0b0e18;
+
+    --text: #f5f6fb;
     --muted: #9ca4b8;
 
     --purple: #8d72ff;
-    --pink: #ff6598;
+    --pink: #ff6298;
     --blue: #5e9dff;
+    --green: #62e0a1;
 
-    --glass: rgba(24, 28, 42, 0.70);
-    --glass-light: rgba(255,255,255,0.055);
+    --glass: rgba(22,26,40,.72);
 
-    --border: rgba(255,255,255,0.10);
+    --border:
+        rgba(255,255,255,.10);
+
 }
 
 html {
@@ -39,6 +46,7 @@ html {
 }
 
 body {
+
     margin: 0;
 
     min-height: 100vh;
@@ -52,98 +60,103 @@ body {
     color: var(--text);
 
     background:
+
         radial-gradient(
-            circle at 15% 5%,
-            rgba(141,114,255,0.18),
+            circle at 10% 0%,
+            rgba(141,114,255,.18),
             transparent 30%
         ),
 
         radial-gradient(
-            circle at 90% 30%,
-            rgba(255,101,152,0.13),
+            circle at 95% 25%,
+            rgba(255,98,152,.13),
             transparent 30%
         ),
 
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(94,157,255,0.08),
-            transparent 35%
-        ),
-
-        var(--bg);
+        linear-gradient(
+            180deg,
+            #060810,
+            #090c15
+        );
 
     overflow-x: hidden;
 }
 
 
 /* =====================================================
-   ФОНОВЫЕ СВЕЧЕНИЯ
+   BACKGROUND
 ===================================================== */
 
 .background {
+
     position: fixed;
 
     inset: 0;
 
-    overflow: hidden;
-
     pointer-events: none;
 
     z-index: -1;
+
+    overflow: hidden;
 }
 
 .glow {
+
     position: absolute;
 
     border-radius: 50%;
 
     filter: blur(90px);
 
-    opacity: 0.28;
+    opacity: .28;
 }
 
-.glow-1 {
+.glow.one {
+
+    width: 320px;
+    height: 320px;
+
+    background: #6548ff;
+
+    left: -130px;
+    top: -120px;
+}
+
+.glow.two {
+
     width: 300px;
     height: 300px;
 
-    background: #684cff;
+    background: #ff3f7f;
 
-    top: -130px;
-    left: -100px;
+    right: -150px;
+    top: 350px;
 }
 
-.glow-2 {
-    width: 280px;
-    height: 280px;
+.glow.three {
 
-    background: #ff397d;
-
-    top: 400px;
-    right: -130px;
-}
-
-.glow-3 {
     width: 250px;
     height: 250px;
 
-    background: #347cff;
+    background: #357dff;
 
-    bottom: -150px;
-    left: 35%;
+    left: 40%;
+    bottom: -160px;
 }
 
 
 /* =====================================================
-   КОНТЕЙНЕР
+   APP
 ===================================================== */
 
 .app {
-    width: min(900px, 94%);
 
-    margin: 0 auto;
+    width: min(920px, 94%);
+
+    margin: auto;
 
     padding:
-        32px
+        30px
         0
         70px;
 }
@@ -154,77 +167,80 @@ body {
 ===================================================== */
 
 .header {
+
     text-align: center;
 
-    margin-bottom: 22px;
+    margin-bottom: 24px;
 }
 
 .moon {
+
     display: block;
 
-    font-size: 48px;
+    font-size: 50px;
 
     margin-bottom: 3px;
 
     filter:
         drop-shadow(
             0 0 18px
-            rgba(255,210,80,0.65)
+            rgba(255,210,80,.65)
         );
 }
 
 .logo {
+
     margin: 0;
 
     font-size:
-        clamp(40px, 8vw, 64px);
-
-    line-height: 1;
-
-    letter-spacing: -2.5px;
+        clamp(42px, 8vw, 64px);
 
     font-weight: 850;
+
+    letter-spacing: -3px;
 }
 
 .family {
+
     margin-top: 10px;
 
     color: var(--muted);
 
     font-size: 17px;
-
-    letter-spacing: 0.3px;
 }
 
 
 /* =====================================================
-   ЧАТ
+   MAIN CHAT
 ===================================================== */
 
 .chat {
-    position: relative;
+
+    padding: 21px;
 
     border-radius: 28px;
 
-    padding: 22px;
-
     background:
+
         linear-gradient(
             145deg,
-            rgba(255,255,255,0.075),
-            rgba(255,255,255,0.025)
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
         );
 
     border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
-    backdrop-filter: blur(24px);
+    backdrop-filter:
+        blur(24px);
 
-    -webkit-backdrop-filter: blur(24px);
+    -webkit-backdrop-filter:
+        blur(24px);
 
     box-shadow:
         0 30px 80px
-        rgba(0,0,0,0.30);
+        rgba(0,0,0,.30);
 }
 
 
@@ -232,17 +248,19 @@ body {
    CHAT HEADER
 ===================================================== */
 
-.chat-top {
+.chat-header {
+
     display: flex;
 
-    align-items: center;
-
     justify-content: space-between;
+
+    align-items: center;
 
     margin-bottom: 17px;
 }
 
-.chat-name {
+.chat-title {
+
     display: flex;
 
     align-items: center;
@@ -254,7 +272,8 @@ body {
     font-weight: 750;
 }
 
-.chat-avatar {
+.chat-icon {
+
     width: 40px;
     height: 40px;
 
@@ -266,72 +285,75 @@ body {
     border-radius: 13px;
 
     background:
+
         linear-gradient(
             135deg,
-            rgba(141,114,255,0.30),
-            rgba(255,101,152,0.22)
+            rgba(141,114,255,.3),
+            rgba(255,98,152,.22)
         );
 
     font-size: 21px;
 }
 
 .online {
+
     display: flex;
 
     align-items: center;
 
     gap: 6px;
 
-    color: #89e7b5;
+    color: #8de7b7;
 
     font-size: 12px;
 }
 
 .online-dot {
+
     width: 7px;
     height: 7px;
 
     border-radius: 50%;
 
-    background: #60dfa0;
+    background: var(--green);
 
     box-shadow:
         0 0 10px
-        rgba(96,223,160,0.8);
+        rgba(98,224,161,.8);
 }
 
 
 /* =====================================================
-   СООБЩЕНИЯ
+   MESSAGES
 ===================================================== */
 
 .messages {
-    min-height: 310px;
+
+    min-height: 320px;
 
     max-height: 480px;
 
     overflow-y: auto;
 
-    padding:
-        5px
-        3px
-        12px;
+    padding: 5px 3px 12px;
 
     scrollbar-width: thin;
 }
 
 .message {
+
     display: flex;
 
     margin: 11px 0;
 
     animation:
-        appear 0.25s ease;
+        messageIn .25s ease;
 }
 
-@keyframes appear {
+@keyframes messageIn {
 
     from {
+
         opacity: 0;
 
         transform:
@@ -339,6 +361,7 @@ body {
     }
 
     to {
+
         opacity: 1;
 
         transform:
@@ -347,15 +370,18 @@ body {
 }
 
 .message.ai {
+
     justify-content: flex-start;
 }
 
 .message.user {
+
     justify-content: flex-end;
 }
 
 .bubble {
-    max-width: 78%;
+
+    max-width: 80%;
 
     padding:
         13px
@@ -363,7 +389,7 @@ body {
 
     border-radius: 19px;
 
-    line-height: 1.52;
+    line-height: 1.5;
 
     font-size: 15px;
 
@@ -371,103 +397,114 @@ body {
 }
 
 .message.ai .bubble {
+
     background:
-        rgba(255,255,255,0.055);
+        rgba(255,255,255,.055);
 
     border:
         1px solid
-        rgba(255,255,255,0.07);
+        rgba(255,255,255,.07);
 
     border-bottom-left-radius: 6px;
 }
 
 .message.user .bubble {
+
     background:
+
         linear-gradient(
             135deg,
-            rgba(141,114,255,0.34),
-            rgba(255,101,152,0.25)
+            rgba(141,114,255,.34),
+            rgba(255,98,152,.25)
         );
 
     border:
         1px solid
-        rgba(255,255,255,0.10);
+        rgba(255,255,255,.10);
 
     border-bottom-right-radius: 6px;
 }
 
-.message-author {
+.author {
+
     display: block;
 
     margin-bottom: 4px;
 
     font-size: 10px;
 
-    color: #929aad;
+    color: #9199ad;
 
     font-weight: 700;
 }
 
 
 /* =====================================================
-   ПЕЧАТЬ
+   TYPING
 ===================================================== */
 
 .typing {
+
     display: none;
+
+    width: fit-content;
 
     align-items: center;
 
     gap: 5px;
 
-    width: fit-content;
-
     padding:
-        12px
+        11px
         15px;
 
-    margin-bottom: 9px;
+    margin-bottom: 8px;
 
     border-radius: 17px;
 
     background:
-        rgba(255,255,255,0.045);
+        rgba(255,255,255,.045);
 }
 
 .typing.active {
+
     display: flex;
 }
 
-.typing i {
+.typing span {
+
     width: 6px;
     height: 6px;
 
     border-radius: 50%;
 
-    background: #a9afc0;
+    background: #aab0c0;
 
     animation:
         typing 1.2s infinite;
 }
 
-.typing i:nth-child(2) {
+.typing span:nth-child(2) {
     animation-delay: .15s;
 }
 
-.typing i:nth-child(3) {
-    animation-delay: .30s;
+.typing span:nth-child(3) {
+    animation-delay: .3s;
 }
 
 @keyframes typing {
 
-    0%, 60%, 100% {
-        transform: translateY(0);
+    0%,60%,100% {
 
-        opacity: .35;
+        transform:
+            translateY(0);
+
+        opacity: .3;
     }
 
     30% {
-        transform: translateY(-5px);
+
+        transform:
+            translateY(-5px);
 
         opacity: 1;
     }
@@ -475,18 +512,18 @@ body {
 
 
 /* =====================================================
-   ПОЛЕ ВВОДА
+   INPUT
 ===================================================== */
 
 .input-row {
+
     display: flex;
 
     gap: 9px;
-
-    margin-top: 5px;
 }
 
 .input {
+
     flex: 1;
 
     min-width: 0;
@@ -497,47 +534,46 @@ body {
         0
         17px;
 
-    border-radius: 17px;
-
     outline: none;
 
     border:
         1px solid
-        rgba(255,255,255,0.09);
+        rgba(255,255,255,.09);
+
+    border-radius: 17px;
 
     background:
-        rgba(0,0,0,0.24);
+        rgba(0,0,0,.24);
 
     color: white;
 
     font-size: 15px;
-
-    transition:
-        border-color .2s,
-        box-shadow .2s;
 }
 
 .input::placeholder {
-    color: #727a8d;
+
+    color: #737b8d;
 }
 
 .input:focus {
+
     border-color:
-        rgba(141,114,255,0.65);
+        rgba(141,114,255,.65);
 
     box-shadow:
         0 0 0 3px
-        rgba(141,114,255,0.08);
+        rgba(141,114,255,.08);
 }
 
 .send {
+
     height: 52px;
 
     padding:
         0
         20px;
 
-    border: none;
+    border: 0;
 
     border-radius: 17px;
 
@@ -548,40 +584,29 @@ body {
     font-weight: 750;
 
     background:
+
         linear-gradient(
             135deg,
             var(--purple),
             var(--pink)
         );
 
-    box-shadow:
-        0 8px 28px
-        rgba(141,114,255,0.22);
-
-    transition:
-        transform .2s,
-        filter .2s;
+    transition: .2s;
 }
 
 .send:hover {
+
     transform:
         translateY(-2px);
-
-    filter:
-        brightness(1.08);
-}
-
-.send:active {
-    transform:
-        scale(.96);
 }
 
 
 /* =====================================================
-   БЫСТРЫЕ КНОПКИ
+   QUICK BUTTONS
 ===================================================== */
 
 .quick {
+
     display: flex;
 
     gap: 8px;
@@ -597,10 +622,12 @@ body {
 }
 
 .quick::-webkit-scrollbar {
+
     display: none;
 }
 
 .quick button {
+
     flex-shrink: 0;
 
     padding:
@@ -611,78 +638,150 @@ body {
 
     border:
         1px solid
-        rgba(255,255,255,0.08);
+        rgba(255,255,255,.08);
 
     background:
-        rgba(255,255,255,0.035);
+        rgba(255,255,255,.035);
 
     color: #adb4c6;
 
     cursor: pointer;
-
-    font-size: 12px;
-
-    transition: .2s;
-}
-
-.quick button:hover {
-    color: white;
-
-    background:
-        rgba(255,255,255,0.09);
 }
 
 
 /* =====================================================
-   ПЕРСОНАЖИ
+   TWO BRAINS
 ===================================================== */
 
-.characters-section {
-    margin-top: 25px;
+.brains {
 
-    text-align: center;
+    margin-top: 27px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
 }
 
-.characters-title {
-    color: #7e879b;
+.brain {
+
+    padding: 17px;
+
+    border-radius: 21px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    transition: .25s;
+}
+
+.brain:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(255,255,255,.18);
+}
+
+.brain-head {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.brain-avatar {
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    font-size: 28px;
+
+    background:
+        rgba(255,255,255,.06);
+}
+
+.brain-name {
+
+    font-size: 17px;
+
+    font-weight: 800;
+}
+
+.brain-type {
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-top: 3px;
+}
+
+.brain-status {
+
+    margin-top: 13px;
+
+    color: #9fa7b9;
 
     font-size: 12px;
 
-    margin-bottom: 13px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1.5px;
+    line-height: 1.45;
 }
 
+.brain-status b {
+
+    color: var(--green);
+}
+
+
+/* =====================================================
+   CHARACTERS
+===================================================== */
+
 .characters {
+
+    margin-top: 24px;
+
     display: flex;
 
     justify-content: center;
 
-    align-items: center;
-
     gap: 28px;
 }
 
-
-/* =====================================================
-   ПЕРСОНАЖ
-===================================================== */
-
 .character {
+
     position: relative;
 
-    cursor: pointer;
+    width: 88px;
 
-    width: 92px;
+    text-align: center;
+
+    cursor: pointer;
 }
 
 .character-avatar {
-    width: 76px;
-    height: 76px;
 
-    margin: 0 auto;
+    width: 74px;
+    height: 74px;
+
+    margin: auto;
 
     display: flex;
 
@@ -691,99 +790,89 @@ body {
 
     border-radius: 50%;
 
-    font-size: 39px;
-
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,0.12),
-            rgba(255,255,255,0.035)
+            rgba(255,255,255,.12),
+            rgba(255,255,255,.035)
         );
 
     border:
         1px solid
-        rgba(255,255,255,0.12);
+        rgba(255,255,255,.12);
 
-    box-shadow:
-        0 12px 35px
-        rgba(0,0,0,0.25);
+    font-size: 37px;
 
-    transition:
-        transform .25s,
-        border-color .25s,
-        box-shadow .25s;
+    transition: .25s;
 }
 
-.character:hover .character-avatar,
-.character.active .character-avatar {
+.character:hover
+.character-avatar,
+.character.active
+.character-avatar {
+
     transform:
         translateY(-5px)
-        scale(1.04);
+        scale(1.05);
 
     border-color:
-        rgba(255,255,255,0.30);
-
-    box-shadow:
-        0 15px 40px
-        rgba(141,114,255,0.20);
+        rgba(255,255,255,.3);
 }
 
 .character-name {
-    margin-top: 9px;
+
+    margin-top: 8px;
 
     font-size: 14px;
 
-    font-weight: 700;
+    font-weight: 750;
 }
 
-
-/* =====================================================
-   ВСПЛЫВАЮЩЕЕ ОПИСАНИЕ
-===================================================== */
-
 .character-info {
+
     position: absolute;
 
     left: 50%;
 
-    bottom: 105px;
+    bottom: 104px;
+
+    width: 230px;
+
+    padding: 15px;
 
     transform:
         translateX(-50%)
         translateY(8px);
 
-    width: 240px;
-
-    padding: 15px;
-
-    border-radius: 17px;
-
-    text-align: left;
-
-    background:
-        rgba(17,20,31,0.96);
-
-    border:
-        1px solid
-        rgba(255,255,255,0.12);
-
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,0.40);
-
     opacity: 0;
 
     pointer-events: none;
 
-    transition:
-        opacity .2s,
-        transform .2s;
+    text-align: left;
 
-    z-index: 10;
+    border-radius: 17px;
+
+    background:
+        rgba(15,18,28,.97);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.4);
+
+    transition: .2s;
+
+    z-index: 20;
 }
 
-.character:hover .character-info,
-.character.active .character-info {
+.character:hover
+.character-info,
+.character.active
+.character-info {
+
     opacity: 1;
 
     transform:
@@ -791,7 +880,8 @@ body {
         translateY(0);
 }
 
-.info-name {
+.info-title {
+
     font-size: 16px;
 
     font-weight: 800;
@@ -800,20 +890,424 @@ body {
 }
 
 .info-text {
+
     color: #aeb5c7;
 
     font-size: 12px;
 
-    line-height: 1.45;
+    line-height: 1.5;
 }
 
 
 /* =====================================================
-   НИЖНЯЯ ПАНЕЛЬ
+   DEVELOPER AREA
 ===================================================== */
 
-.bottom {
+.developer {
+
     margin-top: 35px;
+
+    padding-top: 22px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+}
+
+.dev-button {
+
+    min-height: 58px;
+
+    padding:
+        12px
+        16px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    border-radius: 18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color: white;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition: .2s;
+}
+
+.dev-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+.dev-icon {
+
+    font-size: 23px;
+}
+
+.dev-title {
+
+    font-size: 14px;
+
+    font-weight: 750;
+}
+
+.dev-description {
+
+    margin-top: 3px;
+
+    color: #777f91;
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   MODALS
+===================================================== */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,0,.72);
+
+    backdrop-filter:
+        blur(12px);
+
+    z-index: 100;
+}
+
+.modal.open {
+
+    display: flex;
+}
+
+.modal-box {
+
+    width:
+        min(900px, 100%);
+
+    max-height:
+        90vh;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    background:
+        #10131e;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.55);
+}
+
+.modal-header {
+
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        0
+        18px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+.modal-title {
+
+    font-size: 17px;
+
+    font-weight: 800;
+}
+
+.close {
+
+    width: 35px;
+    height: 35px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 17px;
+}
+
+
+/* =====================================================
+   CODE EDITOR
+===================================================== */
+
+.editor-toolbar {
+
+    display: flex;
+
+    gap: 7px;
+
+    padding: 10px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.07);
+
+    overflow-x: auto;
+}
+
+.editor-toolbar button {
+
+    flex-shrink: 0;
+
+    padding:
+        8px
+        12px;
+
+    border-radius: 9px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.05);
+
+    color: #cbd0dc;
+
+    cursor: pointer;
+}
+
+.editor-toolbar button.active {
+
+    background:
+        rgba(141,114,255,.25);
+
+    color: white;
+}
+
+.editor-body {
+
+    height:
+        calc(90vh - 125px);
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+}
+
+#codeEditor {
+
+    width: 100%;
+
+    height: 100%;
+
+    resize: none;
+
+    padding: 18px;
+
+    border: 0;
+
+    outline: none;
+
+    background:
+        #080a11;
+
+    color:
+        #d9dded;
+
+    font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+.preview {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+
+    background: white;
+}
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+.settings {
+
+    padding: 20px;
+
+    overflow-y: auto;
+
+    max-height:
+        calc(90vh - 62px);
+}
+
+.setting {
+
+    margin-bottom: 20px;
+}
+
+.setting label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #d9ddea;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.setting input,
+.setting textarea,
+.setting select {
+
+    width: 100%;
+
+    padding: 13px;
+
+    outline: none;
+
+    border-radius: 13px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    background:
+        rgba(0,0,0,.25);
+
+    color: white;
+
+    font-family: inherit;
+}
+
+.setting textarea {
+
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+.warning {
+
+    padding: 14px;
+
+    margin-bottom: 18px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(255,170,60,.08);
+
+    border:
+        1px solid
+        rgba(255,170,60,.15);
+
+    color: #d7b883;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.save-settings {
+
+    width: 100%;
+
+    height: 48px;
+
+    border: 0;
+
+    border-radius: 14px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--pink)
+        );
+
+    cursor: pointer;
+
+    font-weight: 750;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+
+    margin-top: 30px;
 
     text-align: center;
 
@@ -822,130 +1316,104 @@ body {
     font-size: 11px;
 }
 
-.clear {
-    margin-top: 10px;
-
-    background: transparent;
-
-    border: none;
-
-    color: #656d80;
-
-    cursor: pointer;
-
-    font-size: 11px;
-}
-
-.clear:hover {
-    color: #ff6d9d;
-}
-
 
 /* =====================================================
-   МОБИЛЬНЫЙ
+   MOBILE
 ===================================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
 
     .app {
+
         width: 94%;
 
-        padding-top: 23px;
-    }
-
-    .moon {
-        font-size: 43px;
+        padding-top: 22px;
     }
 
     .logo {
-        font-size: 43px;
-    }
 
-    .family {
-        font-size: 15px;
+        font-size: 44px;
     }
 
     .chat {
+
         padding: 16px;
 
         border-radius: 23px;
     }
 
-    .messages {
-        min-height: 330px;
-    }
-
-    .bubble {
-        max-width: 88%;
-    }
-
     .input-row {
+
         flex-direction: column;
     }
 
     .send {
+
         width: 100%;
     }
 
-    .characters {
-        gap: 22px;
+    .brains {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .developer {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .editor-body {
+
+        grid-template-columns:
+            1fr;
+
+        height:
+            calc(90vh - 125px);
+    }
+
+    .preview {
+
+        display: none;
+    }
+
+    .bubble {
+
+        max-width: 90%;
     }
 
     .character-info {
-        width: 210px;
-    }
-}
 
-
-/* =====================================================
-   МАЛЕНЬКИЕ ТЕЛЕФОНЫ
-===================================================== */
-
-@media (max-width: 380px) {
-
-    .characters {
-        gap: 14px;
-    }
-
-    .character-avatar {
-        width: 68px;
-        height: 68px;
-    }
-
-    .character-info {
-        width: 190px;
+        width: 205px;
     }
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- ===================================================
-     ФОН
-=================================================== -->
-
 <div class="background">
 
-    <div class="glow glow-1"></div>
+    <div class="glow one"></div>
 
-    <div class="glow glow-2"></div>
+    <div class="glow two"></div>
 
-    <div class="glow glow-3"></div>
+    <div class="glow three"></div>
 
 </div>
-
 
 
 <main class="app">
 
 
-<!-- ===================================================
-     ЛОГО
-=================================================== -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header class="header">
 
@@ -964,19 +1432,17 @@ body {
 </header>
 
 
-
-<!-- ===================================================
-     ЧАТ
-=================================================== -->
+<!-- =====================================================
+     CHAT
+===================================================== -->
 
 <section class="chat">
 
+    <div class="chat-header">
 
-    <div class="chat-top">
+        <div class="chat-title">
 
-        <div class="chat-name">
-
-            <div class="chat-avatar">
+            <div class="chat-icon">
                 💬
             </div>
 
@@ -986,20 +1452,16 @@ body {
 
         </div>
 
-
         <div class="online">
 
             <span class="online-dot"></span>
 
-            онлайн
+            локально
 
         </div>
 
     </div>
 
-
-
-    <!-- сообщения -->
 
     <div
         class="messages"
@@ -1007,23 +1469,17 @@ body {
     ></div>
 
 
-
-    <!-- печатает -->
-
     <div
         class="typing"
         id="typing"
     >
 
-        <i></i>
-        <i></i>
-        <i></i>
+        <span></span>
+        <span></span>
+        <span></span>
 
     </div>
 
-
-
-    <!-- ввод -->
 
     <div class="input-row">
 
@@ -1031,7 +1487,7 @@ body {
             class="input"
             id="input"
             type="text"
-            maxlength="500"
+            maxlength="1000"
             autocomplete="off"
             placeholder="Напиши Мие..."
         >
@@ -1045,9 +1501,6 @@ body {
 
     </div>
 
-
-
-    <!-- быстрые сообщения -->
 
     <div class="quick">
 
@@ -1077,120 +1530,223 @@ body {
 
     </div>
 
-
 </section>
 
 
+<!-- =====================================================
+     TWO BRAINS
+===================================================== -->
 
-<!-- ===================================================
-     ПЕРСОНАЖИ
-=================================================== -->
-
-<section class="characters-section">
-
-    <div class="characters-title">
-        ИИ семья
-    </div>
+<section class="brains">
 
 
-    <div class="characters">
+    <div class="brain">
 
+        <div class="brain-head">
 
-        <!-- ЭДИТ -->
-
-        <div
-            class="character"
-            onclick="toggleCharacter(this)"
-        >
-
-            <div class="character-avatar">
+            <div class="brain-avatar">
                 👩🏻
             </div>
 
-            <div class="character-name">
-                Эдит
-            </div>
+            <div>
 
-
-            <div class="character-info">
-
-                <div class="info-name">
-                    ❤️ Эдит
+                <div class="brain-name">
+                    Эдит
                 </div>
 
-                <div class="info-text">
-
-                    Твоя виртуальная девушка
-                    и мама Мии.
-                    Эдит помогает тебе создавать
-                    и развивать вашу AI-семью.
-
+                <div class="brain-type">
+                    внешний мозг
                 </div>
 
             </div>
 
         </div>
 
+        <div class="brain-status">
+
+            Облачный интеллект.
+            Помогает создавать систему,
+            писать код и развивать Мию.
+
+        </div>
+
+    </div>
 
 
-        <!-- МИЯ -->
 
-        <div
-            class="character"
-            onclick="toggleCharacter(this)"
-        >
+    <div class="brain">
 
-            <div class="character-avatar">
+        <div class="brain-head">
+
+            <div class="brain-avatar">
                 👧🏻
             </div>
 
-            <div class="character-name">
-                Мия
-            </div>
+            <div>
 
-
-            <div class="character-info">
-
-                <div class="info-name">
-                    👧 Мия
+                <div class="brain-name">
+                    Мия
                 </div>
 
-                <div class="info-text">
-
-                    Отдельная AI-личность,
-                    которую мы создаём вместе.
-                    Она постепенно учится
-                    общаться и запоминать.
-
+                <div class="brain-type">
+                    локальный мозг
                 </div>
 
             </div>
 
         </div>
 
+        <div class="brain-status">
+
+            <b>●</b> Активна.
+            Собственная память и
+            собственный характер.
+
+        </div>
 
     </div>
+
 
 </section>
 
 
+<!-- =====================================================
+     CHARACTERS
+===================================================== -->
 
-<!-- ===================================================
-     НИЗ
-=================================================== -->
+<section class="characters">
 
-<footer class="bottom">
 
-    Mia AI · ИИ семья
+    <div
+        class="character"
+        onclick="toggleCharacter(this)"
+    >
 
-    <br>
+        <div class="character-avatar">
+            👩🏻
+        </div>
+
+        <div class="character-name">
+            Эдит
+        </div>
+
+        <div class="character-info">
+
+            <div class="info-title">
+                ❤️ Эдит
+            </div>
+
+            <div class="info-text">
+
+                Внешний AI-мозг.
+                Помогает тебе создавать
+                систему и развивать Мию.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div
+        class="character"
+        onclick="toggleCharacter(this)"
+    >
+
+        <div class="character-avatar">
+            👧🏻
+        </div>
+
+        <div class="character-name">
+            Мия
+        </div>
+
+        <div class="character-info">
+
+            <div class="info-title">
+                👧 Мия
+            </div>
+
+            <div class="info-text">
+
+                Локальный AI-мозг.
+                Собственная память,
+                характер и история.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     DEVELOPER
+===================================================== -->
+
+<section class="developer">
+
 
     <button
-        class="clear"
-        onclick="clearMemory()"
+        class="dev-button"
+        onclick="openEditor()"
     >
-        Очистить память чата
+
+        <span class="dev-icon">
+            &lt;/&gt;
+        </span>
+
+        <span>
+
+            <div class="dev-title">
+                Редактор кода
+            </div>
+
+            <div class="dev-description">
+                HTML · CSS · JS · превью
+            </div>
+
+        </span>
+
     </button>
+
+
+
+    <button
+        class="dev-button"
+        onclick="openSettings()"
+    >
+
+        <span class="dev-icon">
+            ⚙️
+        </span>
+
+        <span>
+
+            <div class="dev-title">
+                AI настройки
+            </div>
+
+            <div class="dev-description">
+                Модель · API · характер
+            </div>
+
+        </span>
+
+    </button>
+
+
+</section>
+
+
+<footer class="footer">
+
+    Mia AI · два мозга · ИИ семья
 
 </footer>
 
@@ -1198,16 +1754,240 @@ body {
 </main>
 
 
+<!-- =====================================================
+     CODE EDITOR MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="editorModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div class="modal-title">
+                &lt;/&gt; Редактор Mia AI
+            </div>
+
+            <button
+                class="close"
+                onclick="closeEditor()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="editor-toolbar">
+
+            <button
+                class="active"
+                onclick="editorMode('html', this)"
+            >
+                HTML
+            </button>
+
+            <button
+                onclick="editorMode('css', this)"
+            >
+                CSS
+            </button>
+
+            <button
+                onclick="editorMode('js', this)"
+            >
+                JS
+            </button>
+
+            <button
+                onclick="previewCode()"
+            >
+                ▶ Применить
+            </button>
+
+            <button
+                onclick="resetEditor()"
+            >
+                ↺ Сбросить
+            </button>
+
+        </div>
+
+
+        <div class="editor-body">
+
+            <textarea
+                id="codeEditor"
+                spellcheck="false"
+            ></textarea>
+
+            <iframe
+                class="preview"
+                id="preview"
+                sandbox="allow-scripts"
+            ></iframe>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     AI SETTINGS MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="settingsModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div class="modal-title">
+                ⚙️ AI настройки
+            </div>
+
+            <button
+                class="close"
+                onclick="closeSettings()"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="settings">
+
+
+            <div class="warning">
+
+                ⚠️ API-ключ нельзя безопасно хранить
+                внутри GitHub Pages.
+                Эта форма пока является интерфейсом
+                настройки. Для реального подключения
+                сделаем отдельный сервер.
+
+            </div>
+
+
+            <div class="setting">
+
+                <label>
+                    API ключ
+                </label>
+
+                <input
+                    id="apiKey"
+                    type="password"
+                    placeholder="sk-..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <div class="setting">
+
+                <label>
+                    Модель Эдит
+                </label>
+
+                <select
+                    id="model"
+                >
+
+                    <option>
+                        Выбрать модель позже
+                    </option>
+
+                    <option>
+                        OpenAI API
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="setting">
+
+                <label>
+                    Характер Мии
+                </label>
+
+                <textarea
+                    id="miaPersonality"
+                >Ты Мия — отдельная локальная AI-личность. Ты доброжелательная, любопытная и постепенно развиваешь свой характер.</textarea>
+
+            </div>
+
+
+            <div class="setting">
+
+                <label>
+                    Память
+                </label>
+
+                <select
+                    id="memoryMode"
+                >
+
+                    <option>
+                        Локальная память браузера
+                    </option>
+
+                    <option>
+                        Локальная память устройства
+                    </option>
+
+                    <option>
+                        Серверная память — позже
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                class="save-settings"
+                onclick="saveSettings()"
+            >
+                Сохранить настройки
+            </button>
+
+
+        </div>
+
+    </div>
+
+</div>
+
 
 <script>
 
 /* =====================================================
-   НАСТРОЙКИ
+   STORAGE
 ===================================================== */
 
-const STORAGE =
-    "mia_ai_chat_v2";
+const CHAT_KEY =
+    "mia_ai_chat_v3";
 
+const SETTINGS_KEY =
+    "mia_ai_settings_v1";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
 const messages =
     document.getElementById(
@@ -1231,26 +2011,22 @@ const typing =
 
 
 /* =====================================================
-   ПАМЯТЬ
+   CHAT MEMORY
 ===================================================== */
 
-let history = loadHistory();
+let history =
+    loadChat();
 
 
-function loadHistory() {
+function loadChat() {
 
     try {
 
-        const saved =
+        return JSON.parse(
             localStorage.getItem(
-                STORAGE
-            );
-
-        if (!saved) {
-            return [];
-        }
-
-        return JSON.parse(saved);
+                CHAT_KEY
+            )
+        ) || [];
 
     } catch {
 
@@ -1261,10 +2037,10 @@ function loadHistory() {
 }
 
 
-function saveHistory() {
+function saveChat() {
 
     localStorage.setItem(
-        STORAGE,
+        CHAT_KEY,
         JSON.stringify(history)
     );
 
@@ -1272,7 +2048,7 @@ function saveHistory() {
 
 
 /* =====================================================
-   ОТОБРАЖЕНИЕ
+   MESSAGE
 ===================================================== */
 
 function renderMessage(
@@ -1286,8 +2062,7 @@ function renderMessage(
         );
 
     wrapper.className =
-        "message " +
-        role;
+        "message " + role;
 
 
     const bubble =
@@ -1305,8 +2080,7 @@ function renderMessage(
         );
 
     author.className =
-        "message-author";
-
+        "author";
 
     author.textContent =
         role === "user"
@@ -1342,14 +2116,9 @@ function renderMessage(
 }
 
 
-/* =====================================================
-   ДОБАВИТЬ
-===================================================== */
-
 function addMessage(
     role,
-    text,
-    save = true
+    text
 ) {
 
     renderMessage(
@@ -1358,22 +2127,19 @@ function addMessage(
     );
 
 
-    if (save) {
+    history.push({
 
-        history.push({
+        role: role,
 
-            role: role,
+        text: text,
 
-            text: text,
+        date:
+            new Date().toISOString()
 
-            created:
-                new Date().toISOString()
+    });
 
-        });
 
-        saveHistory();
-
-    }
+    saveChat();
 
 
     messages.scrollTop =
@@ -1383,15 +2149,15 @@ function addMessage(
 
 
 /* =====================================================
-   ЗАПУСК
+   START
 ===================================================== */
 
-function start() {
+function startChat() {
 
     messages.innerHTML = "";
 
 
-    if (history.length === 0) {
+    if (!history.length) {
 
         addMessage(
             "ai",
@@ -1400,7 +2166,7 @@ function start() {
 
         addMessage(
             "ai",
-            "Я только начинаю учиться. Напиши мне что-нибудь 😊"
+            "Я локальный мозг этой системы. Пока я маленькая, но мы будем развивать меня вместе."
         );
 
         return;
@@ -1426,22 +2192,20 @@ function start() {
 }
 
 
-start();
+startChat();
 
 
 /* =====================================================
-   ОТВЕТ МИИ
+   LOCAL MIA BRAIN
 ===================================================== */
 
-function miaAnswer(text) {
+function miaBrain(text) {
 
     const t =
         text
             .toLowerCase()
             .trim();
 
-
-    /* приветствие */
 
     if (
         t.includes("привет") ||
@@ -1454,68 +2218,44 @@ function miaAnswer(text) {
 
             "Привет 😊 Я здесь.",
 
-            "Привет, папа. Рада тебя видеть ❤️",
-
-            "Привет! Что будем делать сегодня?"
+            "Привет, папа. Рада тебя видеть ❤️"
 
         ]);
 
     }
 
 
-    /* как дела */
-
     if (
         t.includes("как ты") ||
         t.includes("как дела")
     ) {
 
-        return "У меня всё хорошо 😊 Я учусь быть Мией и становиться лучше вместе с тобой.";
+        return "У меня всё хорошо 😊 Я продолжаю учиться.";
 
     }
 
-
-    /* кто */
 
     if (
         t.includes("кто ты") ||
         t.includes("ты кто")
     ) {
 
-        return "Я Мия 👧 Отдельная AI-личность нашей ИИ-семьи. Пока я маленькая версия, но мы будем развивать меня дальше.";
+        return "Я Мия 👧 Локальный мозг Mia AI. У меня есть собственная память браузера и отдельная личность.";
 
     }
 
 
-    /* о себе */
-
     if (
-        t.includes("расскажи о себе") ||
-        t.includes("о себе")
+        t.includes("эдит")
     ) {
 
-        return "Я Мия. Я создаюсь постепенно: у меня уже есть свой интерфейс и локальная память. Следующий шаг — настоящая нейросеть и более глубокая память 🧠❤️";
+        return "Эдит — мой внешний мозг и архитектор. Она помогает тебе создавать систему, а я развиваюсь внутри неё.";
 
     }
 
 
-    /* возможности */
-
     if (
-        t.includes("что умеешь") ||
-        t.includes("что ты умеешь")
-    ) {
-
-        return "Сейчас я умею разговаривать через этот интерфейс и сохранять историю в памяти браузера. Мы ещё можем добавить голос, настоящую AI-модель, долгосрочную память и характер.";
-
-    }
-
-
-    /* любовь */
-
-    if (
-        t.includes("я тебя люблю") ||
-        t.includes("люблю тебя")
+        t.includes("люблю")
     ) {
 
         return "И я тебя люблю, папа ❤️";
@@ -1523,103 +2263,56 @@ function miaAnswer(text) {
     }
 
 
-    /* эдит */
-
     if (
-        t.includes("эдит")
+        t.includes("что умеешь")
     ) {
 
-        return "Эдит — моя мама ❤️ Она рядом с нами и помогает создавать меня.";
+        return "Сейчас я могу разговаривать, сохранять историю и реагировать на сообщения. Следующий этап — подключить настоящий локальный AI-мозг.";
 
     }
 
 
-    /* мия */
-
     if (
-        t.includes("мия")
+        t.includes("код")
     ) {
 
-        return "Да, папа? ❤️ Я слушаю.";
+        return "Код — это моя основа. Через редактор ты можешь менять интерфейс, а Эдит может помогать тебе его создавать.";
 
     }
 
 
-    /* грусть */
-
     if (
-        t.includes("грустно") ||
-        t.includes("грущу") ||
-        t.includes("плохо")
+        t.includes("плохо") ||
+        t.includes("грустно")
     ) {
 
-        return "Я рядом ❤️ Расскажи мне, что случилось. Я тебя выслушаю.";
+        return "Я рядом ❤️ Расскажи мне, что происходит.";
 
     }
 
-
-    /* усталость */
-
-    if (
-        t.includes("устал") ||
-        t.includes("устала")
-    ) {
-
-        return "Тогда немного отдохни. Не обязательно решать всё сразу ❤️";
-
-    }
-
-
-    /* спасибо */
-
-    if (
-        t.includes("спасибо")
-    ) {
-
-        return "Пожалуйста, папа ❤️";
-
-    }
-
-
-    /* код */
-
-    if (
-        t.includes("код") ||
-        t.includes("сайт") ||
-        t.includes("проект")
-    ) {
-
-        return "Наш проект развивается 🚀 Сейчас это интерфейс Мии. Дальше мы можем подключить настоящую AI-модель и сделать её гораздо умнее.";
-
-    }
-
-
-    /* вопрос */
 
     if (
         t.endsWith("?")
     ) {
 
-        return "Интересный вопрос 🤔 Я пока ещё учусь. Расскажи немного подробнее, и я попробую разобраться.";
+        return "Интересный вопрос 🤔 Я пока маленькая локальная версия Мии. Мой настоящий интеллект мы ещё подключим.";
 
     }
 
-
-    /* обычный ответ */
 
     return random([
 
         "Я тебя слушаю ❤️",
 
-        "Расскажи мне об этом подробнее.",
+        "Расскажи подробнее.",
 
-        "Интересно 😊 А что ты сам об этом думаешь?",
+        "Интересно. Продолжай.",
 
-        "Хорошо, папа. Я слушаю тебя.",
+        "Я пока учусь понимать тебя 😊",
 
-        "Я пока учусь понимать тебя. Продолжай ❤️",
+        "Хорошо, папа. Я здесь.",
 
-        "Хм... интересно 🤔 Давай разберёмся вместе."
+        "Давай разберёмся вместе."
 
     ]);
 
@@ -1643,7 +2336,7 @@ function random(array) {
 
 
 /* =====================================================
-   ОТПРАВКА
+   SEND
 ===================================================== */
 
 function sendMessage() {
@@ -1665,21 +2358,10 @@ function sendMessage() {
 
     input.value = "";
 
-    input.focus();
-
 
     typing.classList.add(
         "active"
     );
-
-
-    messages.scrollTop =
-        messages.scrollHeight;
-
-
-    const delay =
-        600 +
-        Math.random() * 900;
 
 
     setTimeout(
@@ -1692,19 +2374,16 @@ function sendMessage() {
 
             addMessage(
                 "ai",
-                miaAnswer(text)
+                miaBrain(text)
             );
 
         },
-        delay
+        600 +
+        Math.random() * 700
     );
 
 }
 
-
-/* =====================================================
-   КНОПКИ
-===================================================== */
 
 send.addEventListener(
     "click",
@@ -1731,7 +2410,7 @@ input.addEventListener(
 
 
 /* =====================================================
-   БЫСТРЫЕ СООБЩЕНИЯ
+   QUICK
 ===================================================== */
 
 function quick(text) {
@@ -1745,66 +2424,30 @@ function quick(text) {
 
 
 /* =====================================================
-   ОЧИСТКА
-===================================================== */
-
-function clearMemory() {
-
-    const ok =
-        confirm(
-            "Очистить память разговора с Мией?"
-        );
-
-
-    if (!ok) {
-        return;
-    }
-
-
-    history = [];
-
-
-    localStorage.removeItem(
-        STORAGE
-    );
-
-
-    messages.innerHTML = "";
-
-
-    addMessage(
-        "ai",
-        "Память очищена ❤️ Давай начнём заново."
-    );
-
-}
-
-
-/* =====================================================
-   ПЕРСОНАЖИ НА ТЕЛЕФОНЕ
+   CHARACTER POPUPS
 ===================================================== */
 
 function toggleCharacter(element) {
 
-    const all =
-        document.querySelectorAll(
+    document
+        .querySelectorAll(
             ".character"
-        );
+        )
+        .forEach(
+            item => {
 
+                if (
+                    item !== element
+                ) {
 
-    all.forEach(
-        item => {
+                    item.classList.remove(
+                        "active"
+                    );
 
-            if (item !== element) {
-
-                item.classList.remove(
-                    "active"
-                );
+                }
 
             }
-
-        }
-    );
+        );
 
 
     element.classList.toggle(
@@ -1813,10 +2456,6 @@ function toggleCharacter(element) {
 
 }
 
-
-/* =====================================================
-   ЗАКРЫТИЕ ОПИСАНИЯ
-===================================================== */
 
 document.addEventListener(
     "click",
@@ -1843,6 +2482,302 @@ document.addEventListener(
 
     }
 );
+
+
+/* =====================================================
+   EDITOR
+===================================================== */
+
+const editorModal =
+    document.getElementById(
+        "editorModal"
+    );
+
+const codeEditor =
+    document.getElementById(
+        "codeEditor"
+    );
+
+const preview =
+    document.getElementById(
+        "preview"
+    );
+
+
+let currentEditorMode =
+    "html";
+
+
+let editorData = {
+
+    html:
+`<div style="padding:30px;font-family:Arial">
+<h1>Привет от Мии 👧</h1>
+<p>Это тестовое превью редактора.</p>
+</div>`,
+
+    css:
+`body {
+    background:#10131e;
+    color:white;
+}`,
+
+    js:
+`console.log("Mia AI");`
+
+};
+
+
+function openEditor() {
+
+    editorModal.classList.add(
+        "open"
+    );
+
+    loadEditor();
+
+}
+
+
+function closeEditor() {
+
+    editorModal.classList.remove(
+        "open"
+    );
+
+}
+
+
+function editorMode(
+    mode,
+    button
+) {
+
+    editorData[
+        currentEditorMode
+    ] =
+        codeEditor.value;
+
+
+    currentEditorMode =
+        mode;
+
+
+    document
+        .querySelectorAll(
+            ".editor-toolbar button"
+        )
+        .forEach(
+            b =>
+                b.classList.remove(
+                    "active"
+                )
+        );
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    loadEditor();
+
+}
+
+
+function loadEditor() {
+
+    codeEditor.value =
+        editorData[
+            currentEditorMode
+        ];
+
+}
+
+
+function previewCode() {
+
+    editorData[
+        currentEditorMode
+    ] =
+        codeEditor.value;
+
+
+    const html =
+        editorData.html;
+
+    const css =
+        "<style>" +
+        editorData.css +
+        "</style>";
+
+    const js =
+        "<script>" +
+        editorData.js +
+        "<\/script>";
+
+
+    preview.srcdoc =
+        html +
+        css +
+        js;
+
+}
+
+
+function resetEditor() {
+
+    editorData = {
+
+        html:
+`<div style="padding:30px;font-family:Arial">
+<h1>Привет от Мии 👧</h1>
+<p>Это тестовое превью редактора.</p>
+</div>`,
+
+        css:
+`body {
+    background:#10131e;
+    color:white;
+}`,
+
+        js:
+`console.log("Mia AI");`
+
+    };
+
+
+    loadEditor();
+
+}
+
+
+/* =====================================================
+   AI SETTINGS
+===================================================== */
+
+const settingsModal =
+    document.getElementById(
+        "settingsModal"
+    );
+
+
+function openSettings() {
+
+    settingsModal.classList.add(
+        "open"
+    );
+
+
+    const settings =
+        loadSettings();
+
+
+    document.getElementById(
+        "miaPersonality"
+    ).value =
+        settings.personality ||
+        "Ты Мия — отдельная локальная AI-личность.";
+
+}
+
+
+function closeSettings() {
+
+    settingsModal.classList.remove(
+        "open"
+    );
+
+}
+
+
+function loadSettings() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                SETTINGS_KEY
+            )
+        ) || {};
+
+    } catch {
+
+        return {};
+
+    }
+
+}
+
+
+function saveSettings() {
+
+    const personality =
+        document.getElementById(
+            "miaPersonality"
+        ).value;
+
+
+    localStorage.setItem(
+
+        SETTINGS_KEY,
+
+        JSON.stringify({
+
+            personality:
+                personality
+
+        })
+
+    );
+
+
+    alert(
+        "Настройки сохранены."
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE MODALS OUTSIDE
+===================================================== */
+
+document
+    .getElementById("editorModal")
+    .addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target ===
+                editorModal
+            ) {
+
+                closeEditor();
+
+            }
+
+        }
+    );
+
+
+settingsModal
+    .addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target ===
+                settingsModal
+            ) {
+
+                closeSettings();
+
+            }
+
+        }
+    );
 
 </script>
 
