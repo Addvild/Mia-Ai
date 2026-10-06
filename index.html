@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mia-Ai — Two Minds</title>
+<link rel="stylesheet" href="./interface/style.css">
+</head>
+<body>
+<div class="bg b1"></div><div class="bg b2"></div>
+<main class="app">
+<header>
+  <div class="orb">🌙</div>
+  <h1>Mia-Ai</h1>
+  <p>Мия · 6 лет &nbsp;|&nbsp; Эдит · 30 лет</p>
+  <small>Два отдельных мозга · общая среда · локальное обучение</small>
+</header>
+
+<section class="panel">
+  <div class="bar">
+    <strong id="modeTitle">Мия + Эдит</strong>
+    <span id="modeHint">без обращения по имени → отвечают обе</span>
+  </div>
+  <div id="messages" class="messages"></div>
+  <div id="thinking" class="thinking">🧠 думаю…</div>
+  <div class="inputRow">
+    <input id="input" placeholder="Напиши Мие, Эдит или обеим…" maxlength="4000">
+    <button id="send">Отправить</button>
+  </div>
+  <div class="chips">
+    <button data-q="Привет">Привет</button>
+    <button data-q="Мия, как ты?">Мия</button>
+    <button data-q="Эдит, как ты?">Эдит</button>
+    <button data-q="Как вы думаете?">Обеим</button>
+    <button id="teach">🧠 Учить</button>
+    <button id="dialogue">💬 Диалог</button>
+  </div>
+</section>
+
+<section class="cards">
+  <article><b>👧 Мия</b><span id="miaStats"></span></article>
+  <article><b>👩 Эдит</b><span id="edithStats"></span></article>
+  <article><b>🤝 Общее</b><span id="sharedStats"></span></article>
+</section>
+
+<section class="panel compact">
+  <h2>Состояние системы</h2>
+  <div id="systemState" class="state"></div>
+</section>
+
+<footer>Mia-Ai v2 · собственная когнитивная архитектура</footer>
+</main>
+<script type="module" src="./core/app.js"></script>
+</body>
+</html>
