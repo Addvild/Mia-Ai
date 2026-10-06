@@ -701,107 +701,6 @@ body {
 
 
 /* =====================================================
-   TWO BRAINS
-===================================================== */
-
-.brains {
-
-    margin-top: 27px;
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 12px;
-}
-
-.brain {
-
-    padding: 17px;
-
-    border-radius: 21px;
-
-    background:
-        rgba(255,255,255,.035);
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    transition: .25s;
-}
-
-.brain:hover {
-
-    transform:
-        translateY(-3px);
-
-    border-color:
-        rgba(255,255,255,.18);
-}
-
-.brain-head {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-}
-
-.brain-avatar {
-
-    width: 52px;
-    height: 52px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 16px;
-
-    font-size: 28px;
-
-    background:
-        rgba(255,255,255,.06);
-}
-
-.brain-name {
-
-    font-size: 17px;
-
-    font-weight: 800;
-}
-
-.brain-type {
-
-    color: var(--muted);
-
-    font-size: 11px;
-
-    margin-top: 3px;
-}
-
-.brain-status {
-
-    margin-top: 13px;
-
-    color: #9fa7b9;
-
-    font-size: 12px;
-
-    line-height: 1.45;
-}
-
-.brain-status b {
-
-    color: var(--green);
-}
-
-
-/* =====================================================
    CHARACTERS
 ===================================================== */
 
@@ -1544,12 +1443,6 @@ body {
         width: 100%;
     }
 
-    .brains {
-
-        grid-template-columns:
-            1fr;
-    }
-
     .developer {
 
         grid-template-columns:
@@ -1746,8 +1639,6 @@ body {
     </div>
 
 
-    <!-- CHAT DELETE -->
-
     <div class="chat-actions">
 
         <button
@@ -1758,83 +1649,6 @@ body {
         </button>
 
     </div>
-
-</section>
-
-
-<!-- =====================================================
-     TWO BRAINS
-===================================================== -->
-
-<section class="brains">
-
-
-    <div class="brain">
-
-        <div class="brain-head">
-
-            <div class="brain-avatar">
-                👩🏻
-            </div>
-
-            <div>
-
-                <div class="brain-name">
-                    Эдит
-                </div>
-
-                <div class="brain-type">
-                    внешний мозг
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="brain-status">
-
-            Облачный интеллект.
-            Помогает создавать систему,
-            писать код и развивать Мию.
-
-        </div>
-
-    </div>
-
-
-
-    <div class="brain">
-
-        <div class="brain-head">
-
-            <div class="brain-avatar">
-                👧🏻
-            </div>
-
-            <div>
-
-                <div class="brain-name">
-                    Мия
-                </div>
-
-                <div class="brain-type">
-                    локальный мозг
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="brain-status">
-
-            <b>●</b> Активна.
-            Собственная память и
-            собственный характер.
-
-        </div>
-
-    </div>
-
 
 </section>
 
@@ -1968,7 +1782,7 @@ body {
 
 
 <!-- =====================================================
-     DEVELOPER
+     DEVELOPER AREA
 ===================================================== -->
 
 <section class="developer">
@@ -2386,8 +2200,10 @@ function updateMemoryBar() {
         );
 
 
-    if (!messagesElement ||
-        !sizeElement) {
+    if (
+        !messagesElement ||
+        !sizeElement
+    ) {
 
         return;
 
@@ -2511,7 +2327,6 @@ function addMessage(
 
 
     saveChat();
-
 
     updateMemoryBar();
 
