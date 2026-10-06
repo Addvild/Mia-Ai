@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 
 <meta charset="UTF-8">
@@ -38,7 +39,6 @@
 
     --border:
         rgba(255,255,255,.10);
-
 }
 
 html {
@@ -650,6 +650,57 @@ body {
 
 
 /* =====================================================
+   CHAT ACTIONS
+===================================================== */
+
+.chat-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 5px;
+}
+
+.delete-chat {
+
+    padding:
+        8px
+        12px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid
+        rgba(255,90,120,.16);
+
+    background:
+        rgba(255,70,100,.05);
+
+    color:
+        #b98a96;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    transition: .2s;
+}
+
+.delete-chat:hover {
+
+    background:
+        rgba(255,70,100,.12);
+
+    color:
+        #ff8da5;
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =====================================================
    TWO BRAINS
 ===================================================== */
 
@@ -896,6 +947,147 @@ body {
     font-size: 12px;
 
     line-height: 1.5;
+}
+
+
+/* =====================================================
+   MIA MEMORY BAR
+===================================================== */
+
+.memory-bar {
+
+    margin-top: 18px;
+
+    padding:
+        13px
+        15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    border-radius: 17px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+}
+
+.memory-main {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 0;
+}
+
+.memory-icon {
+
+    width: 39px;
+    height: 39px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(141,114,255,.20),
+            rgba(94,157,255,.12)
+        );
+
+    font-size: 19px;
+}
+
+.memory-title {
+
+    font-size: 13px;
+
+    font-weight: 750;
+}
+
+.memory-stats {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 3px;
+
+    color:
+        #747d91;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+}
+
+.memory-online {
+
+    color:
+        var(--green);
+}
+
+.clear-memory {
+
+    flex-shrink: 0;
+
+    padding:
+        8px
+        11px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:
+        #929aad;
+
+    cursor: pointer;
+
+    font-size: 10px;
+
+    transition: .2s;
+}
+
+.clear-memory:hover {
+
+    background:
+        rgba(255,255,255,.08);
+
+    color: white;
+
+    transform:
+        translateY(-1px);
 }
 
 
@@ -1387,6 +1579,29 @@ body {
 
         width: 205px;
     }
+
+    .memory-bar {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .clear-memory {
+
+        width: 100%;
+    }
+
+    .chat-actions {
+
+        justify-content: center;
+    }
+
+    .delete-chat {
+
+        width: 100%;
+    }
+
 }
 
 </style>
@@ -1526,6 +1741,20 @@ body {
             onclick="quick('Что ты умеешь?')"
         >
             ✨ Возможности
+        </button>
+
+    </div>
+
+
+    <!-- CHAT DELETE -->
+
+    <div class="chat-actions">
+
+        <button
+            class="delete-chat"
+            onclick="deleteChat()"
+        >
+            🗑 Удалить чат
         </button>
 
     </div>
@@ -1681,6 +1910,59 @@ body {
 
     </div>
 
+
+</section>
+
+
+<!-- =====================================================
+     MIA MEMORY BAR
+===================================================== -->
+
+<section class="memory-bar">
+
+    <div class="memory-main">
+
+        <div class="memory-icon">
+            🧠
+        </div>
+
+        <div class="memory-info">
+
+            <div class="memory-title">
+                Память Мии
+            </div>
+
+            <div class="memory-stats">
+
+                <span id="memoryMessages">
+                    0 сообщений
+                </span>
+
+                <span>•</span>
+
+                <span id="memorySize">
+                    0 KB
+                </span>
+
+                <span>•</span>
+
+                <span class="memory-online">
+                    ● Активна
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="clear-memory"
+        onclick="clearMiaMemory()"
+    >
+        🧠 Очистить память
+    </button>
 
 </section>
 
@@ -1979,7 +2261,7 @@ body {
 ===================================================== */
 
 const CHAT_KEY =
-    "mia_ai_chat_v3";
+    "mia_ai_chat_v4";
 
 const SETTINGS_KEY =
     "mia_ai_settings_v1";
@@ -2043,6 +2325,95 @@ function saveChat() {
         CHAT_KEY,
         JSON.stringify(history)
     );
+
+}
+
+
+/* =====================================================
+   MEMORY SIZE
+===================================================== */
+
+function getMemorySize() {
+
+    let total = 0;
+
+    for (
+        let i = 0;
+        i < localStorage.length;
+        i++
+    ) {
+
+        const key =
+            localStorage.key(i);
+
+        const value =
+            localStorage.getItem(key) || "";
+
+        total +=
+            key.length +
+            value.length;
+
+    }
+
+    return total;
+}
+
+
+/* =====================================================
+   MEMORY BAR
+===================================================== */
+
+function updateMemoryBar() {
+
+    const messageCount =
+        history.length;
+
+    const bytes =
+        getMemorySize();
+
+    const kb =
+        bytes / 1024;
+
+
+    const messagesElement =
+        document.getElementById(
+            "memoryMessages"
+        );
+
+    const sizeElement =
+        document.getElementById(
+            "memorySize"
+        );
+
+
+    if (!messagesElement ||
+        !sizeElement) {
+
+        return;
+
+    }
+
+
+    messagesElement.textContent =
+        messageCount +
+        (
+            messageCount === 1
+                ? " сообщение"
+                : " сообщений"
+        );
+
+
+    if (bytes < 1024) {
+
+        sizeElement.textContent =
+            bytes + " B";
+
+    } else {
+
+        sizeElement.textContent =
+            kb.toFixed(1) + " KB";
+
+    }
 
 }
 
@@ -2142,6 +2513,9 @@ function addMessage(
     saveChat();
 
 
+    updateMemoryBar();
+
+
     messages.scrollTop =
         messages.scrollHeight;
 
@@ -2189,10 +2563,100 @@ function startChat() {
     messages.scrollTop =
         messages.scrollHeight;
 
+
+    updateMemoryBar();
+
 }
 
 
 startChat();
+
+
+/* =====================================================
+   DELETE CHAT
+===================================================== */
+
+function deleteChat() {
+
+    const confirmed =
+        confirm(
+            "Удалить всю историю чата с Мией?\n\nПамять и настройки Мии останутся."
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    history = [];
+
+
+    localStorage.removeItem(
+        CHAT_KEY
+    );
+
+
+    messages.innerHTML = "";
+
+
+    addMessage(
+        "ai",
+        "История чата очищена ❤️ Я снова готова разговаривать с тобой."
+    );
+
+
+    updateMemoryBar();
+
+}
+
+
+/* =====================================================
+   CLEAR MIA MEMORY
+===================================================== */
+
+function clearMiaMemory() {
+
+    const confirmed =
+        confirm(
+            "Очистить локальную память Мии?\n\nБудет удалена история чата и сохранённые настройки Мии."
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    history = [];
+
+
+    localStorage.removeItem(
+        CHAT_KEY
+    );
+
+
+    localStorage.removeItem(
+        SETTINGS_KEY
+    );
+
+
+    messages.innerHTML = "";
+
+
+    addMessage(
+        "ai",
+        "Моя локальная память очищена. Начинаем с чистого листа ❤️"
+    );
+
+
+    updateMemoryBar();
+
+}
 
 
 /* =====================================================
@@ -2346,7 +2810,9 @@ function sendMessage() {
 
 
     if (!text) {
+
         return;
+
     }
 
 
@@ -2647,6 +3113,10 @@ function resetEditor() {
     };
 
 
+    currentEditorMode =
+        "html";
+
+
     loadEditor();
 
 }
@@ -2677,7 +3147,7 @@ function openSettings() {
         "miaPersonality"
     ).value =
         settings.personality ||
-        "Ты Мия — отдельная локальная AI-личность.";
+        "Ты Мия — отдельная локальная AI-личность. Ты доброжелательная, любопытная и постепенно развиваешь свой характер.";
 
 }
 
@@ -2732,6 +3202,9 @@ function saveSettings() {
     );
 
 
+    updateMemoryBar();
+
+
     alert(
         "Настройки сохранены."
     );
@@ -2743,41 +3216,45 @@ function saveSettings() {
    CLOSE MODALS OUTSIDE
 ===================================================== */
 
-document
-    .getElementById("editorModal")
-    .addEventListener(
-        "click",
-        event => {
+editorModal.addEventListener(
+    "click",
+    event => {
 
-            if (
-                event.target ===
-                editorModal
-            ) {
+        if (
+            event.target ===
+            editorModal
+        ) {
 
-                closeEditor();
-
-            }
+            closeEditor();
 
         }
-    );
+
+    }
+);
 
 
-settingsModal
-    .addEventListener(
-        "click",
-        event => {
+settingsModal.addEventListener(
+    "click",
+    event => {
 
-            if (
-                event.target ===
-                settingsModal
-            ) {
+        if (
+            event.target ===
+            settingsModal
+        ) {
 
-                closeSettings();
-
-            }
+            closeSettings();
 
         }
-    );
+
+    }
+);
+
+
+/* =====================================================
+   INITIAL MEMORY UPDATE
+===================================================== */
+
+updateMemoryBar();
 
 </script>
 
