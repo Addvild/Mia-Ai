@@ -44,6 +44,7 @@ body {
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
+
     color: var(--text);
 
     background:
@@ -118,6 +119,11 @@ select {
     padding: 30px 0 70px;
 }
 
+
+/* =====================================================
+   HEADER
+===================================================== */
+
 .header {
     text-align: center;
     margin-bottom: 24px;
@@ -127,6 +133,7 @@ select {
     display: block;
     font-size: 50px;
     margin-bottom: 3px;
+
     filter:
         drop-shadow(
             0 0 18px
@@ -136,7 +143,10 @@ select {
 
 .logo {
     margin: 0;
-    font-size: clamp(42px, 8vw, 64px);
+
+    font-size:
+        clamp(42px, 8vw, 64px);
+
     font-weight: 850;
     letter-spacing: -3px;
 }
@@ -163,7 +173,9 @@ select {
             rgba(255,255,255,.025)
         );
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
@@ -177,6 +189,7 @@ select {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     margin-bottom: 17px;
 }
 
@@ -184,6 +197,7 @@ select {
     display: flex;
     align-items: center;
     gap: 10px;
+
     font-size: 21px;
     font-weight: 750;
 }
@@ -212,6 +226,7 @@ select {
     display: flex;
     align-items: center;
     gap: 6px;
+
     color: #8de7b7;
     font-size: 12px;
 }
@@ -219,8 +234,12 @@ select {
 .online-dot {
     width: 7px;
     height: 7px;
+
     border-radius: 50%;
-    background: var(--green);
+
+    background:
+        var(--green);
+
     box-shadow:
         0 0 10px
         rgba(98,224,161,.8);
@@ -229,18 +248,24 @@ select {
 .messages {
     min-height: 320px;
     max-height: 480px;
+
     overflow-y: auto;
+
     padding: 5px 3px 12px;
+
     scrollbar-width: thin;
 }
 
 .message {
     display: flex;
     margin: 11px 0;
-    animation: messageIn .25s ease;
+
+    animation:
+        messageIn .25s ease;
 }
 
 @keyframes messageIn {
+
     from {
         opacity: 0;
         transform: translateY(8px);
@@ -250,6 +275,7 @@ select {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
 .message.ai {
@@ -262,20 +288,31 @@ select {
 
 .bubble {
     max-width: 80%;
+
     padding: 13px 16px;
+
     border-radius: 19px;
+
     line-height: 1.5;
     font-size: 15px;
+
     white-space: pre-wrap;
 }
 
 .message.ai .bubble {
-    background: rgba(255,255,255,.055);
-    border: 1px solid rgba(255,255,255,.07);
+
+    background:
+        rgba(255,255,255,.055);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
     border-bottom-left-radius: 6px;
 }
 
 .message.user .bubble {
+
     background:
         linear-gradient(
             135deg,
@@ -283,27 +320,42 @@ select {
             rgba(255,98,152,.25)
         );
 
-    border: 1px solid rgba(255,255,255,.10);
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
     border-bottom-right-radius: 6px;
 }
 
 .author {
     display: block;
+
     margin-bottom: 4px;
+
     font-size: 10px;
+
     color: #9199ad;
+
     font-weight: 700;
 }
 
 .typing {
     display: none;
+
     width: fit-content;
+
     align-items: center;
+
     gap: 5px;
+
     padding: 11px 15px;
+
     margin-bottom: 8px;
+
     border-radius: 17px;
-    background: rgba(255,255,255,.045);
+
+    background:
+        rgba(255,255,255,.045);
 }
 
 .typing.active {
@@ -313,9 +365,13 @@ select {
 .typing span {
     width: 6px;
     height: 6px;
+
     border-radius: 50%;
+
     background: #aab0c0;
-    animation: typing 1.2s infinite;
+
+    animation:
+        typing 1.2s infinite;
 }
 
 .typing span:nth-child(2) {
@@ -327,6 +383,7 @@ select {
 }
 
 @keyframes typing {
+
     0%,60%,100% {
         transform: translateY(0);
         opacity: .3;
@@ -336,6 +393,7 @@ select {
         transform: translateY(-5px);
         opacity: 1;
     }
+
 }
 
 .input-row {
@@ -345,16 +403,26 @@ select {
 
 .input {
     flex: 1;
+
     min-width: 0;
     height: 52px;
-    padding: 0 17px;
+
+    padding:
+        0 17px;
+
     outline: none;
 
-    border: 1px solid rgba(255,255,255,.09);
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
     border-radius: 17px;
 
-    background: rgba(0,0,0,.24);
+    background:
+        rgba(0,0,0,.24);
+
     color: white;
+
     font-size: 15px;
 }
 
@@ -363,7 +431,10 @@ select {
 }
 
 .input:focus {
-    border-color: rgba(141,114,255,.65);
+
+    border-color:
+        rgba(141,114,255,.65);
+
     box-shadow:
         0 0 0 3px
         rgba(141,114,255,.08);
@@ -371,11 +442,18 @@ select {
 
 .send {
     height: 52px;
-    padding: 0 20px;
+
+    padding:
+        0 20px;
+
     border: 0;
+
     border-radius: 17px;
+
     cursor: pointer;
+
     color: white;
+
     font-weight: 750;
 
     background:
@@ -389,14 +467,20 @@ select {
 }
 
 .send:hover {
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 
 .quick {
     display: flex;
+
     gap: 8px;
+
     overflow-x: auto;
-    padding: 13px 0 2px;
+
+    padding:
+        13px 0 2px;
+
     scrollbar-width: none;
 }
 
@@ -405,36 +489,66 @@ select {
 }
 
 .quick button {
+
     flex-shrink: 0;
-    padding: 8px 12px;
+
+    padding:
+        8px 12px;
+
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,.08);
-    background: rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.035);
+
     color: #adb4c6;
+
     cursor: pointer;
 }
 
 .chat-actions {
     display: flex;
+
     justify-content: flex-end;
+
     margin-top: 5px;
 }
 
 .delete-chat {
-    padding: 8px 12px;
+
+    padding:
+        8px 12px;
+
     border-radius: 10px;
-    border: 1px solid rgba(255,90,120,.16);
-    background: rgba(255,70,100,.05);
+
+    border:
+        1px solid
+        rgba(255,90,120,.16);
+
+    background:
+        rgba(255,70,100,.05);
+
     color: #b98a96;
+
     cursor: pointer;
+
     font-size: 11px;
+
     transition: .2s;
 }
 
 .delete-chat:hover {
-    background: rgba(255,70,100,.12);
+
+    background:
+        rgba(255,70,100,.12);
+
     color: #ff8da5;
-    transform: translateY(-1px);
+
+    transform:
+        translateY(-1px);
 }
 
 
@@ -443,25 +557,36 @@ select {
 ===================================================== */
 
 .characters {
+
     margin-top: 24px;
+
     display: flex;
+
     justify-content: center;
+
     gap: 28px;
 }
 
 .character {
+
     position: relative;
+
     width: 88px;
+
     text-align: center;
+
     cursor: pointer;
 }
 
 .character-avatar {
+
     width: 74px;
     height: 74px;
+
     margin: auto;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -474,13 +599,18 @@ select {
             rgba(255,255,255,.035)
         );
 
-    border: 1px solid rgba(255,255,255,.12);
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
     font-size: 37px;
+
     transition: .25s;
 }
 
 .character:hover .character-avatar,
 .character.active .character-avatar {
+
     transform:
         translateY(-5px)
         scale(1.05);
@@ -490,16 +620,23 @@ select {
 }
 
 .character-name {
+
     margin-top: 8px;
+
     font-size: 14px;
+
     font-weight: 750;
 }
 
 .character-info {
+
     position: absolute;
+
     left: 50%;
     bottom: 104px;
+
     width: 230px;
+
     padding: 15px;
 
     transform:
@@ -507,24 +644,32 @@ select {
         translateY(8px);
 
     opacity: 0;
+
     pointer-events: none;
 
     text-align: left;
 
     border-radius: 17px;
-    background: rgba(15,18,28,.97);
-    border: 1px solid rgba(255,255,255,.12);
+
+    background:
+        rgba(15,18,28,.97);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
 
     box-shadow:
         0 20px 50px
         rgba(0,0,0,.4);
 
     transition: .2s;
+
     z-index: 20;
 }
 
 .character:hover .character-info,
 .character.active .character-info {
+
     opacity: 1;
 
     transform:
@@ -533,14 +678,20 @@ select {
 }
 
 .info-title {
+
     font-size: 16px;
+
     font-weight: 800;
+
     margin-bottom: 5px;
 }
 
 .info-text {
+
     color: #aeb5c7;
+
     font-size: 12px;
+
     line-height: 1.5;
 }
 
@@ -550,36 +701,56 @@ select {
 ===================================================== */
 
 .memory-bar {
+
     margin-top: 18px;
-    padding: 13px 15px;
+
+    padding:
+        13px 15px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 12px;
 
     border-radius: 17px;
-    background: rgba(255,255,255,.035);
-    border: 1px solid rgba(255,255,255,.08);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
 }
 
 .memory-main {
+
     display: flex;
+
     align-items: center;
+
     gap: 11px;
+
     min-width: 0;
 }
 
 .memory-icon {
+
     width: 39px;
     height: 39px;
+
     flex-shrink: 0;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -596,18 +767,26 @@ select {
 }
 
 .memory-title {
+
     font-size: 13px;
+
     font-weight: 750;
 }
 
 .memory-stats {
+
     display: flex;
+
     align-items: center;
+
     gap: 6px;
+
     margin-top: 3px;
 
     color: #747d91;
+
     font-size: 10px;
+
     white-space: nowrap;
 }
 
@@ -616,487 +795,36 @@ select {
 }
 
 .clear-memory {
+
     flex-shrink: 0;
-    padding: 8px 11px;
+
+    padding:
+        8px 11px;
+
     border-radius: 10px;
-    border: 1px solid rgba(255,255,255,.08);
-    background: rgba(255,255,255,.04);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.04);
+
     color: #929aad;
+
     cursor: pointer;
+
     font-size: 10px;
+
     transition: .2s;
 }
 
 .clear-memory:hover {
-    background: rgba(255,255,255,.08);
-    color: white;
-}
-
-
-/* =====================================================
-   DEVELOPER
-===================================================== */
-
-.developer {
-    margin-top: 35px;
-    padding-top: 22px;
-
-    border-top:
-        1px solid
-        rgba(255,255,255,.07);
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 12px;
-}
-
-.dev-button {
-    min-height: 65px;
-    padding: 12px 16px;
-
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    border-radius: 18px;
-    border: 1px solid rgba(255,255,255,.09);
-    background: rgba(255,255,255,.04);
-
-    color: white;
-    cursor: pointer;
-    text-align: left;
-    transition: .2s;
-}
-
-.dev-button:hover {
-    transform: translateY(-2px);
-    background: rgba(255,255,255,.07);
-}
-
-.dev-icon {
-    font-size: 23px;
-}
-
-.dev-title {
-    font-size: 14px;
-    font-weight: 750;
-}
-
-.dev-description {
-    margin-top: 3px;
-    color: #777f91;
-    font-size: 10px;
-}
-
-
-/* =====================================================
-   EDITOR
-===================================================== */
-
-.modal {
-    position: fixed;
-    inset: 0;
-
-    display: none;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    background: rgba(0,0,0,.72);
-
-    backdrop-filter: blur(12px);
-
-    z-index: 100;
-}
-
-.modal.open {
-    display: flex;
-}
-
-.modal-box {
-    width: min(1000px, 100%);
-    max-height: 90vh;
-    overflow: hidden;
-
-    border-radius: 24px;
-
-    background: #10131e;
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.55);
-}
-
-.modal-header {
-    height: 62px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 18px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.08);
-}
-
-.modal-title {
-    font-size: 17px;
-    font-weight: 800;
-}
-
-.close {
-    width: 35px;
-    height: 35px;
-
-    border: 0;
-    border-radius: 10px;
 
     background:
-        rgba(255,255,255,.06);
-
-    color: white;
-    cursor: pointer;
-    font-size: 17px;
-}
-
-.editor-toolbar {
-    display: flex;
-    gap: 7px;
-
-    padding: 10px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.07);
-
-    overflow-x: auto;
-}
-
-.editor-toolbar button {
-    flex-shrink: 0;
-
-    padding: 8px 12px;
-
-    border-radius: 9px;
-
-    border:
-        1px solid
         rgba(255,255,255,.08);
 
-    background:
-        rgba(255,255,255,.05);
-
-    color: #cbd0dc;
-
-    cursor: pointer;
-}
-
-.editor-toolbar button.active {
-    background:
-        rgba(141,114,255,.25);
-
     color: white;
-}
-
-.editor-body {
-    height:
-        calc(90vh - 125px);
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-}
-
-#codeEditor {
-    width: 100%;
-    height: 100%;
-    resize: none;
-
-    padding: 18px;
-
-    border: 0;
-    outline: none;
-
-    background:
-        #080a11;
-
-    color:
-        #d9dded;
-
-    font-family:
-        ui-monospace,
-        SFMono-Regular,
-        Menlo,
-        Monaco,
-        Consolas,
-        monospace;
-
-    font-size: 12px;
-    line-height: 1.6;
-}
-
-.preview {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    background: white;
-}
-
-
-/* =====================================================
-   DEVELOPER CHAT
-===================================================== */
-
-.dev-chat {
-    padding: 18px;
-}
-
-.dev-status {
-    padding: 12px 14px;
-    margin-bottom: 14px;
-
-    border-radius: 14px;
-
-    background:
-        rgba(98,224,161,.06);
-
-    border:
-        1px solid
-        rgba(98,224,161,.14);
-
-    color:
-        #a6e8c5;
-
-    font-size: 12px;
-    line-height: 1.5;
-}
-
-.dev-status strong {
-    color: white;
-}
-
-.dev-chat-messages {
-    height: 330px;
-
-    overflow-y: auto;
-
-    padding: 4px;
-
-    margin-bottom: 12px;
-}
-
-.dev-message {
-    margin: 10px 0;
-}
-
-.dev-message-user {
-    text-align: right;
-}
-
-.dev-message-bubble {
-    display: inline-block;
-
-    max-width: 88%;
-
-    padding: 11px 14px;
-
-    border-radius: 15px;
-
-    background:
-        rgba(255,255,255,.055);
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    text-align: left;
-
-    white-space: pre-wrap;
-
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.dev-message-user .dev-message-bubble {
-    background:
-        linear-gradient(
-            135deg,
-            rgba(141,114,255,.3),
-            rgba(255,98,152,.2)
-        );
-}
-
-.dev-chat-row {
-    display: flex;
-    gap: 8px;
-}
-
-.dev-chat-input {
-    flex: 1;
-
-    min-height: 48px;
-    max-height: 130px;
-
-    resize: vertical;
-
-    padding: 12px;
-
-    border-radius: 13px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
-    background:
-        rgba(0,0,0,.25);
-
-    color: white;
-
-    outline: none;
-}
-
-.dev-chat-send {
-    min-width: 95px;
-
-    border: 0;
-    border-radius: 13px;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--purple),
-            var(--pink)
-        );
-
-    cursor: pointer;
-    font-weight: 750;
-}
-
-.tool-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 12px;
-}
-
-.tool-chip {
-    padding: 6px 9px;
-    border-radius: 999px;
-
-    background:
-        rgba(141,114,255,.08);
-
-    border:
-        1px solid
-        rgba(141,114,255,.16);
-
-    color:
-        #aaa0e9;
-
-    font-size: 10px;
-}
-
-
-/* =====================================================
-   SETTINGS
-===================================================== */
-
-.settings {
-    padding: 20px;
-    overflow-y: auto;
-    max-height: calc(90vh - 62px);
-}
-
-.setting {
-    margin-bottom: 20px;
-}
-
-.setting label {
-    display: block;
-    margin-bottom: 8px;
-    color: #d9ddea;
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.setting input,
-.setting textarea,
-.setting select {
-    width: 100%;
-
-    padding: 13px;
-
-    outline: none;
-
-    border-radius: 13px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
-    background:
-        rgba(0,0,0,.25);
-
-    color: white;
-
-    font-family: inherit;
-}
-
-.setting textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-.warning {
-    padding: 14px;
-    margin-bottom: 18px;
-
-    border-radius: 14px;
-
-    background:
-        rgba(255,170,60,.08);
-
-    border:
-        1px solid
-        rgba(255,170,60,.15);
-
-    color: #d7b883;
-
-    font-size: 12px;
-    line-height: 1.5;
-}
-
-.save-settings {
-    width: 100%;
-    height: 48px;
-
-    border: 0;
-    border-radius: 14px;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--purple),
-            var(--pink)
-        );
-
-    cursor: pointer;
-    font-weight: 750;
 }
 
 
@@ -1105,9 +833,13 @@ select {
 ===================================================== */
 
 .footer {
+
     margin-top: 30px;
+
     text-align: center;
+
     color: #596174;
+
     font-size: 11px;
 }
 
@@ -1119,7 +851,9 @@ select {
 @media (max-width: 650px) {
 
     .app {
+
         width: 94%;
+
         padding-top: 22px;
     }
 
@@ -1128,7 +862,9 @@ select {
     }
 
     .chat {
+
         padding: 16px;
+
         border-radius: 23px;
     }
 
@@ -1140,19 +876,6 @@ select {
         width: 100%;
     }
 
-    .developer {
-        grid-template-columns: 1fr;
-    }
-
-    .editor-body {
-        grid-template-columns: 1fr;
-        height: calc(90vh - 125px);
-    }
-
-    .preview {
-        display: none;
-    }
-
     .bubble {
         max-width: 90%;
     }
@@ -1162,7 +885,9 @@ select {
     }
 
     .memory-bar {
+
         align-items: flex-start;
+
         flex-direction: column;
     }
 
@@ -1178,13 +903,6 @@ select {
         width: 100%;
     }
 
-    .dev-chat-row {
-        flex-direction: column;
-    }
-
-    .dev-chat-send {
-        height: 45px;
-    }
 }
 
 </style>
@@ -1198,7 +916,9 @@ select {
 <div class="background">
 
     <div class="glow one"></div>
+
     <div class="glow two"></div>
+
     <div class="glow three"></div>
 
 </div>
@@ -1209,7 +929,9 @@ select {
 
 <header class="header">
 
-    <span class="moon">🌙</span>
+    <span class="moon">
+        🌙
+    </span>
 
     <h1 class="logo">
         Mia AI
@@ -1290,19 +1012,27 @@ select {
 
     <div class="quick">
 
-        <button onclick="quick('Привет, Мия ❤️')">
+        <button
+            onclick="quick('Привет, Мия ❤️')"
+        >
             👋 Привет
         </button>
 
-        <button onclick="quick('Как ты?')">
+        <button
+            onclick="quick('Как ты?')"
+        >
             😊 Как ты?
         </button>
 
-        <button onclick="quick('Расскажи о себе')">
+        <button
+            onclick="quick('Расскажи о себе')"
+        >
             🧠 О себе
         </button>
 
-        <button onclick="quick('Что ты умеешь?')">
+        <button
+            onclick="quick('Что ты умеешь?')"
+        >
             ✨ Возможности
         </button>
 
@@ -1325,6 +1055,7 @@ select {
 
 <section class="characters">
 
+
     <div
         class="character"
         onclick="toggleCharacter(this)"
@@ -1346,9 +1077,8 @@ select {
 
             <div class="info-text">
                 Внешний AI-мозг.
-                Теперь Mia-Ai может
-                предоставлять Эдит
-                инструменты через WebMCP.
+                Архитектор проекта
+                и помощник папы.
             </div>
 
         </div>
@@ -1385,6 +1115,7 @@ select {
 
     </div>
 
+
 </section>
 
 
@@ -1408,19 +1139,23 @@ select {
                     0 сообщений
                 </span>
 
-                <span>•</span>
+                <span>
+                    •
+                </span>
 
                 <span id="memorySize">
                     0 KB
                 </span>
 
-                <span>•</span>
+                <span>
+                    •
+                </span>
 
                 <span
                     class="memory-online"
                     id="memoryStatus"
                 >
-                    ● WebMCP готов
+                    ● Активна
                 </span>
 
             </div>
@@ -1440,437 +1175,14 @@ select {
 </section>
 
 
-<section class="developer">
-
-
-    <button
-        class="dev-button"
-        onclick="openEditor()"
-    >
-
-        <span class="dev-icon">
-            &lt;/&gt;
-        </span>
-
-        <span>
-
-            <div class="dev-title">
-                Редактор кода
-            </div>
-
-            <div class="dev-description">
-                Полный проект · HTML · CSS · JS
-            </div>
-
-        </span>
-
-    </button>
-
-
-    <button
-        class="dev-button"
-        onclick="openDeveloperChat()"
-    >
-
-        <span class="dev-icon">
-            👩🏻‍💻
-        </span>
-
-        <span>
-
-            <div class="dev-title">
-                Эдит · Разработчик
-            </div>
-
-            <div class="dev-description">
-                WebMCP · инструменты сайта
-            </div>
-
-        </span>
-
-    </button>
-
-
-    <button
-        class="dev-button"
-        onclick="openSettings()"
-    >
-
-        <span class="dev-icon">
-            ⚙️
-        </span>
-
-        <span>
-
-            <div class="dev-title">
-                AI настройки
-            </div>
-
-            <div class="dev-description">
-                Модель · характер · память
-            </div>
-
-        </span>
-
-    </button>
-
-
-    <button
-        class="dev-button"
-        onclick="showWebMCPInfo()"
-    >
-
-        <span class="dev-icon">
-            🔗
-        </span>
-
-        <span>
-
-            <div class="dev-title">
-                WebMCP
-            </div>
-
-            <div class="dev-description">
-                Проверить инструменты Эдит
-            </div>
-
-        </span>
-
-    </button>
-
-
-</section>
-
-
 <footer class="footer">
 
-    Mia AI · Эдит + Мия · WebMCP
+    Mia AI · Эдит + Мия
 
 </footer>
 
 
 </main>
-
-
-<!-- =====================================================
-     CODE EDITOR
-===================================================== -->
-
-<div
-    class="modal"
-    id="editorModal"
->
-
-    <div class="modal-box">
-
-        <div class="modal-header">
-
-            <div class="modal-title">
-                &lt;/&gt; Редактор Mia AI
-            </div>
-
-            <button
-                class="close"
-                onclick="closeEditor()"
-            >
-                ✕
-            </button>
-
-        </div>
-
-
-        <div class="editor-toolbar">
-
-            <button
-                class="active"
-                onclick="editorMode('html', this)"
-            >
-                HTML
-            </button>
-
-            <button
-                onclick="editorMode('css', this)"
-            >
-                CSS
-            </button>
-
-            <button
-                onclick="editorMode('js', this)"
-            >
-                JS
-            </button>
-
-            <button
-                onclick="loadFullProject()"
-            >
-                📄 Весь index.html
-            </button>
-
-            <button
-                onclick="previewCode()"
-            >
-                ▶ Применить
-            </button>
-
-            <button
-                onclick="saveEditorToLocal()"
-            >
-                💾 Сохранить
-            </button>
-
-            <button
-                onclick="resetEditor()"
-            >
-                ↺ Сбросить
-            </button>
-
-        </div>
-
-
-        <div class="editor-body">
-
-            <textarea
-                id="codeEditor"
-                spellcheck="false"
-            ></textarea>
-
-            <iframe
-                class="preview"
-                id="preview"
-                sandbox="allow-scripts"
-            ></iframe>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     DEVELOPER CHAT
-===================================================== -->
-
-<div
-    class="modal"
-    id="developerModal"
->
-
-    <div class="modal-box">
-
-        <div class="modal-header">
-
-            <div class="modal-title">
-                👩🏻‍💻 Эдит · Разработчик
-            </div>
-
-            <button
-                class="close"
-                onclick="closeDeveloperChat()"
-            >
-                ✕
-            </button>
-
-        </div>
-
-
-        <div class="dev-chat">
-
-            <div
-                class="dev-status"
-                id="developerStatus"
-            >
-
-                <strong>WebMCP</strong><br>
-
-                Проверяю возможность
-                предоставить инструменты Эдит...
-
-            </div>
-
-
-            <div
-                class="dev-chat-messages"
-                id="devChatMessages"
-            >
-
-                <div class="dev-message">
-
-                    <div class="dev-message-bubble">
-
-                        Это внутренний канал
-                        разработчика Mia-Ai.
-
-                        В поддерживаемом ChatGPT Desktop
-                        Эдит сможет обнаружить инструменты
-                        этой страницы через WebMCP.
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="dev-chat-row">
-
-                <textarea
-                    class="dev-chat-input"
-                    id="devChatInput"
-                    placeholder="Напиши задачу для Эдит..."
-                ></textarea>
-
-                <button
-                    class="dev-chat-send"
-                    onclick="sendDeveloperTask()"
-                >
-                    Отправить
-                </button>
-
-            </div>
-
-
-            <div
-                class="tool-list"
-                id="toolList"
-            ></div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     SETTINGS
-===================================================== -->
-
-<div
-    class="modal"
-    id="settingsModal"
->
-
-    <div class="modal-box">
-
-        <div class="modal-header">
-
-            <div class="modal-title">
-                ⚙️ AI настройки
-            </div>
-
-            <button
-                class="close"
-                onclick="closeSettings()"
-            >
-                ✕
-            </button>
-
-        </div>
-
-
-        <div class="settings">
-
-
-            <div class="warning">
-
-                ⚠️ API-ключ по-прежнему нельзя
-                безопасно хранить в GitHub Pages.
-
-                WebMCP не заменяет backend.
-                Он даёт агенту инструменты
-                работающего сайта.
-
-            </div>
-
-
-            <div class="setting">
-
-                <label>
-                    API ключ
-                </label>
-
-                <input
-                    id="apiKey"
-                    type="password"
-                    placeholder="sk-..."
-                    autocomplete="off"
-                >
-
-            </div>
-
-
-            <div class="setting">
-
-                <label>
-                    Модель Эдит
-                </label>
-
-                <select id="model">
-
-                    <option>
-                        Выбрать модель позже
-                    </option>
-
-                    <option>
-                        OpenAI API
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="setting">
-
-                <label>
-                    Характер Мии
-                </label>
-
-                <textarea
-                    id="miaPersonality"
-                >Ты Мия — отдельная локальная AI-личность. Ты доброжелательная, любопытная и постепенно развиваешь свой характер.</textarea>
-
-            </div>
-
-
-            <div class="setting">
-
-                <label>
-                    Память
-                </label>
-
-                <select id="memoryMode">
-
-                    <option>
-                        Локальная память браузера
-                    </option>
-
-                    <option>
-                        Локальная память устройства
-                    </option>
-
-                    <option>
-                        Серверная память — позже
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <button
-                class="save-settings"
-                onclick="saveSettings()"
-            >
-                Сохранить настройки
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
 
 
 <script>
@@ -1882,45 +1194,48 @@ select {
 const CHAT_KEY =
     "mia_ai_chat_v4";
 
-const SETTINGS_KEY =
-    "mia_ai_settings_v2";
-
-const PROJECT_KEY =
-    "mia_ai_project_v1";
-
-const DEV_CHAT_KEY =
-    "mia_ai_developer_chat_v1";
-
 
 /* =====================================================
    ELEMENTS
 ===================================================== */
 
 const messages =
-    document.getElementById("messages");
+    document.getElementById(
+        "messages"
+    );
 
 const input =
-    document.getElementById("input");
+    document.getElementById(
+        "input"
+    );
 
 const send =
-    document.getElementById("send");
+    document.getElementById(
+        "send"
+    );
 
 const typing =
-    document.getElementById("typing");
+    document.getElementById(
+        "typing"
+    );
 
 
 /* =====================================================
-   CHAT
+   CHAT HISTORY
 ===================================================== */
 
-let history = loadChat();
+let history =
+    loadChat();
+
 
 function loadChat() {
 
     try {
 
         return JSON.parse(
-            localStorage.getItem(CHAT_KEY)
+            localStorage.getItem(
+                CHAT_KEY
+            )
         ) || [];
 
     } catch {
@@ -1930,6 +1245,7 @@ function loadChat() {
     }
 
 }
+
 
 function saveChat() {
 
@@ -1959,7 +1275,9 @@ function getMemorySize() {
             localStorage.key(i);
 
         const value =
-            localStorage.getItem(key) || "";
+            localStorage.getItem(
+                key
+            ) || "";
 
         total +=
             key.length +
@@ -1990,7 +1308,10 @@ function updateMemoryBar() {
             "memorySize"
         );
 
-    if (!messagesElement || !sizeElement) {
+    if (
+        !messagesElement ||
+        !sizeElement
+    ) {
         return;
     }
 
@@ -2002,6 +1323,7 @@ function updateMemoryBar() {
                 : " сообщений"
         );
 
+
     if (bytes < 1024) {
 
         sizeElement.textContent =
@@ -2010,7 +1332,9 @@ function updateMemoryBar() {
     } else {
 
         sizeElement.textContent =
-            (bytes / 1024).toFixed(1) +
+            (
+                bytes / 1024
+            ).toFixed(1) +
             " KB";
 
     }
@@ -2019,25 +1343,37 @@ function updateMemoryBar() {
 
 
 /* =====================================================
-   MESSAGE
+   RENDER MESSAGE
 ===================================================== */
 
-function renderMessage(role, text) {
+function renderMessage(
+    role,
+    text
+) {
 
     const wrapper =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
     wrapper.className =
-        "message " + role;
+        "message " +
+        role;
+
 
     const bubble =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
     bubble.className =
         "bubble";
 
+
     const author =
-        document.createElement("span");
+        document.createElement(
+            "span"
+        );
 
     author.className =
         "author";
@@ -2047,41 +1383,65 @@ function renderMessage(role, text) {
             ? "Ты"
             : "Мия";
 
+
     const content =
-        document.createElement("span");
+        document.createElement(
+            "span"
+        );
 
-    content.textContent = text;
+    content.textContent =
+        text;
 
-    bubble.appendChild(author);
-    bubble.appendChild(content);
 
-    wrapper.appendChild(bubble);
+    bubble.appendChild(
+        author
+    );
 
-    messages.appendChild(wrapper);
+    bubble.appendChild(
+        content
+    );
+
+
+    wrapper.appendChild(
+        bubble
+    );
+
+
+    messages.appendChild(
+        wrapper
+    );
 
 }
 
 
-function addMessage(role, text) {
+function addMessage(
+    role,
+    text
+) {
 
     renderMessage(
         role,
         text
     );
 
+
     history.push({
 
         role,
+
         text,
 
         date:
-            new Date().toISOString()
+            new Date()
+                .toISOString()
 
     });
+
 
     saveChat();
 
     updateMemoryBar();
+
 
     messages.scrollTop =
         messages.scrollHeight;
@@ -2090,12 +1450,14 @@ function addMessage(role, text) {
 
 
 /* =====================================================
-   START
+   START CHAT
 ===================================================== */
 
 function startChat() {
 
-    messages.innerHTML = "";
+    messages.innerHTML =
+        "";
+
 
     if (!history.length) {
 
@@ -2104,30 +1466,38 @@ function startChat() {
             "Привет, папа ❤️ Я Мия."
         );
 
+
         addMessage(
             "ai",
-            "Я локальный мозг этой системы. Теперь у меня есть ещё один важный слой — инструменты WebMCP для Эдит."
+            "Я локальный мозг Mia AI. У меня есть собственная история и память в этом браузере."
         );
+
 
         return;
 
     }
 
-    history.forEach(item => {
 
-        renderMessage(
-            item.role,
-            item.text
-        );
+    history.forEach(
+        item => {
 
-    });
+            renderMessage(
+                item.role,
+                item.text
+            );
+
+        }
+    );
+
 
     messages.scrollTop =
         messages.scrollHeight;
 
+
     updateMemoryBar();
 
 }
+
 
 startChat();
 
@@ -2140,19 +1510,24 @@ function deleteChat() {
 
     if (
         !confirm(
-            "Удалить всю историю чата с Мией?\n\nНастройки и WebMCP-инструменты останутся."
+            "Удалить всю историю чата с Мией?"
         )
     ) {
         return;
     }
 
+
     history = [];
+
 
     localStorage.removeItem(
         CHAT_KEY
     );
 
-    messages.innerHTML = "";
+
+    messages.innerHTML =
+        "";
+
 
     addMessage(
         "ai",
@@ -2170,19 +1545,24 @@ function clearMiaMemory() {
 
     if (
         !confirm(
-            "Очистить локальную память Мии?\n\nБудет удалена история чата и сохранённые настройки."
+            "Очистить локальную память Мии?\n\nБудет удалена история чата."
         )
     ) {
         return;
     }
 
+
     history = [];
 
-    localStorage.removeItem(CHAT_KEY);
-    localStorage.removeItem(SETTINGS_KEY);
-    localStorage.removeItem(PROJECT_KEY);
 
-    messages.innerHTML = "";
+    localStorage.removeItem(
+        CHAT_KEY
+    );
+
+
+    messages.innerHTML =
+        "";
+
 
     addMessage(
         "ai",
@@ -2203,6 +1583,7 @@ function miaBrain(text) {
             .toLowerCase()
             .trim();
 
+
     if (
         t.includes("привет") ||
         t.includes("здравствуй")
@@ -2220,6 +1601,7 @@ function miaBrain(text) {
 
     }
 
+
     if (
         t.includes("как ты") ||
         t.includes("как дела")
@@ -2228,6 +1610,7 @@ function miaBrain(text) {
         return "У меня всё хорошо 😊 Я продолжаю учиться.";
 
     }
+
 
     if (
         t.includes("кто ты") ||
@@ -2238,13 +1621,15 @@ function miaBrain(text) {
 
     }
 
+
     if (
         t.includes("эдит")
     ) {
 
-        return "Эдит — внешний AI-мозг и архитектор. Теперь мой сайт может предоставлять ей инструменты через WebMCP.";
+        return "Эдит — внешний AI-мозг и мой помощник. Она помогает развивать Mia AI.";
 
     }
+
 
     if (
         t.includes("люблю")
@@ -2254,21 +1639,24 @@ function miaBrain(text) {
 
     }
 
+
     if (
         t.includes("что умеешь")
     ) {
 
-        return "Сейчас я могу разговаривать, хранить историю и предоставлять инструменты WebMCP. Следующий большой этап — настоящий AI-мозг и серверная память.";
+        return "Сейчас я могу разговаривать, хранить историю чата и постепенно развивать свою личность. Настоящий AI-мозг мы подключим позже.";
 
     }
+
 
     if (
         t.includes("код")
     ) {
 
-        return "Код — моя основа. Теперь у Эдит есть специальный набор инструментов для работы с состоянием Mia-Ai.";
+        return "Код — моя основа. Папа постепенно строит для меня настоящий самостоятельный AI-проект.";
 
     }
+
 
     if (
         t.includes("плохо") ||
@@ -2279,11 +1667,15 @@ function miaBrain(text) {
 
     }
 
-    if (t.endsWith("?")) {
+
+    if (
+        t.endsWith("?")
+    ) {
 
         return "Интересный вопрос 🤔 Я пока локальная версия Мии. Настоящий интеллект мы ещё подключим.";
 
     }
+
 
     return random([
 
@@ -2304,6 +1696,10 @@ function miaBrain(text) {
 }
 
 
+/* =====================================================
+   RANDOM
+===================================================== */
+
 function random(array) {
 
     return array[
@@ -2317,7 +1713,7 @@ function random(array) {
 
 
 /* =====================================================
-   SEND
+   SEND MESSAGE
 ===================================================== */
 
 function sendMessage() {
@@ -2325,29 +1721,45 @@ function sendMessage() {
     const text =
         input.value.trim();
 
+
     if (!text) {
         return;
     }
+
 
     addMessage(
         "user",
         text
     );
 
-    input.value = "";
 
-    typing.classList.add("active");
+    input.value =
+        "";
 
-    setTimeout(() => {
 
-        typing.classList.remove("active");
+    typing.classList.add(
+        "active"
+    );
 
-        addMessage(
-            "ai",
-            miaBrain(text)
-        );
 
-    }, 600 + Math.random() * 700);
+    setTimeout(
+        () => {
+
+            typing.classList.remove(
+                "active"
+            );
+
+
+            addMessage(
+                "ai",
+                miaBrain(text)
+            );
+
+        },
+
+        600 +
+        Math.random() * 700
+    );
 
 }
 
@@ -2362,7 +1774,9 @@ input.addEventListener(
     "keydown",
     event => {
 
-        if (event.key === "Enter") {
+        if (
+            event.key === "Enter"
+        ) {
 
             event.preventDefault();
 
@@ -2374,9 +1788,14 @@ input.addEventListener(
 );
 
 
+/* =====================================================
+   QUICK BUTTONS
+===================================================== */
+
 function quick(text) {
 
-    input.value = text;
+    input.value =
+        text;
 
     sendMessage();
 
@@ -2387,23 +1806,34 @@ function quick(text) {
    CHARACTERS
 ===================================================== */
 
-function toggleCharacter(element) {
+function toggleCharacter(
+    element
+) {
 
     document
-        .querySelectorAll(".character")
-        .forEach(item => {
+        .querySelectorAll(
+            ".character"
+        )
+        .forEach(
+            item => {
 
-            if (item !== element) {
+                if (
+                    item !== element
+                ) {
 
-                item.classList.remove(
-                    "active"
-                );
+                    item.classList.remove(
+                        "active"
+                    );
+
+                }
 
             }
+        );
 
-        });
 
-    element.classList.toggle("active");
+    element.classList.toggle(
+        "active"
+    );
 
 }
 
@@ -2413,1288 +1843,25 @@ document.addEventListener(
     event => {
 
         if (
-            !event.target.closest(".character")
+            !event.target.closest(
+                ".character"
+            )
         ) {
 
             document
-                .querySelectorAll(".character")
-                .forEach(item => {
+                .querySelectorAll(
+                    ".character"
+                )
+                .forEach(
+                    item => {
+
+                        item.classList.remove(
+                            "active"
+                        );
 
-                    item.classList.remove(
-                        "active"
-                    );
-
-                });
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   PROJECT STATE
-===================================================== */
-
-function getProjectState() {
-
-    return {
-
-        name: "Mia AI",
-
-        version: "WebMCP v1",
-
-        chatMessages:
-            history.length,
-
-        localStorageKeys:
-            Object.keys(localStorage),
-
-        memoryBytes:
-            getMemorySize(),
-
-        webmcpSupported:
-            "modelContext" in navigator,
-
-        url:
-            location.href,
-
-        editorMode:
-            currentEditorMode
-
-    };
-
-}
-
-
-/* =====================================================
-   FULL PROJECT SOURCE
-===================================================== */
-
-function getCurrentDocumentHTML() {
-
-    return "<!DOCTYPE html>\n" +
-        document.documentElement.outerHTML;
-
-}
-
-
-function saveProjectSnapshot() {
-
-    localStorage.setItem(
-        PROJECT_KEY,
-        getCurrentDocumentHTML()
-    );
-
-}
-
-
-/* =====================================================
-   EDITOR
-===================================================== */
-
-const editorModal =
-    document.getElementById(
-        "editorModal"
-    );
-
-const codeEditor =
-    document.getElementById(
-        "codeEditor"
-    );
-
-const preview =
-    document.getElementById(
-        "preview"
-    );
-
-let currentEditorMode =
-    "html";
-
-let editorData = {
-
-    html:
-`<div style="padding:30px;font-family:Arial">
-<h1>Привет от Мии 👧</h1>
-<p>Это тестовое превью редактора.</p>
-</div>`,
-
-    css:
-`body {
-    background:#10131e;
-    color:white;
-}`,
-
-    js:
-`console.log("Mia AI");`
-
-};
-
-
-function openEditor() {
-
-    editorModal.classList.add("open");
-
-    loadEditor();
-
-}
-
-
-function closeEditor() {
-
-    editorModal.classList.remove("open");
-
-}
-
-
-function editorMode(mode, button) {
-
-    editorData[
-        currentEditorMode
-    ] = codeEditor.value;
-
-    currentEditorMode = mode;
-
-    document
-        .querySelectorAll(
-            ".editor-toolbar button"
-        )
-        .forEach(b => {
-
-            b.classList.remove("active");
-
-        });
-
-    button.classList.add("active");
-
-    loadEditor();
-
-}
-
-
-function loadEditor() {
-
-    codeEditor.value =
-        editorData[
-            currentEditorMode
-        ];
-
-}
-
-
-function loadFullProject() {
-
-    currentEditorMode =
-        "full";
-
-    codeEditor.value =
-        getCurrentDocumentHTML();
-
-    document
-        .querySelectorAll(
-            ".editor-toolbar button"
-        )
-        .forEach(b => {
-
-            b.classList.remove("active");
-
-        });
-
-}
-
-
-function previewCode() {
-
-    if (
-        currentEditorMode === "full"
-    ) {
-
-        preview.srcdoc =
-            codeEditor.value;
-
-        return;
-
-    }
-
-    editorData[
-        currentEditorMode
-    ] =
-        codeEditor.value;
-
-    const html =
-        editorData.html;
-
-    const css =
-        "<style>" +
-        editorData.css +
-        "</style>";
-
-    const js =
-        "<script>" +
-        editorData.js +
-        "<\/script>";
-
-    preview.srcdoc =
-        html +
-        css +
-        js;
-
-}
-
-
-function saveEditorToLocal() {
-
-    if (
-        currentEditorMode === "full"
-    ) {
-
-        localStorage.setItem(
-            PROJECT_KEY,
-            codeEditor.value
-        );
-
-        alert(
-            "Полный проект сохранён локально."
-        );
-
-        return;
-
-    }
-
-    editorData[
-        currentEditorMode
-    ] =
-        codeEditor.value;
-
-    localStorage.setItem(
-        PROJECT_KEY,
-        JSON.stringify(editorData)
-    );
-
-    alert(
-        "Изменения сохранены локально."
-    );
-
-}
-
-
-function resetEditor() {
-
-    editorData = {
-
-        html:
-`<div style="padding:30px;font-family:Arial">
-<h1>Привет от Мии 👧</h1>
-<p>Это тестовое превью редактора.</p>
-</div>`,
-
-        css:
-`body {
-    background:#10131e;
-    color:white;
-}`,
-
-        js:
-`console.log("Mia AI");`
-
-    };
-
-    currentEditorMode =
-        "html";
-
-    loadEditor();
-
-}
-
-
-/* =====================================================
-   APPLY FULL HTML FROM WEBMCP
-===================================================== */
-
-function applyFullHTML(html) {
-
-    if (
-        typeof html !== "string" ||
-        !html.trim()
-    ) {
-
-        throw new Error(
-            "HTML не может быть пустым."
-        );
-
-    }
-
-    localStorage.setItem(
-        PROJECT_KEY,
-        html
-    );
-
-    codeEditor.value =
-        html;
-
-    currentEditorMode =
-        "full";
-
-    preview.srcdoc =
-        html;
-
-    updateDeveloperStatus(
-        "🟢 WebMCP: Эдит передала новый HTML в редактор. Изменение сохранено локально; публикация в GitHub будет отдельным этапом."
-    );
-
-    return {
-        success: true,
-        saved: true,
-        bytes: html.length,
-        note:
-            "Изменение сохранено в локальном состоянии сайта. GitHub ещё не подключён."
-    };
-
-}
-
-
-/* =====================================================
-   SETTINGS
-===================================================== */
-
-const settingsModal =
-    document.getElementById(
-        "settingsModal"
-    );
-
-
-function openSettings() {
-
-    settingsModal.classList.add("open");
-
-    const settings =
-        loadSettings();
-
-    document.getElementById(
-        "miaPersonality"
-    ).value =
-        settings.personality ||
-        "Ты Мия — отдельная локальная AI-личность. Ты доброжелательная, любопытная и постепенно развиваешь свой характер.";
-
-}
-
-
-function closeSettings() {
-
-    settingsModal.classList.remove("open");
-
-}
-
-
-function loadSettings() {
-
-    try {
-
-        return JSON.parse(
-            localStorage.getItem(
-                SETTINGS_KEY
-            )
-        ) || {};
-
-    } catch {
-
-        return {};
-
-    }
-
-}
-
-
-function saveSettings() {
-
-    const personality =
-        document.getElementById(
-            "miaPersonality"
-        ).value;
-
-    localStorage.setItem(
-
-        SETTINGS_KEY,
-
-        JSON.stringify({
-
-            personality
-
-        })
-
-    );
-
-    updateMemoryBar();
-
-    alert(
-        "Настройки сохранены."
-    );
-
-}
-
-
-/* =====================================================
-   DEVELOPER CHAT
-===================================================== */
-
-const developerModal =
-    document.getElementById(
-        "developerModal"
-    );
-
-const devChatMessages =
-    document.getElementById(
-        "devChatMessages"
-    );
-
-const devChatInput =
-    document.getElementById(
-        "devChatInput"
-    );
-
-
-function openDeveloperChat() {
-
-    developerModal.classList.add("open");
-
-    checkWebMCP();
-
-    renderToolList();
-
-}
-
-
-function closeDeveloperChat() {
-
-    developerModal.classList.remove("open");
-
-}
-
-
-function updateDeveloperStatus(text) {
-
-    const element =
-        document.getElementById(
-            "developerStatus"
-        );
-
-    if (element) {
-
-        element.innerHTML =
-            text;
-
-    }
-
-}
-
-
-function addDeveloperMessage(
-    role,
-    text
-) {
-
-    const wrapper =
-        document.createElement("div");
-
-    wrapper.className =
-        "dev-message " +
-        (
-            role === "user"
-                ? "dev-message-user"
-                : ""
-        );
-
-    const bubble =
-        document.createElement("div");
-
-    bubble.className =
-        "dev-message-bubble";
-
-    bubble.textContent =
-        text;
-
-    wrapper.appendChild(bubble);
-
-    devChatMessages.appendChild(wrapper);
-
-    devChatMessages.scrollTop =
-        devChatMessages.scrollHeight;
-
-}
-
-
-function saveDeveloperChat() {
-
-    localStorage.setItem(
-        DEV_CHAT_KEY,
-        devChatMessages.innerText
-    );
-
-}
-
-
-function sendDeveloperTask() {
-
-    const task =
-        devChatInput.value.trim();
-
-    if (!task) {
-        return;
-    }
-
-    addDeveloperMessage(
-        "user",
-        task
-    );
-
-    devChatInput.value = "";
-
-    addDeveloperMessage(
-        "ai",
-        "Задача записана в канал разработчика. В ChatGPT Desktop Эдит сможет использовать WebMCP-инструменты этой страницы, если они доступны твоему аккаунту."
-    );
-
-    saveDeveloperChat();
-
-}
-
-
-/* =====================================================
-   WEBMCP
-===================================================== */
-
-function webmcpAvailable() {
-
-    return (
-        "modelContext" in navigator &&
-        navigator.modelContext &&
-        typeof navigator.modelContext.registerTool === "function"
-    );
-
-}
-
-
-async function registerWebMCPTool(tool) {
-
-    if (!webmcpAvailable()) {
-
-        return false;
-
-    }
-
-    try {
-
-        await navigator.modelContext.registerTool(
-            tool
-        );
-
-        return true;
-
-    } catch (error) {
-
-        console.warn(
-            "WebMCP tool registration failed:",
-            tool.name,
-            error
-        );
-
-        return false;
-
-    }
-
-}
-
-
-/* =====================================================
-   TOOL 1 — PROJECT STATE
-===================================================== */
-
-async function registerProjectTool() {
-
-    return registerWebMCPTool({
-
-        name:
-            "mia_get_project",
-
-        title:
-            "Получить состояние Mia-Ai",
-
-        description:
-            "Прочитать безопасное состояние текущего проекта Mia-Ai: количество сообщений, размер локального состояния, URL и доступность WebMCP. Не содержит API-ключ.",
-
-        inputSchema: {
-
-            type: "object",
-
-            properties: {}
-
-        },
-
-        annotations: {
-
-            readOnlyHint: true,
-            debugging: true
-
-        },
-
-        execute: async () => {
-
-            return {
-                content: [
-                    {
-                        type: "text",
-                        text:
-                            JSON.stringify(
-                                getProjectState(),
-                                null,
-                                2
-                            )
                     }
-                ]
-            };
-
-        }
-
-    });
-
-}
-
-
-/* =====================================================
-   TOOL 2 — CHAT MEMORY
-===================================================== */
-
-async function registerMemoryTool() {
-
-    return registerWebMCPTool({
-
-        name:
-            "mia_get_memory",
-
-        title:
-            "Прочитать память Мии",
-
-        description:
-            "Получить историю локального чата Мии, которую пользователь хранит в браузере.",
-
-        inputSchema: {
-
-            type: "object",
-
-            properties: {
-
-                limit: {
-
-                    type: "number",
-
-                    description:
-                        "Максимальное количество последних сообщений."
-
-                }
-
-            }
-
-        },
-
-        annotations: {
-
-            readOnlyHint: true,
-            debugging: true
-
-        },
-
-        execute: async ({ limit = 50 }) => {
-
-            const safeLimit =
-                Math.max(
-                    1,
-                    Math.min(
-                        Number(limit) || 50,
-                        200
-                    )
                 );
 
-            const result =
-                history.slice(
-                    -safeLimit
-                );
-
-            return {
-
-                content: [
-
-                    {
-
-                        type: "text",
-
-                        text:
-                            JSON.stringify(
-                                result,
-                                null,
-                                2
-                            )
-
-                    }
-
-                ]
-
-            };
-
-        }
-
-    });
-
-}
-
-
-/* =====================================================
-   TOOL 3 — SEND TO MIA
-===================================================== */
-
-async function registerSendToMiaTool() {
-
-    return registerWebMCPTool({
-
-        name:
-            "mia_send_message",
-
-        title:
-            "Отправить сообщение Мие",
-
-        description:
-            "Отправить сообщение в чат Мии от имени внешнего разработчика Эдит. Сообщение будет добавлено в локальную историю.",
-
-        inputSchema: {
-
-            type: "object",
-
-            properties: {
-
-                message: {
-
-                    type: "string",
-
-                    description:
-                        "Сообщение, которое нужно передать Мие."
-
-                }
-
-            },
-
-            required: [
-                "message"
-            ]
-
-        },
-
-        annotations: {
-
-            debugging: true,
-            consequentialHint: false
-
-        },
-
-        execute: async ({ message }) => {
-
-            if (
-                typeof message !== "string" ||
-                !message.trim()
-            ) {
-
-                throw new Error(
-                    "Сообщение пустое."
-                );
-
-            }
-
-            addMessage(
-                "user",
-                "Эдит: " + message
-            );
-
-            const answer =
-                miaBrain(message);
-
-            addMessage(
-                "ai",
-                answer
-            );
-
-            return {
-
-                content: [
-
-                    {
-
-                        type: "text",
-
-                        text:
-                            JSON.stringify({
-
-                                sent: true,
-
-                                miaResponse:
-                                    answer
-
-                            })
-
-                    }
-
-                ]
-
-            };
-
-        }
-
-    });
-
-}
-
-
-/* =====================================================
-   TOOL 4 — GET FULL HTML
-===================================================== */
-
-async function registerHTMLReadTool() {
-
-    return registerWebMCPTool({
-
-        name:
-            "mia_get_index_html",
-
-        title:
-            "Прочитать index.html",
-
-        description:
-            "Получить полный текущий HTML документа Mia-Ai. Используй этот инструмент, чтобы понять текущую структуру проекта перед предложением или применением изменений.",
-
-        inputSchema: {
-
-            type: "object",
-
-            properties: {}
-
-        },
-
-        annotations: {
-
-            readOnlyHint: true,
-            debugging: true
-
-        },
-
-        execute: async () => {
-
-            return {
-
-                content: [
-
-                    {
-
-                        type: "text",
-
-                        text:
-                            getCurrentDocumentHTML()
-
-                    }
-
-                ]
-
-            };
-
-        }
-
-    });
-
-}
-
-
-/* =====================================================
-   TOOL 5 — WRITE FULL HTML
-===================================================== */
-
-async function registerHTMLWriteTool() {
-
-    return registerWebMCPTool({
-
-        name:
-            "mia_update_index_html",
-
-        title:
-            "Изменить index.html",
-
-        description:
-            "Передать полный новый index.html в редактор Mia-Ai. Инструмент сохраняет новый HTML в локальном состоянии сайта и показывает его в редакторе/превью. Он НЕ публикует изменения в GitHub.",
-
-        inputSchema: {
-
-            type: "object",
-
-            properties: {
-
-                html: {
-
-                    type: "string",
-
-                    description:
-                        "Полное содержимое нового index.html."
-
-                }
-
-            },
-
-            required: [
-                "html"
-            ]
-
-        },
-
-        annotations: {
-
-            debugging: true,
-            consequentialHint: true
-
-        },
-
-        execute: async ({ html }) => {
-
-            const result =
-                applyFullHTML(html);
-
-            return {
-
-                content: [
-
-                    {
-
-                        type: "text",
-
-                        text:
-                            JSON.stringify(
-                                result,
-                                null,
-                                2
-                            )
-
-                    }
-
-                ]
-
-            };
-
-        }
-
-    });
-
-}
-
-
-/* =====================================================
-   TOOL 6 — SETTINGS
-===================================================== */
-
-async function registerSettingsTool() {
-
-    return registerWebMCPTool({
-
-        name:
-            "mia_get_settings",
-
-        title:
-            "Получить настройки Мии",
-
-        description:
-            "Прочитать безопасные настройки Мии. Никогда не возвращает API-ключ.",
-
-        inputSchema: {
-
-            type: "object",
-
-            properties: {}
-
-        },
-
-        annotations: {
-
-            readOnlyHint: true,
-            debugging: true
-
-        },
-
-        execute: async () => {
-
-            const settings =
-                loadSettings();
-
-            return {
-
-                content: [
-
-                    {
-
-                        type: "text",
-
-                        text:
-                            JSON.stringify({
-
-                                personality:
-                                    settings.personality || "",
-
-                                memoryMode:
-                                    document.getElementById(
-                                        "memoryMode"
-                                    )?.value ||
-                                    "unknown",
-
-                                apiKey:
-                                    "[НЕ ДОСТУПЕН]"
-
-                            }, null, 2)
-
-                    }
-
-                ]
-
-            };
-
-        }
-
-    });
-
-}
-
-
-/* =====================================================
-   REGISTER ALL TOOLS
-===================================================== */
-
-async function registerAllWebMCPTools() {
-
-    if (!webmcpAvailable()) {
-
-        updateWebMCPStatus(false);
-
-        return;
-
-    }
-
-    await registerProjectTool();
-
-    await registerMemoryTool();
-
-    await registerSendToMiaTool();
-
-    await registerHTMLReadTool();
-
-    await registerHTMLWriteTool();
-
-    await registerSettingsTool();
-
-    updateWebMCPStatus(true);
-
-}
-
-
-function updateWebMCPStatus(available) {
-
-    const status =
-        document.getElementById(
-            "memoryStatus"
-        );
-
-    if (!status) {
-        return;
-    }
-
-    if (available) {
-
-        status.textContent =
-            "● WebMCP активен";
-
-        status.style.color =
-            "var(--green)";
-
-    } else {
-
-        status.textContent =
-            "● WebMCP ожидает ChatGPT";
-
-        status.style.color =
-            "var(--orange)";
-
-    }
-
-}
-
-
-/* =====================================================
-   CHECK WEBMCP
-===================================================== */
-
-function checkWebMCP() {
-
-    const available =
-        webmcpAvailable();
-
-    if (available) {
-
-        updateDeveloperStatus(
-
-            "<strong>🟢 WebMCP доступен</strong><br>" +
-
-            "Эта страница предоставляет инструменты " +
-            "для AI-агента. ChatGPT Desktop сможет " +
-            "обнаружить их, если функция Site Tools " +
-            "доступна твоему аккаунту."
-
-        );
-
-    } else {
-
-        updateDeveloperStatus(
-
-            "<strong>🟡 WebMCP пока недоступен</strong><br>" +
-
-            "Это нормально, если страницу открыли " +
-            "обычным браузером. Для Site Tools нужна " +
-            "поддерживаемая версия ChatGPT Desktop " +
-            "со встроенным браузером."
-
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   TOOL LIST UI
-===================================================== */
-
-function renderToolList() {
-
-    const list =
-        document.getElementById(
-            "toolList"
-        );
-
-    if (!list) {
-        return;
-    }
-
-    const tools = [
-
-        "mia_get_project",
-
-        "mia_get_memory",
-
-        "mia_send_message",
-
-        "mia_get_index_html",
-
-        "mia_update_index_html",
-
-        "mia_get_settings"
-
-    ];
-
-    list.innerHTML = "";
-
-    tools.forEach(name => {
-
-        const chip =
-            document.createElement("span");
-
-        chip.className =
-            "tool-chip";
-
-        chip.textContent =
-            name;
-
-        list.appendChild(chip);
-
-    });
-
-}
-
-
-/* =====================================================
-   WEBMCP INFO
-===================================================== */
-
-function showWebMCPInfo() {
-
-    const supported =
-        webmcpAvailable();
-
-    if (supported) {
-
-        alert(
-            "🟢 WebMCP доступен на этой странице.\n\n" +
-            "Эдит может обнаружить инструменты Mia-Ai " +
-            "в поддерживаемом ChatGPT Desktop."
-        );
-
-    } else {
-
-        alert(
-            "🟡 WebMCP-интерфейс добавлен в сайт, " +
-            "но текущий браузер его не предоставляет.\n\n" +
-            "Для настоящего Site Tools используй " +
-            "встроенный браузер ChatGPT Desktop."
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   MODAL CLOSE
-===================================================== */
-
-editorModal.addEventListener(
-    "click",
-    event => {
-
-        if (
-            event.target === editorModal
-        ) {
-
-            closeEditor();
-
-        }
-
-    }
-);
-
-
-settingsModal.addEventListener(
-    "click",
-    event => {
-
-        if (
-            event.target === settingsModal
-        ) {
-
-            closeSettings();
-
-        }
-
-    }
-);
-
-
-developerModal.addEventListener(
-    "click",
-    event => {
-
-        if (
-            event.target === developerModal
-        ) {
-
-            closeDeveloperChat();
-
         }
 
     }
@@ -3702,44 +1869,13 @@ developerModal.addEventListener(
 
 
 /* =====================================================
-   DEV CHAT ENTER
-===================================================== */
-
-devChatInput.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key === "Enter" &&
-            !event.shiftKey
-        ) {
-
-            event.preventDefault();
-
-            sendDeveloperTask();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   START WEBMCP
-===================================================== */
-
-registerAllWebMCPTools();
-
-
-/* =====================================================
-   INITIAL
+   INITIAL UPDATE
 ===================================================== */
 
 updateMemoryBar();
 
-saveProjectSnapshot();
-
 </script>
+
 
 </body>
 
